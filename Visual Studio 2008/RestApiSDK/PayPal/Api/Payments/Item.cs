@@ -13,7 +13,7 @@ namespace PayPal.Api.Payments
 	{
 
         /// <summary>
-        /// The name of the item as string.
+        /// The name of the item.
         /// </summary>
         /// <value>
         /// The name of the item as string.
@@ -27,7 +27,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The item's sku code as string.
+        /// The item's sku code.
         /// </summary>
         /// <value>
         /// The item's sku code as string.
@@ -41,10 +41,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The cost of the item
+        /// The selling price of the item.
         /// </summary>
         /// <value>
-        /// The cost of the item as string.
+        /// The selling price of the item as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string price
@@ -55,10 +55,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        ///  A 3-character currency code
+        ///  A 3-character currency code. (default is USD)
         /// </summary>
         /// <value>
-        /// The 3-character currency code as string. (default is USD)
+        /// The 3-character currency code as string. 
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string currency

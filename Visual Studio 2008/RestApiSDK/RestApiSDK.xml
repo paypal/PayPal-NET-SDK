@@ -223,9 +223,19 @@
             payer_id
             </summary>
         </member>
+        <member name="T:PayPal.PayPalResource">
+            <summary>
+            PayPal Resources
+            </summary>
+        </member>
         <member name="F:PayPal.PayPalResource.logger">
             <summary>
-            Logs output statements, errors, debug info to a text file    
+            Logs output statements, errors, debug info to a text file
+            </summary>
+        </member>
+        <member name="F:PayPal.PayPalResource.retryCodes">
+            <summary>
+            The list of possible retry codes
             </summary>
         </member>
         <member name="M:PayPal.PayPalResource.RequiresRetry(System.Net.WebException)">
@@ -386,6 +396,31 @@
             </summary>
             <param name="tokenAccess"></param>
             <param name="requestId"></param>
+        </member>
+        <member name="T:PayPal.HttpMethod">
+            <summary>
+            Http Methods
+            </summary>
+        </member>
+        <member name="F:PayPal.HttpMethod.GET">
+            <summary>
+            GET
+            </summary>
+        </member>
+        <member name="F:PayPal.HttpMethod.POST">
+            <summary>
+            POST
+            </summary>
+        </member>
+        <member name="F:PayPal.HttpMethod.DELETE">
+            <summary>
+            DELETE
+            </summary>
+        </member>
+        <member name="F:PayPal.HttpMethod.PATCH">
+            <summary>
+            PATCH
+            </summary>
         </member>
         <member name="T:PayPal.Api.Payments.Payment">
             <summary>
@@ -566,7 +601,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.ItemList">
             <summary>
-            a Item List of <see cref="T:PayPal.Api.Payments.Item"/>s that you are requesting payment for 
+            a Item List of <see cref="T:PayPal.Api.Payments.Item">Items</see> that you are identifying in the payment request or refund.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.ItemList.ConvertToJson">
@@ -577,18 +612,18 @@
         </member>
         <member name="P:PayPal.Api.Payments.ItemList.items">
             <summary>
-            The list of <see cref="T:PayPal.Api.Payments.Item"/>s.
+            The list of <see cref="T:PayPal.Api.Payments.Item">Items</see>.
             </summary>
             <value>
-            The list of <see cref="T:PayPal.Api.Payments.Item"/>s.
+            The list of <see cref="T:PayPal.Api.Payments.Item">Items</see>.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.ItemList.shipping_address">
             <summary>
-            shipping_address
+            The address of where the items will be shipped from.
             </summary>
             <value>
-            The shipping_address.
+            The address of where the items will be shipped from.
             </value>
         </member>
         <member name="T:JCS.OSVersionInfo">
@@ -1076,7 +1111,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.Item.name">
             <summary>
-            The name of the item as string.
+            The name of the item.
             </summary>
             <value>
             The name of the item as string.
@@ -1084,7 +1119,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.Item.sku">
             <summary>
-            The item's sku code as string.
+            The item's sku code.
             </summary>
             <value>
             The item's sku code as string.
@@ -1092,18 +1127,18 @@
         </member>
         <member name="P:PayPal.Api.Payments.Item.price">
             <summary>
-            The cost of the item
+            The selling price of the item.
             </summary>
             <value>
-            The cost of the item as string.
+            The selling price of the item as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Item.currency">
             <summary>
-             A 3-character currency code
+             A 3-character currency code. (default is USD)
             </summary>
             <value>
-            The 3-character currency code as string. (default is USD)
+            The 3-character currency code as string. 
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Item.quantity">
@@ -1112,6 +1147,61 @@
             </summary>
             <value>
             The Item quantity as string.
+            </value>
+        </member>
+        <member name="T:PayPal.RESTConfiguration">
+            <summary>
+            REST Configuration
+            </summary>
+        </member>
+        <member name="F:PayPal.RESTConfiguration.requestIdentity">
+            <summary>
+            The request identity
+            </summary>
+        </member>
+        <member name="M:PayPal.RESTConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PayPal.RESTConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="M:PayPal.RESTConfiguration.GetHeaders">
+            <summary>
+            Gets the current header tags and adds tags for; Authorization, User-Agent, and PayPal-Request-Id.
+            </summary>
+            <returns>The header information as a <see cref="!:Dictionary">Dictionary of string, string</see></returns>
+        </member>
+        <member name="M:PayPal.RESTConfiguration.FormUserAgentHeader">
+            <summary>
+            Forms the user agent header.
+            </summary>
+            <returns>The operating system informational header tag</returns>
+        </member>
+        <member name="M:PayPal.RESTConfiguration.GetOSHeader">
+            <summary>
+            Gets the operating system header.
+            </summary>
+            <returns>The operating system informational header tag</returns>
+        </member>
+        <member name="M:PayPal.RESTConfiguration.GetDotNetVersionHeader">
+            <summary>
+            Gets the dot net version header tag.
+            </summary>
+            <returns>The dot net version header tag as string</returns>
+        </member>
+        <member name="P:PayPal.RESTConfiguration.authorizationToken">
+            <summary>
+            Gets or sets the authorization token.
+            </summary>
+            <value>
+            The authorization token.
+            </value>
+        </member>
+        <member name="P:PayPal.RESTConfiguration.requestId">
+            <summary>
+            Gets or sets the request id.
+            </summary>
+            <value>
+            The request id.
             </value>
         </member>
         <member name="T:PayPal.Api.Payments.Capture">

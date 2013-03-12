@@ -9,16 +9,16 @@ namespace PayPal.Api.Payments
 {
 
     /// <summary>
-    /// a Item List of <see cref="Item"/>s that you are requesting payment for 
+    /// a Item List of <see cref="Item">Items</see> that you are identifying in the payment request or refund.
     /// </summary>
 	public class ItemList : Resource  
 	{
 
         /// <summary>
-        /// The list of <see cref="Item"/>s.
+        /// The list of <see cref="Item">Items</see>.
         /// </summary>
         /// <value>
-        /// The list of <see cref="Item"/>s.
+        /// The list of <see cref="Item">Items</see>.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Item> items
@@ -29,10 +29,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// shipping_address
+        /// The address of where the items will be shipped from.
         /// </summary>
         /// <value>
-        /// The shipping_address.
+        /// The address of where the items will be shipped from.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public ShippingAddress shipping_address
