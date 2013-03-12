@@ -11,80 +11,101 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-	/// 
+    /// Sale Information
     /// </summary>
 	public class Sale : Resource  
 	{
 
-		/// <summary>
-		/// id
-    	/// </summary>
+        /// <summary>
+        /// The sale id
+        /// </summary>
+        /// <value>
+        /// The sale id as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string id
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// create_time
-    	/// </summary>
+
+        /// <summary>
+        /// The time stamp of when the Sale was created
+        /// </summary>
+        /// <value>
+        /// The timestamp of create time as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string create_time
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// update_time
-    	/// </summary>
+
+        /// <summary>
+        /// The time stamp of when the Sale is updated.
+        /// </summary>
+        /// <value>
+        /// The time stamp of when the Sale is updated as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string update_time
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// state
-    	/// </summary>
+
+        /// <summary>
+        /// The current state of the Sale.
+        /// </summary>
+        /// <value>
+        /// The current state of the Sale as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string state
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// amount
-    	/// </summary>
+
+        /// <summary>
+        ///  The Sale amount.
+        /// </summary>
+        /// <value>
+        /// The Sale amount.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Amount amount
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// parent_payment
-    	/// </summary>
+
+        /// <summary>
+        /// The parent payment.
+        /// </summary>
+        /// <value>
+        /// The parent payment.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string parent_payment
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// links
-    	/// </summary>
+
+        /// <summary>
+        /// A list of <see cref="Link"/>s
+        /// </summary>
+        /// <value>
+        /// The list of <see cref="Link"/> objects.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Link> links
 		{
@@ -96,10 +117,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for Sale.
 		/// GET /v1/payments/sale/:saleId
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="saleId">SaleId</param>
 		/// <returns>Returns Sale object</returns>
-		/// </summary>
 		public static Sale Get(string accessToken, string saleId)
 		{
 			if (String.IsNullOrEmpty(saleId))
@@ -116,10 +137,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Refund call for Sale.
 		/// POST /v1/payments/sale/:saleId/refund
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="refund">Refund</param>
 		/// <returns>Returns Refund object</returns>
-		/// </summary>
 		public Refund Refund(string accessToken, Refund refund)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -129,10 +150,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Refund call for Sale.
 		/// POST /v1/payments/sale/:saleId/refund
+        /// </summary>
         /// <param name="apiContext">APIContext used for the API call</param>
 	 	/// <param name="refund">Refund</param>
 		/// <returns>Returns Refund object</returns>
-		/// </summary>
 		public Refund Refund(APIContext apiContext, Refund refund)
 		{
 			if (refund == null)
@@ -148,11 +169,12 @@ namespace PayPal.Api.Payments
 			string resourcePath = SDKUtil.FormatURIPath(pattern, container);
 			string payLoad = refund.ConvertToJson();	
 		return PayPalResource.ConfigureAndExecute<Refund>(apiContext, HttpMethod.POST, resourcePath, payLoad);
-		}		
+		}
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns> the object as a JSON string</returns
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

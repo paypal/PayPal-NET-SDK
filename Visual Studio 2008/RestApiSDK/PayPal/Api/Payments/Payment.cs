@@ -11,102 +11,129 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-	/// 
+    /// Payment Information
     /// </summary>
 	public class Payment : Resource  
 	{
 
-		/// <summary>
-		/// id
-    	/// </summary>
+        /// <summary>
+        /// The Payment id
+        /// </summary>
+        /// <value>
+        /// The Payment id as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string id
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// create_time
-    	/// </summary>
+
+        /// <summary>
+        /// The time stamp of when the payment was created
+        /// </summary>
+        /// <value>
+        /// The timestamp of create time as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string create_time
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// update_time
-    	/// </summary>
+
+        /// <summary>
+        /// The time stamp of when the payment is updated.
+        /// </summary>
+        /// <value>
+        /// The time stamp of when the payment is updated as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string update_time
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// state
-    	/// </summary>
+
+        /// <summary>
+        /// The current payment state.
+        /// </summary>
+        /// <value>
+        /// The current payment state.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string state
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// intent
-    	/// </summary>
+
+        /// <summary>
+        /// intent
+        /// </summary>
+        /// <value>
+        /// The intent.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string intent
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// payer
-    	/// </summary>
+
+        /// <summary>
+        /// The payer information
+        /// </summary>
+        /// <value>
+        /// The payer information as a <see cref="Payer"/> object.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Payer payer
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// transactions
-    	/// </summary>
+
+        /// <summary>
+        /// The list of transactions.
+        /// </summary>
+        /// <value>
+        /// The list of <see cref="Transaction"/> objects.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Transaction> transactions
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// redirect_urls
-    	/// </summary>
+
+        /// <summary>
+        /// Contains the URL redirection information, such as where to redirect the user after a successful or canceled transaction.
+        /// </summary>
+        /// <value>
+        /// The <see cref="RedirectUrls"/> object that contains the URL redirection information.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public RedirectUrls redirect_urls
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// links
-    	/// </summary>
+
+        /// <summary>
+        /// A list of <see cref="Link"/>s
+        /// </summary>
+        /// <value>
+        /// The list of <see cref="Link"/> objects.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Link> links
 		{
@@ -118,7 +145,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for Payment.
 		/// GET /v1/payments/payment?count=:count&start_id=:start_id&start_index=:start_index&start_time=:start_time&end_time=:end_time&payee_id=:payee_id&sort_by=:sort_by&sort_order=:sort_order
-		/// <param name="accessToken">Access Token</param>
+        /// </summary>
+        /// <param name="accessToken">Access Token</param>
 		/// <param name="parameters">Dictionary holding query string name and values
 		/// having the following values for keys
 		/// count,
@@ -132,7 +160,6 @@ namespace PayPal.Api.Payments
 		/// All other keys are ignored
 		/// </param>
 		/// <returns>Returns PaymentHistory object</returns>
-		/// </summary>
 		public static PaymentHistory Get(string accessToken, Dictionary<String, String> parameters)
 		{
 			string pattern = "v1/payments/payment?count={0}&start_id={1}&start_index={2}&start_time={3}&end_time={4}&payee_id={5}&sort_by={6}&sort_order={7}";
@@ -145,10 +172,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for Payment.
 		/// GET /v1/payments/payment?count=:count&start_id=:start_id&start_index=:start_index&start_time=:start_time&end_time=:end_time&payee_id=:payee_id&sort_by=:sort_by&sort_order=:sort_order
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 		/// <param name="parameters">Container for query strings</param>
 		/// <returns>Returns PaymentHistory object</returns>
-		/// </summary>
 		public static PaymentHistory Get(string accessToken, QueryParameters parameters)
 		{
 			string pattern = "v1/payments/payment?count={0}&start_id={1}&start_index={2}&start_time={3}&end_time={4}&payee_id={5}&sort_by={6}&sort_order={7}";
@@ -161,9 +188,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Create call for Payment.
 		/// POST /v1/payments/payment
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 		/// <returns>Returns Payment object</returns>
-		/// </summary>
 		public Payment Create(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -173,9 +200,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Create call for Payment.
 		/// POST /v1/payments/payment
+        /// </summary>
         /// <param name="apiContext">APIContext used for the API call</param>
 		/// <returns>Returns Payment object</returns>
-		/// </summary>
 		public Payment Create(APIContext apiContext)
 		{
 			string resourcePath = "v1/payments/payment";
@@ -186,10 +213,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for Payment.
 		/// GET /v1/payments/payment/:paymentId
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="paymentId">PaymentId</param>
 		/// <returns>Returns Payment object</returns>
-		/// </summary>
 		public static Payment Get(string accessToken, string paymentId)
 		{
 			if (String.IsNullOrEmpty(paymentId))
@@ -219,10 +246,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Execute call for Payment.
 		/// POST /v1/payments/payment/:paymentId/execute
+        /// </summary>
         /// <param name="apiContext">APIContext used for the API call</param>
 	 	/// <param name="paymentExecution">PaymentExecution</param>
 		/// <returns>Returns Payment object</returns>
-		/// </summary>
 		public Payment Execute(APIContext apiContext, PaymentExecution paymentExecution)
 		{
 			if (paymentExecution == null)
@@ -238,11 +265,12 @@ namespace PayPal.Api.Payments
 			string resourcePath = SDKUtil.FormatURIPath(pattern, container);
 			string payLoad = paymentExecution.ConvertToJson();	
 		return PayPalResource.ConfigureAndExecute<Payment>(apiContext, HttpMethod.POST, resourcePath, payLoad);
-		}		
+		}
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns>the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

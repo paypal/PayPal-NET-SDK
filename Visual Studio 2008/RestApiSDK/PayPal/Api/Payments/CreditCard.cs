@@ -11,25 +11,31 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-	/// 
+    /// The Credit Card Object
     /// </summary>
 	public class CreditCard : Resource  
 	{
 
-		/// <summary>
-		/// id
-    	/// </summary>
+        /// <summary>
+        /// The credit card id
+        /// </summary>
+        /// <value>
+        /// The credit card id.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string id
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// valid_until
-    	/// </summary>
+
+        /// <summary>
+        /// valid until
+        /// </summary>
+        /// <value>
+        /// valid until.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string valid_until
 		{
@@ -47,110 +53,140 @@ namespace PayPal.Api.Payments
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// payer_id
-    	/// </summary>
+
+        /// <summary>
+        /// The payer id
+        /// </summary>
+        /// <value>
+        /// The payer id as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string payer_id
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// type
-    	/// </summary>
+
+        /// <summary>
+        /// type
+        /// </summary>
+        /// <value>
+        /// The type.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string type
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// number
-    	/// </summary>
+
+        /// <summary>
+        /// The credit card number
+        /// </summary>
+        /// <value>
+        /// The credit card number as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string number
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// expire_month
-    	/// </summary>
+
+        /// <summary>
+        /// The month the card expires
+        /// </summary>
+        /// <value>
+        /// The month the card expires as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string expire_month
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// expire_year
-    	/// </summary>
+
+        /// <summary>
+        /// The year the card expires
+        /// </summary>
+        /// <value>
+        /// The year the card expires as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string expire_year
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// cvv2
-    	/// </summary>
+
+        /// <summary>
+        /// The 3-digit Credit Card Code (CCV) on the back of the card.
+        /// </summary>
+        /// <value>
+        /// The 3-digit Credit Card Code (CCV) on the back of the card as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string cvv2
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// first_name
-    	/// </summary>
+
+        /// <summary>
+        /// The first name displayed on the credit card.
+        /// </summary>
+        /// <value>
+        /// The first name displayed on the credit card, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string first_name
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// last_name
-    	/// </summary>
+
+        /// <summary>
+        /// The last name displayed on the credit card.
+        /// </summary>
+        /// <value>
+        /// The last name displayed on the credit card, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string last_name
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// billing_address
-    	/// </summary>
+
+        /// <summary>
+        /// The billing address of the Credit Card
+        /// </summary>
+        /// <value>
+        /// The billing address as <see cref="Address"/>.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Address billing_address
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// links
-    	/// </summary>
+
+        /// <summary>
+        /// A list of <see cref="Link"/>s
+        /// </summary>
+        /// <value>
+        /// The list of <see cref="Link"/> objects.
+        /// </value
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Link> links
 		{
@@ -162,9 +198,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Create call for CreditCard.
 		/// POST /v1/vault/credit-card
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 		/// <returns>Returns CreditCard object</returns>
-		/// </summary>
 		public CreditCard Create(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -174,9 +210,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Create call for CreditCard.
 		/// POST /v1/vault/credit-card
+        /// </summary>
         /// <param name="apiContext">APIContext used for the API call</param>
 		/// <returns>Returns CreditCard object</returns>
-		/// </summary>
 		public CreditCard Create(APIContext apiContext)
 		{
 			string resourcePath = "v1/vault/credit-card";
@@ -187,10 +223,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for CreditCard.
 		/// GET /v1/vault/credit-card/:creditCardId
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="creditCardId">CreditCardId</param>
 		/// <returns>Returns CreditCard object</returns>
-		/// </summary>
 		public static CreditCard Get(string accessToken, string creditCardId)
 		{
 			if (String.IsNullOrEmpty(creditCardId))
@@ -204,9 +240,10 @@ namespace PayPal.Api.Payments
 			return PayPalResource.ConfigureAndExecute<CreditCard>(accessToken, HttpMethod.GET, resourcePath, payLoad);
 		}
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns> the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);
