@@ -31,10 +31,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// valid until
+        /// The date the card is valid until.
         /// </summary>
         /// <value>
-        /// valid until.
+        /// The date the card is valid until as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string valid_until

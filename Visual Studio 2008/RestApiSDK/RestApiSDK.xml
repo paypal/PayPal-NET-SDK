@@ -1,0 +1,1387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestApiSDK</name>
+    </assembly>
+    <members>
+        <member name="F:PayPal.Exception.PayPalException.logger">
+            <summary>
+            Logs output statements, errors, debug info to a text file    
+            </summary>
+        </member>
+        <member name="M:PayPal.Exception.PayPalException.#ctor">
+            <summary>
+            Represents application configuration errors 
+            </summary>
+        </member>
+        <member name="M:PayPal.Exception.PayPalException.#ctor(System.String)">
+            <summary>
+            Represents errors that occur during application execution
+            </summary>
+            <param name="message">The message that describes the error</param>
+        </member>
+        <member name="M:PayPal.Exception.PayPalException.#ctor(System.String,System.Exception)">
+            <summary>
+            Represents errors that occur during application execution
+            </summary>
+            <param name="message">The message that describes the error</param>
+            <param name="cause">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.GetMap">
+            @return the containerMap
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetCount(System.String)">
+            Set the count
+            
+            @param count
+                       Number of items to return.
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetStartId(System.String)">
+            Set the startId
+            
+            @param startid
+                       Resource ID that indicates the starting resource to return.
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetStartIndex(System.String)">
+            Set the start index
+            
+            @param startIndex
+                       Start index of the resources to be returned. Typically used to
+                       jump to a specific position in the resource history based on
+                       its order.
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetStartTime(System.String)">
+            Set the starttime
+            
+            @param starttime
+                       Resource creation time that indicates the start of a range of
+                       results.
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetEndTime(System.String)">
+            Set the endtime
+            
+            @param endTime
+                       Resource creation time that indicates the end of a range of
+                       results.
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetPayeeId(System.String)">
+            Set the payee id
+            
+            @param payeeId
+                       PayeeId
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetSortBy(System.String)">
+            Set the sort by field
+            
+            @param sortBy
+                       Sort based on create_time or update_time.
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.SetSortOrder(System.String)">
+            Set the sort order
+            
+            @param sortOrder
+                       Sort based on order of results. Options include asc for
+                       ascending order or dec for descending order.
+        </member>
+        <member name="T:PayPal.Api.Payments.Sale">
+            <summary>
+            Sale Information
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.Resource">
+            <summary>
+            Resource
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.Resource.ConvertToJson" -->
+        <member name="M:PayPal.Api.Payments.Sale.Get(System.String,System.String)">
+            <summary>
+            Get call for Sale.
+            GET /v1/payments/sale/:saleId
+            </summary>
+            <param name="accessToken">Access Token</param>
+            <param name="saleId">SaleId</param>
+            <returns>Returns Sale object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.Sale.Refund(System.String,PayPal.Api.Payments.Refund)">
+            <summary>
+            Refund call for Sale.
+            POST /v1/payments/sale/:saleId/refund
+            </summary>
+            <param name="accessToken">Access Token</param>
+            <param name="refund">Refund</param>
+            <returns>Returns Refund object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.Sale.Refund(PayPal.APIContext,PayPal.Api.Payments.Refund)">
+            <summary>
+            Refund call for Sale.
+            POST /v1/payments/sale/:saleId/refund
+            </summary>
+            <param name="apiContext">APIContext used for the API call</param>
+            <param name="refund">Refund</param>
+            <returns>Returns Refund object</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.Sale.ConvertToJson" -->
+        <member name="P:PayPal.Api.Payments.Sale.id">
+            <summary>
+            The sale id
+            </summary>
+            <value>
+            The sale id as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Sale.create_time">
+            <summary>
+            The time stamp of when the Sale was created
+            </summary>
+            <value>
+            The timestamp of create time as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Sale.update_time">
+            <summary>
+            The time stamp of when the Sale is updated.
+            </summary>
+            <value>
+            The time stamp of when the Sale is updated as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Sale.state">
+            <summary>
+            The current state of the Sale.
+            </summary>
+            <value>
+            The current state of the Sale as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Sale.amount">
+            <summary>
+             The Sale amount.
+            </summary>
+            <value>
+            The Sale amount.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Sale.parent_payment">
+            <summary>
+            The parent payment.
+            </summary>
+            <value>
+            The parent payment.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Sale.links">
+            <summary>
+            A list of <see cref="T:PayPal.Api.Payments.Link"/>s
+            </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Link"/> objects.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.Link">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Link.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Link.href">
+            <summary>
+            href
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Link.rel">
+            <summary>
+            rel
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Link.method">
+            <summary>
+            method
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.CreditCardToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.CreditCardToken.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCardToken.credit_card_id">
+            <summary>
+            credit_card_id
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCardToken.payer_id">
+            <summary>
+            payer_id
+            </summary>
+        </member>
+        <member name="F:PayPal.PayPalResource.logger">
+            <summary>
+            Logs output statements, errors, debug info to a text file    
+            </summary>
+        </member>
+        <member name="M:PayPal.PayPalResource.RequiresRetry(System.Net.WebException)">
+            <summary>
+            Returns true if a HTTP retry is required
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PayPal.Api.Payments.ShippingAddress">
+            <summary>
+            Shipping Address
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.Address">
+            <summary>
+            The Address Object
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Address.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.line1">
+            <summary>
+            The first line of an address, typically the street information
+            </summary>
+            <value>
+            The first line of an address as string
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.line2">
+            <summary>
+            The second line of an address, typically the Apt or Suite, etc information
+            </summary>
+            <value>
+            The second line of an address as string
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.city">
+            <summary>
+            The city name
+            </summary>
+            <value>
+            The city name as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.state">
+            <summary>
+            The State or province name
+            </summary>
+            <value>
+            The State or province name as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.postal_code">
+            <summary>
+            The U.S. ZIP code or other country-specific postal code. 
+            </summary>
+            <value>
+            The U.S. ZIP code or other country-specific postal code as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.country_code">
+            <summary>
+            The Country code
+            </summary>
+            <value>
+            The Country code.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.type">
+            <summary>
+            type
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Address.phone">
+            <summary>
+            The Phone number.
+            </summary>
+            <value>
+            The Phone number.
+            </value>
+        </member>
+        <member name="M:PayPal.Api.Payments.ShippingAddress.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.ShippingAddress.recipient_name">
+            <summary>
+            The recipient name, who will receive the shipment
+            </summary>
+            <value>
+            The recipient name as string.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.PaymentHistory">
+            <summary>
+            Payment History
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.PaymentHistory.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.PaymentHistory.payments">
+            <summary>
+            The list of payments.
+            </summary>
+            <value>
+            The payments as a list of <see cref="T:PayPal.Api.Payments.Payment"/>.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PaymentHistory.count">
+            <summary>
+            The count of payments.
+            </summary>
+            <value>
+            The count of payments.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PaymentHistory.next_id">
+            <summary>
+            next id
+            </summary>
+            <value>
+            The next id.
+            </value>
+        </member>
+        <member name="F:PayPal.APIContext.tokenAccess">
+            <summary>
+            Access Token
+            </summary>
+        </member>
+        <member name="F:PayPal.APIContext.requestId">
+            <summary>
+            Request ID
+            </summary>
+        </member>
+        <member name="M:PayPal.APIContext.#ctor(System.String)">
+            <summary>
+            Access Token required for the call
+            </summary>
+            <param name="tokenAccess"></param>
+        </member>
+        <member name="M:PayPal.APIContext.#ctor(System.String,System.String)">
+            <summary>
+            Access Token and Request ID required for the call
+            </summary>
+            <param name="tokenAccess"></param>
+            <param name="requestId"></param>
+        </member>
+        <member name="T:PayPal.Api.Payments.Payment">
+            <summary>
+            Payment Information
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.Payment.Get(System.String,System.Collections.Generic.Dictionary{System.String,System.String})" -->
+        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.Payment.Get(System.String,PayPal.Util.QueryParameters)" -->
+        <member name="M:PayPal.Api.Payments.Payment.Create(System.String)">
+            <summary>
+            Create call for Payment.
+            POST /v1/payments/payment
+            </summary>
+            <param name="accessToken">Access Token</param>
+            <returns>Returns Payment object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payment.Create(PayPal.APIContext)">
+            <summary>
+            Create call for Payment.
+            POST /v1/payments/payment
+            </summary>
+            <param name="apiContext">APIContext used for the API call</param>
+            <returns>Returns Payment object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payment.Get(System.String,System.String)">
+            <summary>
+            Get call for Payment.
+            GET /v1/payments/payment/:paymentId
+            </summary>
+            <param name="accessToken">Access Token</param>
+            <param name="paymentId">PaymentId</param>
+            <returns>Returns Payment object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payment.Execute(System.String,PayPal.Api.Payments.PaymentExecution)">
+            <summary>
+            Execute call for Payment.
+            POST /v1/payments/payment/:paymentId/execute
+            <param name="accessToken">Access Token</param>
+            <param name="paymentExecution">PaymentExecution</param>
+            <returns>Returns Payment object</returns>
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payment.Execute(PayPal.APIContext,PayPal.Api.Payments.PaymentExecution)">
+            <summary>
+            Execute call for Payment.
+            POST /v1/payments/payment/:paymentId/execute
+            </summary>
+            <param name="apiContext">APIContext used for the API call</param>
+            <param name="paymentExecution">PaymentExecution</param>
+            <returns>Returns Payment object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payment.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.id">
+            <summary>
+            The Payment id
+            </summary>
+            <value>
+            The Payment id as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.create_time">
+            <summary>
+            The time stamp of when the payment was created
+            </summary>
+            <value>
+            The timestamp of create time as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.update_time">
+            <summary>
+            The time stamp of when the payment is updated.
+            </summary>
+            <value>
+            The time stamp of when the payment is updated as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.state">
+            <summary>
+            The current payment state.
+            </summary>
+            <value>
+            The current payment state.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.intent">
+            <summary>
+            intent
+            </summary>
+            <value>
+            The intent.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.payer">
+            <summary>
+            The payer information
+            </summary>
+            <value>
+            The payer information as a <see cref="T:PayPal.Api.Payments.Payer"/> object.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.transactions">
+            <summary>
+            The list of transactions.
+            </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Transaction"/> objects.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.redirect_urls">
+            <summary>
+            Contains the URL redirection information, such as where to redirect the user after a successful or canceled transaction.
+            </summary>
+            <value>
+            The <see cref="T:PayPal.Api.Payments.RedirectUrls"/> object that contains the URL redirection information.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payment.links">
+            <summary>
+            A list of <see cref="T:PayPal.Api.Payments.Link"/>s
+            </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Link"/> objects.
+            </value>
+        </member>
+        <member name="F:PayPal.HttpConnection.logger">
+            <summary>
+            Logger
+            </summary>
+        </member>
+        <member name="M:PayPal.HttpConnection.RequiresRetry(System.Net.WebException)">
+            <summary>
+            Returns true if a HTTP retry is required
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PayPal.Util.SDKUtil.splitParameters(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            Split the URI and form a Object array using the query string and values
+            in the provided map. The return object array is populated only if the map
+            contains valid value for the query name. The object array contains null
+            values if there is no value found in the map
+            
+            @param pattern
+                       URI pattern
+            @param parameters
+                       Map containing the query name and value
+            @return Object array
+        </member>
+        <member name="T:PayPal.Api.Payments.Payee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payee.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payee.merchant_id">
+            <summary>
+            merchant_id
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payee.email">
+            <summary>
+            email
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payee.phone">
+            <summary>
+            phone
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.ItemList">
+            <summary>
+            a Item List of <see cref="T:PayPal.Api.Payments.Item"/>s that you are requesting payment for 
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.ItemList.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.ItemList.items">
+            <summary>
+            The list of <see cref="T:PayPal.Api.Payments.Item"/>s.
+            </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Item"/>s.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.ItemList.shipping_address">
+            <summary>
+            shipping_address
+            </summary>
+            <value>
+            The shipping_address.
+            </value>
+        </member>
+        <member name="T:JCS.OSVersionInfo">
+            <summary>
+            Provides detailed information about the host operating system.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.ProgramBits">
+            <summary>
+            Determines if the current application is 32 or 64-bit.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.ProcessorBits">
+            <summary>
+            Determines if the current processor is 32 or 64-bit.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.Edition">
+            <summary>
+            Gets the edition of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.Name">
+            <summary>
+            Gets the name of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.ServicePack">
+            <summary>
+            Gets the service pack information of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.BuildVersion">
+            <summary>
+            Gets the build version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.VersionString">
+            <summary>
+            Gets the full version string of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.Version">
+            <summary>
+            Gets the full version of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.MajorVersion">
+            <summary>
+            Gets the major version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.MinorVersion">
+            <summary>
+            Gets the minor version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:JCS.OSVersionInfo.RevisionVersion">
+            <summary>
+            Gets the revision version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.SubTransaction">
+            <summary>
+            SubTransaction
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.SubTransaction.ConvertToJson" -->
+        <member name="P:PayPal.Api.Payments.SubTransaction.sale">
+            <summary>
+            sale
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.SubTransaction.authorization">
+            <summary>
+            authorization
+            </summary>
+            <value>
+            The authorization.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.SubTransaction.refund">
+            <summary>
+            refund
+            </summary>
+            <value>
+            The refund.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.SubTransaction.capture">
+            <summary>
+            capture
+            </summary>
+            <value>
+            The capture.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.FundingInstrument">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.FundingInstrument.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.FundingInstrument.credit_card">
+            <summary>
+            credit_card
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.FundingInstrument.credit_card_token">
+            <summary>
+            credit_card_token
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.CreditCard">
+            <summary>
+            The Credit Card Object
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.CreditCard.Create(System.String)">
+            <summary>
+            Create call for CreditCard.
+            POST /v1/vault/credit-card
+            </summary>
+            <param name="accessToken">Access Token</param>
+            <returns>Returns CreditCard object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.CreditCard.Create(PayPal.APIContext)">
+            <summary>
+            Create call for CreditCard.
+            POST /v1/vault/credit-card
+            </summary>
+            <param name="apiContext">APIContext used for the API call</param>
+            <returns>Returns CreditCard object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.CreditCard.Get(System.String,System.String)">
+            <summary>
+            Get call for CreditCard.
+            GET /v1/vault/credit-card/:creditCardId
+            </summary>
+            <param name="accessToken">Access Token</param>
+            <param name="creditCardId">CreditCardId</param>
+            <returns>Returns CreditCard object</returns>
+        </member>
+        <member name="M:PayPal.Api.Payments.CreditCard.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.id">
+            <summary>
+            The credit card id
+            </summary>
+            <value>
+            The credit card id.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.valid_until">
+            <summary>
+            The date the card is valid until.
+            </summary>
+            <value>
+            The date the card is valid until as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.state">
+            <summary>
+            state
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.payer_id">
+            <summary>
+            The payer id
+            </summary>
+            <value>
+            The payer id as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.type">
+            <summary>
+            type
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.number">
+            <summary>
+            The credit card number
+            </summary>
+            <value>
+            The credit card number as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.expire_month">
+            <summary>
+            The month the card expires
+            </summary>
+            <value>
+            The month the card expires as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.expire_year">
+            <summary>
+            The year the card expires
+            </summary>
+            <value>
+            The year the card expires as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.cvv2">
+            <summary>
+            The 3-digit Credit Card Code (CCV) on the back of the card.
+            </summary>
+            <value>
+            The 3-digit Credit Card Code (CCV) on the back of the card as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.first_name">
+            <summary>
+            The first name displayed on the credit card.
+            </summary>
+            <value>
+            The first name displayed on the credit card, as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.last_name">
+            <summary>
+            The last name displayed on the credit card.
+            </summary>
+            <value>
+            The last name displayed on the credit card, as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.CreditCard.billing_address">
+            <summary>
+            The billing address of the Credit Card
+            </summary>
+            <value>
+            The billing address as <see cref="T:PayPal.Api.Payments.Address"/>.
+            </value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:PayPal.Api.Payments.CreditCard.links" -->
+        <member name="T:PayPal.Api.Payments.Transaction">
+            <summary>
+            Transaction Information
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Transaction.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.Transaction.amount">
+            <summary>
+            The Amount to capture.
+            </summary>
+            <value>
+            The Amount to capture as <see cref="T:PayPal.Api.Payments.Amount"/>.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Transaction.payee">
+            <summary>
+            The payee information
+            </summary>
+            <value>
+            The payee information as <see cref="T:PayPal.Api.Payments.Payee"/>.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Transaction.description">
+            <summary>
+            The description of the transacrion.
+            </summary>
+            <value>
+            The description of the transacrion as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Transaction.item_list">
+            <summary>
+            The <see cref="T:PayPal.Api.Payments.ItemList"/>
+            </summary>
+            <value>
+             The <see cref="T:PayPal.Api.Payments.ItemList"/> of <see cref="T:PayPal.Api.Payments.Item"/>s.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Transaction.related_resources">
+            <summary>
+            The related resources as a list of <see cref="T:PayPal.Api.Payments.SubTransaction"/>.
+            </summary>
+            <value>
+            The related resources as a list of <see cref="T:PayPal.Api.Payments.SubTransaction"/>.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.Amount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Amount.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Amount.total">
+            <summary>
+            total
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Amount.currency">
+            <summary>
+            currency
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Amount.details">
+            <summary>
+            details
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.PaymentExecution">
+            <summary>
+            Payment Execution
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.PaymentExecution.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.PaymentExecution.payer_id">
+            <summary>
+            the payer id
+            </summary>
+            <value>
+            The payer id.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PaymentExecution.transactions">
+            <summary>
+            The list of transactions smounts
+            </summary>
+            <value>
+            The transactions as a List of <see cref="T:PayPal.Api.Payments.Amount"/>.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.AmountDetails">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.AmountDetails.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.AmountDetails.subtotal">
+            <summary>
+            subtotal
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.AmountDetails.tax">
+            <summary>
+            tax
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.AmountDetails.shipping">
+            <summary>
+            shipping
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.AmountDetails.fee">
+            <summary>
+            fee
+            </summary>
+        </member>
+        <member name="T:PayPal.Api.Payments.Payer">
+            <summary>
+            The Payer 
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Payer.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payer.payment_method">
+            <summary>
+            The payment method to be used by the payer.
+            </summary>
+            <value>
+            The payment method to be used by the payer as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payer.payer_info">
+            <summary>
+            The payer information
+            </summary>
+            <value>
+            The payer info as a <see cref="T:PayPal.Api.Payments.PayerInfo"/> object.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Payer.funding_instruments">
+            <summary>
+            The List of funding instruments
+            </summary>
+            <value>
+            The List of funding instruments.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.PayerInfo">
+            <summary>
+            The Payer Information object
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.PayerInfo.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.PayerInfo.email">
+            <summary>
+            The Payer's email address.
+            </summary>
+            <value>
+            The Payer's email address.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PayerInfo.first_name">
+            <summary>
+            The Payer's first name
+            </summary>
+            <value>
+            The Payer's first name.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PayerInfo.last_name">
+            <summary>
+            The Payer's last name
+            </summary>
+            <value>
+            The Payer's last name.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PayerInfo.payer_id">
+            <summary>
+            The Payer's Id
+            </summary>
+            <value>
+            The Payer's Id as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PayerInfo.shipping_address">
+            <summary>
+            The Payer's shipping address
+            </summary>
+            <value>
+            The Payer's shipping address as <see cref="T:PayPal.Api.Payments.Address"/>.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.PayerInfo.phone">
+            <summary>
+            The Payer's phone
+            </summary>
+            <value>
+            The Payer's phone.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.Item">
+            <summary>
+            a invoice item to be added to the <see cref="T:PayPal.Api.Payments.ItemList"/>.
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Item.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>>
+        </member>
+        <member name="P:PayPal.Api.Payments.Item.name">
+            <summary>
+            The name of the item as string.
+            </summary>
+            <value>
+            The name of the item as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Item.sku">
+            <summary>
+            The item's sku code as string.
+            </summary>
+            <value>
+            The item's sku code as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Item.price">
+            <summary>
+            The cost of the item
+            </summary>
+            <value>
+            The cost of the item as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Item.currency">
+            <summary>
+             A 3-character currency code
+            </summary>
+            <value>
+            The 3-character currency code as string. (default is USD)
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Item.quantity">
+            <summary>
+            The Item quantity
+            </summary>
+            <value>
+            The Item quantity as string.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.Capture">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Capture.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.create_time">
+            <summary>
+            create_time
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.update_time">
+            <summary>
+            update_time
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.state">
+            <summary>
+            state
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.amount">
+            <summary>
+            amount
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.parent_payment">
+            <summary>
+            parent_payment
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.authorization_id">
+            <summary>
+            authorization_id
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.description">
+            <summary>
+            description
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Capture.links">
+            <summary>
+            links
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.clientID">
+            <summary>
+            Client ID for OAuth
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.clientSecret">
+            <summary>
+            Client Secret for OAuth
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.accessToken">
+            <summary>
+            Access Token that is generated
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.appID">
+            <summary>
+            Application ID returned by OAuth servers
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.secondsToExpire">
+            <summary>
+            Seconds for with access token is valid
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.timeInMilliseconds">
+            <summary>
+            Last time when access token was generated
+            </summary>
+        </member>
+        <member name="F:PayPal.OAuthTokenCredential.logger">
+            <summary>
+            Logs output statements, errors, debug info to a text file    
+            </summary>
+        </member>
+        <member name="M:PayPal.OAuthTokenCredential.#ctor(System.String,System.String)">
+            <summary>
+            Client ID and Secret for the OAuth
+            </summary>
+            <param name="clientID"></param>
+            <param name="clientSecret"></param>
+        </member>
+        <member name="T:PayPal.Api.Payments.Refund">
+            <summary>
+            Refund Information Object
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Refund.Get(System.String,System.String)">
+            <summary>
+            Get call for Refund.
+            GET /v1/payments/refund/:refundId
+            <param name="accessToken">Access Token</param>
+            <param name="refundId">RefundId</param>
+            <returns>Returns Refund object</returns>
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Refund.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.id">
+            <summary>
+             The refund id
+            </summary>
+            <value>
+            The refund id as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.create_time">
+            <summary>
+            The time stamp of when the Refund was created
+            </summary>
+            <value>
+            The timestamp of create time as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.update_time">
+            <summary>
+            The time stamp of when the Refund is updated.
+            </summary>
+            <value>
+            The time stamp of when the Refund is updated as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.state">
+            <summary>
+            The current state of the Refund.
+            </summary>
+            <value>
+            The current state of the Refund.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.amount">
+            <summary>
+             The refund amount.
+            </summary>
+            <value>
+            The refund amount.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.sale_id">
+            <summary>
+            The origional sale id, that you are refunding
+            </summary>
+            <value>
+            The origional sale id, that you are refunding as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.capture_id">
+            <summary>
+            capture_id
+            </summary>
+            <value>
+            The capture_id.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.parent_payment">
+            <summary>
+            parent_payment
+            </summary>
+            <value>
+            The parent_payment.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.description">
+            <summary>
+            description
+            </summary>
+            <value>
+            The description.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.Refund.links">
+            <summary>
+            A list of <see cref="T:PayPal.Api.Payments.Link"/>s
+            </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Link"/> objects.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.RedirectUrls">
+            <summary>
+            Information about the redirection Urls
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.RedirectUrls.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns>the object as a JSON string</returns>
+        </member>
+        <member name="P:PayPal.Api.Payments.RedirectUrls.return_url">
+            <summary>
+            URL to which the buyer’s browser is returned after choosing to pay with PayPal.
+            </summary>
+            <value>
+            The return url as string.
+            </value>
+        </member>
+        <member name="P:PayPal.Api.Payments.RedirectUrls.cancel_url">
+            <summary>
+            URL to which the buyer is returned if the buyer does not approve the use of PayPal to pay you.
+            </summary>
+            <value>
+            The cancel url as string.
+            </value>
+        </member>
+        <member name="T:PayPal.Api.Payments.Authorization">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Api.Payments.Authorization.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.create_time">
+            <summary>
+            create_time
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.update_time">
+            <summary>
+            update_time
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.state">
+            <summary>
+            state
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.amount">
+            <summary>
+            amount
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.parent_payment">
+            <summary>
+            parent_payment
+            </summary>
+        </member>
+        <member name="P:PayPal.Api.Payments.Authorization.links">
+            <summary>
+            links
+            </summary>
+        </member>
+    </members>
+</doc>
