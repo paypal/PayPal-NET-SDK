@@ -20,6 +20,12 @@ namespace RestApiSDKUnitTest
     [TestClass()]
     public class OAuthTokenCredentialTest
     {
+        /// <summary>
+        /// Gets the client ID key, issued to you by PayPal when you created the account.
+        /// </summary>
+        /// <value>
+        /// The client ID key as string.
+        /// </value>
         private string ClientID
         {
             get
@@ -29,6 +35,12 @@ namespace RestApiSDKUnitTest
             }
         }
 
+        /// <summary>
+        /// Gets the client secret key issued to you by PayPal when you created the account.
+        /// </summary>
+        /// <value>
+        /// The client secret key as string.
+        /// </value>
         private string ClientSecret
         {
             get
@@ -38,6 +50,13 @@ namespace RestApiSDKUnitTest
             }
         }
 
+        /// <summary>
+        /// Gets the access token issued by PayPal, That is ssigned in response. 
+        /// The access token expires 8 hours after it is issued, after which you’ll have to request a new access token. 
+        /// </summary>
+        /// <value>
+        /// The access token issued by PayPal.
+        /// </value>
         private string AccessToken
         {
             get
@@ -47,6 +66,10 @@ namespace RestApiSDKUnitTest
             }
         }
 
+        /// <summary>
+        /// Generates the client id in base64.
+        /// </summary>
+        /// <returns>The client id in base64.</returns>
         private string GenerateClientIdInBase64()
         {
             byte[] bytes = Encoding.UTF8.GetBytes(ClientID);
@@ -54,6 +77,10 @@ namespace RestApiSDKUnitTest
             return base64ClientID;
         }
 
+        /// <summary>
+        /// Generates the oAuth token.
+        /// </summary>
+        /// <returns>the oAuth token</returns>
         private string GenerateOAuthToken()
         {
             string response = null;

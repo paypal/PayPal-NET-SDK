@@ -13,10 +13,10 @@ namespace PayPal.Api.Payments
 	{
 
         /// <summary>
-        /// The name of the item.
+        /// The item name. 127 characters max. Required.
         /// </summary>
         /// <value>
-        /// The name of the item as string.
+        /// The item name, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string name
@@ -27,10 +27,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The item's sku code.
+        /// The stock keeping unit corresponding (SKU) to item. 50 characters max. Optional.
         /// </summary>
         /// <value>
-        /// The item's sku code as string.
+        /// The stock keeping unit corresponding (SKU) to item, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string sku
@@ -41,10 +41,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The selling price of the item.
+        /// The item cost. 10 characters max. Required.
         /// </summary>
         /// <value>
-        /// The selling price of the item as string.
+        /// The item cost, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string price
@@ -55,10 +55,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        ///  A 3-character currency code. (default is USD)
+        ///  A 3-character currency code. Currently only USD (US dollars) is supported. Required.
         /// </summary>
         /// <value>
-        /// The 3-character currency code as string. 
+        /// The 3-character currency code, as string. 
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string currency
@@ -69,10 +69,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Item quantity
+        /// Number of a particular item. 10 characters max. Required.
         /// </summary>
         /// <value>
-        /// The Item quantity as string.
+        /// Number of a particular item, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string quantity

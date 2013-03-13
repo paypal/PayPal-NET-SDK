@@ -17,10 +17,10 @@ namespace PayPal.Api.Payments
 	{
 
         /// <summary>
-        /// The sale id
+        /// The ID of the sale transaction.
         /// </summary>
         /// <value>
-        /// The sale id as string.
+        /// The ID of the sale transaction as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string id
@@ -31,7 +31,8 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The time stamp of when the Sale was created
+        /// The time stamp of when the Sale was created.
+        /// Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
         /// </summary>
         /// <value>
         /// The timestamp of create time as string.
@@ -45,10 +46,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The time stamp of when the Sale is updated.
+        /// The time stamp of when the resource was last updated.  Assigned in response
         /// </summary>
         /// <value>
-        /// The time stamp of when the Sale is updated as string.
+        /// The time stamp of when the resource was last updated as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string update_time
@@ -59,7 +60,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The current state of the Sale.
+        /// The current state of the sale. Either pending, completed, refunded, or partially_refunded. Assigned in response
         /// </summary>
         /// <value>
         /// The current state of the Sale as string.
@@ -73,10 +74,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        ///  The Sale amount.
+        ///  Details about the collected amount.
         /// </summary>
         /// <value>
-        /// The Sale amount.
+        /// Details about the collected amount as <see cref="Amount"/>.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Amount amount
@@ -87,10 +88,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The parent payment.
+        /// The ID of the payment resource on which this <see cref="Transaction"/> is based. Assigned in response
         /// </summary>
         /// <value>
-        /// The parent payment.
+        /// The ID of the payment resource on which this transaction is based as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string parent_payment
@@ -101,7 +102,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// A list of <see cref="Link"/>s
+        /// A list of <see cref="Link">Links</see>
         /// </summary>
         /// <value>
         /// The list of <see cref="Link"/> objects.
@@ -174,7 +175,7 @@ namespace PayPal.Api.Payments
         /// <summary>
         /// Converts the object to JSON string
         /// </summary>
-        /// <returns> the object as a JSON string</returns
+        /// <returns> the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

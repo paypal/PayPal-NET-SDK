@@ -9,7 +9,7 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// A transaction defines the contract of a payment.
+    /// This object defines the payment transaction details.
     /// what is the payment for and who is fulfilling it. Transaction is created with a 'Payee' and 'Amount' types
     /// </summary>
 	public class Transaction : Resource  

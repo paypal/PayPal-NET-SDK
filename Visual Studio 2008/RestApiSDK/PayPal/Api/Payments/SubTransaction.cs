@@ -68,7 +68,7 @@ namespace PayPal.Api.Payments
         /// <summary>
         /// Converts the object to JSON string
         /// </summary>
-        /// <returns> the object as a JSON string</returns
+        /// <returns> the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

@@ -7,13 +7,13 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// Information about the redirection Urls
+    /// Information about the redirection Urls you provide only for PayPal-based payments.
     /// </summary>
 	public class RedirectUrls : Resource  
 	{
 
         /// <summary>
-        /// URL to which the buyer’s browser is returned after choosing to pay with PayPal.
+        /// The payer is redirected to this URL after approving the payment. Required for PayPal account payments.
         /// </summary>
         /// <value>
         /// The return url as string.
@@ -27,7 +27,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// URL to which the buyer is returned if the buyer does not approve the use of PayPal to pay you.
+        /// The payer is redirected to this URL after canceling the payment. Required for PayPal account payments.
         /// </summary>
         /// <value>
         /// The cancel url as string.

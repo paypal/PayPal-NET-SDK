@@ -7,14 +7,13 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// A resource representing a Payeer's method of submitting funds.
-    /// This is used when funds are submitted from a source otherthan PayPal, such as Credit Card.
+    ///  This object represents a payer’s funding instrument (credit card).
     /// </summary>
 	public class FundingInstrument : Resource  
 	{
 
         /// <summary>
-        /// Used when the funding instrument is a credit card.
+        /// Used when the funding instrument is a credit card.  Required if creating a funding instrument.
         /// </summary>
         /// <value>
         /// The credit card information contained within a <see cref="CreditCard"/> object.
@@ -28,10 +27,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// A <see cref="CreditCardToken"/> object
+        /// <see cref="CreditCardToken"/> for credit card details stored with PayPal. You can use this in place of a credit card. Required if not passing credit card details.
         /// </summary>
         /// <value>
-        /// The credit_card_token as <see cref="CreditCardToken"/>.
+        /// The credit card token as <see cref="CreditCardToken"/>.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public CreditCardToken credit_card_token

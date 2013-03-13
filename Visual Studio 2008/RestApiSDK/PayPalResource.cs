@@ -38,6 +38,9 @@ namespace PayPal
                                                   HttpStatusCode.ServiceUnavailable,
                                                 });
 
+        /// <summary>
+        /// The SDK ID
+        /// </summary>
         public const string SdkID = "ID";
 
         public const string SdkVersion = "1.0";

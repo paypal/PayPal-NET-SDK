@@ -877,6 +877,9 @@ namespace JCS
         #endregion SYSTEM_INFO
 
         #region _PROCESSOR_INFO_UNION
+        /// <summary>
+        ///  PROCESSOR INFO UNION
+        /// </summary>
         [StructLayout(LayoutKind.Explicit)]
         public struct _PROCESSOR_INFO_UNION
         {

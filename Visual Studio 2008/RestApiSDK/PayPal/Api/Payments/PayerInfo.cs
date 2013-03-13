@@ -7,16 +7,17 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// The Payer Information object
+    /// The Payer Information object.
+    /// This object is pre-filled by PayPal when the payment_method is paypal.
     /// </summary>
 	public class PayerInfo : Resource  
 	{
 
         /// <summary>
-        /// The Payer's email address.
+        /// The Email address representing the payer. 127 characters max. Optional
         /// </summary>
         /// <value>
-        /// The Payer's email address.
+        /// The Email address representing the payer, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string email
@@ -27,10 +28,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Payer's first name
+        /// The first name of the payer. Assigned in response.
         /// </summary>
         /// <value>
-        /// The Payer's first name.
+        /// The first name of the payer, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string first_name
@@ -41,10 +42,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Payer's last name
+        /// The last name of the payer. Assigned in response.
         /// </summary>
         /// <value>
-        /// The Payer's last name.
+        /// The last name of the payer, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string last_name
@@ -55,10 +56,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Payer's Id
+        /// The PayPal assigned Payer ID. Optional.
         /// </summary>
         /// <value>
-        /// The Payer's Id as string.
+        /// The PayPal assigned Payer ID, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string payer_id
@@ -69,10 +70,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Payer's shipping address
+        /// The shipping address of payer PayPal account.
         /// </summary>
         /// <value>
-        /// The Payer's shipping address as <see cref="Address"/>.
+        /// The shipping address of payer PayPal account, as <see cref="Address"/>.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Address shipping_address
@@ -83,10 +84,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Payer's phone
+        /// The phone number representing the payer. 20 characters max. Optional.
         /// </summary>
         /// <value>
-        /// The Payer's phone.
+        /// The phone number representing the payer, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string phone

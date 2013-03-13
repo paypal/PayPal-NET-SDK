@@ -11,16 +11,16 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// A resource representing a credit card that can be used to fund a payment.
+    /// A resource  represents a payer’s funding instrument, such as a credit card or token that represents a credit card.
     /// </summary>
 	public class CreditCard : Resource  
 	{
 
         /// <summary>
-        /// The credit card id
+        /// The ID of the credit card. This ID is provided in the response when storing credit cards. Required if using a stored credit card.
         /// </summary>
         /// <value>
-        /// The credit card id.
+        /// The ID of the credit card, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string id
@@ -31,10 +31,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The date the card is valid until.
+        /// Funding instrument expiration date. Assigned in response
         /// </summary>
         /// <value>
-        /// The date the card is valid until as string.
+        /// The funding instrument expiration date, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string valid_until
@@ -42,11 +42,14 @@ namespace PayPal.Api.Payments
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// state
-    	/// </summary>
+
+        /// <summary>
+        /// State of the credit card funding instrument: expired or ok. Assigned in response
+        /// </summary>
+        /// <value>
+        /// The state of the credit card funding instrument, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string state
 		{
@@ -70,10 +73,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The type or brand of credit card, such as visa, mastercard, or discover.
+        /// The Credit card type. Valid types are: Visa, MasterCard, Discover, Amex Required.
         /// </summary>
         /// <value>
-        /// The type or brand of credit card.
+        /// The Credit card type, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string type
@@ -84,10 +87,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The credit card number
+        /// The Credit card number. Numeric characters only with no spaces or punctuation. The string must conform with modulo and length required by each credit card type. Redacted in responses. Required.
         /// </summary>
         /// <value>
-        /// The credit card number as string.
+        /// The Credit card number, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string number
@@ -98,10 +101,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The month the card expires
+        /// The 1-2 digit expiration month. Required.
         /// </summary>
         /// <value>
-        /// The month the card expires as string.
+        /// The 1-2 digit expiration month, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string expire_month
@@ -112,10 +115,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The year the card expires
+        /// The 4-digit expiration year. Required.
         /// </summary>
         /// <value>
-        /// The year the card expires as string.
+        /// The 4-digit expiration year, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string expire_year
@@ -126,10 +129,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The 3-digit Credit Card Code (CCV) on the back of the card.
+        /// The 3-4 digit Credit Card Code (CCV) on the back of the card.
         /// </summary>
         /// <value>
-        /// The 3-digit Credit Card Code (CCV) on the back of the card as string.
+        /// The 3-4 digit Credit Card Code, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string cvv2
@@ -140,10 +143,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The first name displayed on the credit card.
+        /// The cardholder’s first name. Optional
         /// </summary>
         /// <value>
-        /// The first name displayed on the credit card, as string.
+        /// The cardholder’s first name, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string first_name
@@ -154,10 +157,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The last name displayed on the credit card.
+        /// The cardholder’s last name. Optional
         /// </summary>
         /// <value>
-        /// The last name displayed on the credit card, as string.
+        /// The cardholder’s last name, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string last_name
@@ -168,10 +171,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The billing address of the Credit Card
+        /// The billing address associated with card. Optional
         /// </summary>
         /// <value>
-        /// The billing address as <see cref="Address"/>.
+        /// The billing address associated with card, as <see cref="Address"/>.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Address billing_address
@@ -186,7 +189,7 @@ namespace PayPal.Api.Payments
         /// </summary>
         /// <value>
         /// The list of <see cref="Link"/> objects.
-        /// </value
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Link> links
 		{

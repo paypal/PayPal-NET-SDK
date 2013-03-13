@@ -25,16 +25,16 @@ namespace PayPal
     {
 
         /// <summary>
-        /// oAUTH Token Path
+        /// oAUTH Token URI Path
         /// </summary>
         private const string OAUTHTOKENPATH = "/v1/oauth2/token";
         /// <summary>
-        /// PayPal Client ID for OAuth
+        /// PayPal Client ID key for OAuth, issued to you when you created the PayPal developer account
         /// </summary>
         private String clientID;
 
         /// <summary>
-        /// PayPal Client Secret for OAuth
+        /// PayPal Client Secret key for OAuth, issued to you when you created the PayPal developer account
         /// </summary>
         private string clientSecret;
 
@@ -150,6 +150,13 @@ namespace PayPal
             }           
         }
 
+        /// <summary>
+        /// Generates the oAuth token.
+        /// </summary>
+        /// <param name="base64ClientID">The base64 client ID.</param>
+        /// <returns>The oAuth token.</returns>
+        /// <exception cref="PayPalException">
+        /// </exception>
         private string GenerateOAuthToken(string base64ClientID)
         { 
             try

@@ -17,7 +17,7 @@ namespace PayPal.Api.Payments
 	{
 
         /// <summary>
-        /// The Payment id
+        /// The ID of the created payment Assigned in response
         /// </summary>
         /// <value>
         /// The Payment id as string.
@@ -31,7 +31,8 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The time stamp of when the payment was created
+        /// The time stamp of when the payment was created.
+        /// Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
         /// </summary>
         /// <value>
         /// The timestamp of create time as string.
@@ -45,10 +46,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The time stamp of when the payment is updated.
+        /// The time stamp of when the payment resource was last updated.  Assigned in response
         /// </summary>
         /// <value>
-        /// The time stamp of when the payment is updated as string.
+        /// The time stamp of when the payment resource was last updated as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string update_time
@@ -59,10 +60,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The current payment state.
+        /// The current payment state, one of the following: created, approved, failed, canceled, or expired. Assigned in response.
         /// </summary>
         /// <value>
-        /// The current payment state.
+        /// The current payment state as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string state
@@ -73,11 +74,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// How you want to obtain payment. When implementing parallel payments, this field is required and must be set to Order. When implementing digital goods, this field is required and must be set to Sale. If the transaction does not include a one-time purchase, this field is ignored. 
-        /// It is one of the following values:
-        ///     Sale – This is a final sale for which you are requesting payment.
-        ///     Authorization – This payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
-        ///     Order – This payment is an order authorization subject to settlement with PayPal Authorization and Capture.
+        /// Payment intent; currently only sale is a valid value. 
         /// </summary>
         /// <value>
         /// The method used to processing this payment as string.
@@ -105,7 +102,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The list of transactions.
+        /// Transactional details including the amount and item details.
         /// The Payment creation API requires a list of <see cref="Transaction">Transactions</see>.
         /// </summary>
         /// <value>
@@ -149,19 +146,21 @@ namespace PayPal.Api.Payments
 
 		/// <summary>
 		/// Get call for Payment.
+        /// <code>
 		/// GET /v1/payments/payment?count=:count&start_id=:start_id&start_index=:start_index&start_time=:start_time&end_time=:end_time&payee_id=:payee_id&sort_by=:sort_by&sort_order=:sort_order
+        /// </code>
         /// </summary>
         /// <param name="accessToken">Access Token</param>
 		/// <param name="parameters">Dictionary holding query string name and values
 		/// having the following values for keys
 		/// count,
-		/// start_id,
-		/// start_index,
-		/// start_time,
-		/// end_time,
+        /// start_id, Resource ID that indicates the starting resource to return.
+        /// start_index, Start index of the resources to be returned. Typically used to jump to a specific position in the resource history based on its order.
+        /// start_time, Resource creation time that indicates the start of a range of results.
+        /// end_time, Resource creation time that indicates the end of a range of results.
 		/// payee_id,
-		/// sort_by,
-		/// sort_order,
+        /// sort_by, Sort based on <see cref="create_time"/> or <see cref="update_time"/>.
+        /// sort_order, Sort based on order of results. Options include <asc>asc</asc> for ascending order or <dec>dec</dec> for descending order.
 		/// All other keys are ignored
 		/// </param>
 		/// <returns>Returns PaymentHistory object</returns>
@@ -176,7 +175,9 @@ namespace PayPal.Api.Payments
 
 		/// <summary>
 		/// Get call for Payment.
-		/// GET /v1/payments/payment?count=:count&start_id=:start_id&start_index=:start_index&start_time=:start_time&end_time=:end_time&payee_id=:payee_id&sort_by=:sort_by&sort_order=:sort_order
+		/// <code>
+        /// GET /v1/payments/payment?count=:count&start_id=:start_id&start_index=:start_index&start_time=:start_time&end_time=:end_time&payee_id=:payee_id&sort_by=:sort_by&sort_order=:sort_order
+        /// </code>
         /// </summary>
         /// <param name="accessToken">Access Token</param>
 		/// <param name="parameters">Container for query strings</param>

@@ -4,6 +4,11 @@
         <name>RestApiSDK</name>
     </assembly>
     <members>
+        <member name="T:PayPal.Exception.PayPalException">
+            <summary>
+            PayPal Exceptions
+            </summary>
+        </member>
         <member name="F:PayPal.Exception.PayPalException.logger">
             <summary>
             Logs output statements, errors, debug info to a text file    
@@ -26,6 +31,11 @@
             </summary>
             <param name="message">The message that describes the error</param>
             <param name="cause">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="M:PayPal.Util.QueryParameters.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PayPal.Util.QueryParameters"/> class.
+            </summary>
         </member>
         <member name="M:PayPal.Util.QueryParameters.GetMap">
             @return the containerMap
@@ -71,10 +81,10 @@
                        PayeeId
         </member>
         <member name="M:PayPal.Util.QueryParameters.SetSortBy(System.String)">
-            Set the sort by field
-            
-            @param sortBy
-                       Sort based on create_time or update_time.
+            <summary>
+            Sets the sort by based on create_time or update_time.
+            </summary>
+            <param name="sortBy">The sort by.</param>
         </member>
         <member name="M:PayPal.Util.QueryParameters.SetSortOrder(System.String)">
             Set the sort order
@@ -93,7 +103,12 @@
             Resource
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.Resource.ConvertToJson" -->
+        <member name="M:PayPal.Api.Payments.Resource.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
         <member name="M:PayPal.Api.Payments.Sale.Get(System.String,System.String)">
             <summary>
             Get call for Sale.
@@ -121,18 +136,24 @@
             <param name="refund">Refund</param>
             <returns>Returns Refund object</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.Sale.ConvertToJson" -->
+        <member name="M:PayPal.Api.Payments.Sale.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
         <member name="P:PayPal.Api.Payments.Sale.id">
             <summary>
-            The sale id
+            The ID of the sale transaction.
             </summary>
             <value>
-            The sale id as string.
+            The ID of the sale transaction as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Sale.create_time">
             <summary>
-            The time stamp of when the Sale was created
+            The time stamp of when the Sale was created.
+            Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
             </summary>
             <value>
             The timestamp of create time as string.
@@ -140,15 +161,15 @@
         </member>
         <member name="P:PayPal.Api.Payments.Sale.update_time">
             <summary>
-            The time stamp of when the Sale is updated.
+            The time stamp of when the resource was last updated.  Assigned in response
             </summary>
             <value>
-            The time stamp of when the Sale is updated as string.
+            The time stamp of when the resource was last updated as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Sale.state">
             <summary>
-            The current state of the Sale.
+            The current state of the sale. Either pending, completed, refunded, or partially_refunded. Assigned in response
             </summary>
             <value>
             The current state of the Sale as string.
@@ -156,23 +177,23 @@
         </member>
         <member name="P:PayPal.Api.Payments.Sale.amount">
             <summary>
-             The Sale amount.
+             Details about the collected amount.
             </summary>
             <value>
-            The Sale amount.
+            Details about the collected amount as <see cref="T:PayPal.Api.Payments.Amount"/>.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Sale.parent_payment">
             <summary>
-            The parent payment.
+            The ID of the payment resource on which this <see cref="T:PayPal.Api.Payments.Transaction"/> is based. Assigned in response
             </summary>
             <value>
-            The parent payment.
+            The ID of the payment resource on which this transaction is based as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Sale.links">
             <summary>
-            A list of <see cref="T:PayPal.Api.Payments.Link"/>s
+            A list of <see cref="T:PayPal.Api.Payments.Link">Links</see>
             </summary>
             <value>
             The list of <see cref="T:PayPal.Api.Payments.Link"/> objects.
@@ -206,7 +227,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.CreditCardToken">
             <summary>
-            
+            This object represents a token corresponding to a credit card stored with PayPal.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.CreditCardToken.ConvertToJson">
@@ -217,17 +238,28 @@
         </member>
         <member name="P:PayPal.Api.Payments.CreditCardToken.credit_card_id">
             <summary>
-            credit_card_id
+            ID of credit card previously stored using /vault/credit-card. Required.
             </summary>
+            <value>
+            The credit card Id, as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCardToken.payer_id">
             <summary>
-            payer_id
+            The payer id
             </summary>
+            <value>
+            The payer id, as string.
+            </value>
         </member>
         <member name="T:PayPal.PayPalResource">
             <summary>
             PayPal Resources
+            </summary>
+        </member>
+        <member name="F:PayPal.PayPalResource.SdkID">
+            <summary>
+            The SDK ID
             </summary>
         </member>
         <member name="F:PayPal.PayPalResource.logger">
@@ -249,7 +281,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.ShippingAddress">
             <summary>
-            Shipping Address
+            This object is used for the shipping address.
             </summary>
         </member>
         <member name="T:PayPal.Api.Payments.Address">
@@ -265,66 +297,66 @@
         </member>
         <member name="P:PayPal.Api.Payments.Address.line1">
             <summary>
-            The first line of an address, typically the street information
+            The Line 1 of the address (e.g., Number, street, etc). 100 characters max. Required.
             </summary>
             <value>
-            The first line of an address as string
+            The first line of an address, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.line2">
             <summary>
-            The second line of an address, typically the Apt or Suite, etc information
+            The Line 2 of the address (e.g., Suite, apt #, etc). 100 characters max. Optional
             </summary>
             <value>
-            The second line of an address as string
+            The second line of an address, as string
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.city">
             <summary>
-            The city name
+            The city name. 50 characters max. Required.
             </summary>
             <value>
-            The city name as string.
+            The city name, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.state">
             <summary>
-            The State or province name
+            The 2 letter code for US states, and the equivalent for other countries. 100 characters max. Required.
             </summary>
             <value>
-            The State or province name as string.
+            The 2 letter code for US states, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.postal_code">
             <summary>
-            The U.S. ZIP code or other country-specific postal code. 
+            The Zip code or equivalent is usually required for countries that have them. 20 characters max. Required in certain countries.
             </summary>
             <value>
-            The U.S. ZIP code or other country-specific postal code as string.
+            The Zip code or equivalent, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.country_code">
             <summary>
-            The Country code
+            The 2 letter country code. 2 characters max. Required
             </summary>
             <value>
-            The Country code.
+            The 2 letter country code, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.type">
             <summary>
-            type
+            Address type; allowable values are residential, business, or mailbox. Optional
             </summary>
             <value>
-            The type.
+            The Address type, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Address.phone">
             <summary>
-            The Phone number.
+            The phone number in e.123 format. Optional.
             </summary>
             <value>
-            The Phone number.
+            The phone number, as string.
             </value>
         </member>
         <member name="M:PayPal.Api.Payments.ShippingAddress.ConvertToJson">
@@ -335,10 +367,10 @@
         </member>
         <member name="P:PayPal.Api.Payments.ShippingAddress.recipient_name">
             <summary>
-            The recipient name, who will receive the shipment
+            The name of the recipient at this address. 50 characters max. Required
             </summary>
             <value>
-            The recipient name as string.
+            The name of the recipient at this address, as string.
             </value>
         </member>
         <member name="T:PayPal.Api.Payments.PaymentHistory">
@@ -404,6 +436,22 @@
             </summary>
             <param name="tokenAccess"></param>
             <param name="requestId"></param>
+        </member>
+        <member name="P:PayPal.APIContext.AccessToken">
+            <summary>
+            Gets the access token.
+            </summary>
+            <value>
+            The access token.
+            </value>
+        </member>
+        <member name="P:PayPal.APIContext.RequestID">
+            <summary>
+            Gets the request ID.
+            </summary>
+            <value>
+            The request ID.
+            </value>
         </member>
         <member name="T:PayPal.HttpMethod">
             <summary>
@@ -488,7 +536,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.Payment.id">
             <summary>
-            The Payment id
+            The ID of the created payment Assigned in response
             </summary>
             <value>
             The Payment id as string.
@@ -496,7 +544,8 @@
         </member>
         <member name="P:PayPal.Api.Payments.Payment.create_time">
             <summary>
-            The time stamp of when the payment was created
+            The time stamp of when the payment was created.
+            Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
             </summary>
             <value>
             The timestamp of create time as string.
@@ -504,27 +553,23 @@
         </member>
         <member name="P:PayPal.Api.Payments.Payment.update_time">
             <summary>
-            The time stamp of when the payment is updated.
+            The time stamp of when the payment resource was last updated.  Assigned in response
             </summary>
             <value>
-            The time stamp of when the payment is updated as string.
+            The time stamp of when the payment resource was last updated as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Payment.state">
             <summary>
-            The current payment state.
+            The current payment state, one of the following: created, approved, failed, canceled, or expired. Assigned in response.
             </summary>
             <value>
-            The current payment state.
+            The current payment state as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Payment.intent">
             <summary>
-            How you want to obtain payment. When implementing parallel payments, this field is required and must be set to Order. When implementing digital goods, this field is required and must be set to Sale. If the transaction does not include a one-time purchase, this field is ignored. 
-            It is one of the following values:
-                Sale – This is a final sale for which you are requesting payment.
-                Authorization – This payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
-                Order – This payment is an order authorization subject to settlement with PayPal Authorization and Capture.
+            Payment intent; currently only sale is a valid value. 
             </summary>
             <value>
             The method used to processing this payment as string.
@@ -540,7 +585,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.Payment.transactions">
             <summary>
-            The list of transactions.
+            Transactional details including the amount and item details.
             The Payment creation API requires a list of <see cref="T:PayPal.Api.Payments.Transaction">Transactions</see>.
             </summary>
             <value>
@@ -599,6 +644,11 @@
             <param name="ex"></param>
             <returns></returns>
         </member>
+        <member name="T:PayPal.Util.SDKUtil">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:PayPal.Util.SDKUtil.splitParameters(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             Split the URI and form a Object array using the query string and values
             in the provided map. The return object array is populated only if the map
@@ -613,7 +663,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.Payee">
             <summary>
-            
+            A resource representing a Payee that receives funds from a <see cref="T:PayPal.Api.Payments.Payment"/>.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.Payee.ConvertToJson">
@@ -624,22 +674,31 @@
         </member>
         <member name="P:PayPal.Api.Payments.Payee.merchant_id">
             <summary>
-            merchant_id
+             The merchant id
             </summary>
+            <value>
+            The merchant id.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Payee.email">
             <summary>
-            email
+            Payee email
             </summary>
+            <value>
+            The Payee email.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Payee.phone">
             <summary>
-            phone
+            Payee phone
             </summary>
+            <value>
+            The Payee phone.
+            </value>
         </member>
         <member name="T:PayPal.Api.Payments.ItemList">
             <summary>
-            a Item List of <see cref="T:PayPal.Api.Payments.Item">Items</see> that you are identifying in the payment request or refund.
+            a Item List of <see cref="T:PayPal.Api.Payments.Item">Items</see> that provides a list of items and related shipping addresses within a transaction.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.ItemList.ConvertToJson">
@@ -650,7 +709,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.ItemList.items">
             <summary>
-            The list of <see cref="T:PayPal.Api.Payments.Item">Items</see>.
+            The list of <see cref="T:PayPal.Api.Payments.Item">Items</see>. Optional
             </summary>
             <value>
             The list of <see cref="T:PayPal.Api.Payments.Item">Items</see>.
@@ -658,10 +717,10 @@
         </member>
         <member name="P:PayPal.Api.Payments.ItemList.shipping_address">
             <summary>
-            The address of where the items will be shipped from.
+            The Shipping address, if different than the payer address.
             </summary>
             <value>
-            The address of where the items will be shipped from.
+            The Shipping address, as <see cref="T:PayPal.Api.Payments.ShippingAddress"/>.
             </value>
         </member>
         <member name="T:JCS.OSVersionInfo">
@@ -1409,6 +1468,11 @@
             The dw processor revision
             </summary>
         </member>
+        <member name="T:JCS.OSVersionInfo._PROCESSOR_INFO_UNION">
+            <summary>
+             PROCESSOR INFO UNION
+            </summary>
+        </member>
         <member name="F:JCS.OSVersionInfo._PROCESSOR_INFO_UNION.dwOemId">
             <summary>
             The oem id
@@ -1429,7 +1493,12 @@
             SubTransaction
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:PayPal.Api.Payments.SubTransaction.ConvertToJson" -->
+        <member name="M:PayPal.Api.Payments.SubTransaction.ConvertToJson">
+            <summary>
+            Converts the object to JSON string
+            </summary>
+            <returns> the object as a JSON string</returns>
+        </member>
         <member name="P:PayPal.Api.Payments.SubTransaction.sale">
             <summary>
             sale
@@ -1461,8 +1530,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.FundingInstrument">
             <summary>
-            A resource representing a Payeer's method of submitting funds.
-            This is used when funds are submitted from a source otherthan PayPal, such as Credit Card.
+             This object represents a payer’s funding instrument (credit card).
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.FundingInstrument.ConvertToJson">
@@ -1473,7 +1541,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.FundingInstrument.credit_card">
             <summary>
-            Used when the funding instrument is a credit card.
+            Used when the funding instrument is a credit card.  Required if creating a funding instrument.
             </summary>
             <value>
             The credit card information contained within a <see cref="T:PayPal.Api.Payments.CreditCard"/> object.
@@ -1481,15 +1549,15 @@
         </member>
         <member name="P:PayPal.Api.Payments.FundingInstrument.credit_card_token">
             <summary>
-            A <see cref="T:PayPal.Api.Payments.CreditCardToken"/> object
+            <see cref="T:PayPal.Api.Payments.CreditCardToken"/> for credit card details stored with PayPal. You can use this in place of a credit card. Required if not passing credit card details.
             </summary>
             <value>
-            The credit_card_token as <see cref="T:PayPal.Api.Payments.CreditCardToken"/>.
+            The credit card token as <see cref="T:PayPal.Api.Payments.CreditCardToken"/>.
             </value>
         </member>
         <member name="T:PayPal.Api.Payments.CreditCard">
             <summary>
-            A resource representing a credit card that can be used to fund a payment.
+            A resource  represents a payer’s funding instrument, such as a credit card or token that represents a credit card.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.CreditCard.Create(System.String)">
@@ -1525,24 +1593,27 @@
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.id">
             <summary>
-            The credit card id
+            The ID of the credit card. This ID is provided in the response when storing credit cards. Required if using a stored credit card.
             </summary>
             <value>
-            The credit card id.
+            The ID of the credit card, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.valid_until">
             <summary>
-            The date the card is valid until.
+            Funding instrument expiration date. Assigned in response
             </summary>
             <value>
-            The date the card is valid until as string.
+            The funding instrument expiration date, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.state">
             <summary>
-            state
+            State of the credit card funding instrument: expired or ok. Assigned in response
             </summary>
+            <value>
+            The state of the credit card funding instrument, as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.payer_id">
             <summary>
@@ -1554,72 +1625,79 @@
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.type">
             <summary>
-            The type or brand of credit card, such as visa, mastercard, or discover.
+            The Credit card type. Valid types are: Visa, MasterCard, Discover, Amex Required.
             </summary>
             <value>
-            The type or brand of credit card.
+            The Credit card type, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.number">
             <summary>
-            The credit card number
+            The Credit card number. Numeric characters only with no spaces or punctuation. The string must conform with modulo and length required by each credit card type. Redacted in responses. Required.
             </summary>
             <value>
-            The credit card number as string.
+            The Credit card number, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.expire_month">
             <summary>
-            The month the card expires
+            The 1-2 digit expiration month. Required.
             </summary>
             <value>
-            The month the card expires as string.
+            The 1-2 digit expiration month, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.expire_year">
             <summary>
-            The year the card expires
+            The 4-digit expiration year. Required.
             </summary>
             <value>
-            The year the card expires as string.
+            The 4-digit expiration year, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.cvv2">
             <summary>
-            The 3-digit Credit Card Code (CCV) on the back of the card.
+            The 3-4 digit Credit Card Code (CCV) on the back of the card.
             </summary>
             <value>
-            The 3-digit Credit Card Code (CCV) on the back of the card as string.
+            The 3-4 digit Credit Card Code, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.first_name">
             <summary>
-            The first name displayed on the credit card.
+            The cardholder’s first name. Optional
             </summary>
             <value>
-            The first name displayed on the credit card, as string.
+            The cardholder’s first name, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.last_name">
             <summary>
-            The last name displayed on the credit card.
+            The cardholder’s last name. Optional
             </summary>
             <value>
-            The last name displayed on the credit card, as string.
+            The cardholder’s last name, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.CreditCard.billing_address">
             <summary>
-            The billing address of the Credit Card
+            The billing address associated with card. Optional
             </summary>
             <value>
-            The billing address as <see cref="T:PayPal.Api.Payments.Address"/>.
+            The billing address associated with card, as <see cref="T:PayPal.Api.Payments.Address"/>.
             </value>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:PayPal.Api.Payments.CreditCard.links" -->
+        <member name="P:PayPal.Api.Payments.CreditCard.links">
+            <summary>
+            A list of <see cref="T:PayPal.Api.Payments.Link">Links</see>.
+            </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Link"/> objects.
+            </value>
+        </member>
         <member name="T:PayPal.Api.Payments.Transaction">
             <summary>
-            A transaction defines the contract of a payment.
+            This object defines the payment transaction details.
             what is the payment for and who is fulfilling it. Transaction is created with a 'Payee' and 'Amount' types
             </summary>
         </member>
@@ -1797,7 +1875,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.Payer">
             <summary>
-            A resource representing a Payer that funds a payment 
+            A resource representing a Payer that funds a <see cref="T:PayPal.Api.Payments.Payment"/>. 
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.Payer.ConvertToJson">
@@ -1832,7 +1910,8 @@
         </member>
         <member name="T:PayPal.Api.Payments.PayerInfo">
             <summary>
-            The Payer Information object
+            The Payer Information object.
+            This object is pre-filled by PayPal when the payment_method is paypal.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.PayerInfo.ConvertToJson">
@@ -1843,50 +1922,50 @@
         </member>
         <member name="P:PayPal.Api.Payments.PayerInfo.email">
             <summary>
-            The Payer's email address.
+            The Email address representing the payer. 127 characters max. Optional
             </summary>
             <value>
-            The Payer's email address.
+            The Email address representing the payer, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.PayerInfo.first_name">
             <summary>
-            The Payer's first name
+            The first name of the payer. Assigned in response.
             </summary>
             <value>
-            The Payer's first name.
+            The first name of the payer, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.PayerInfo.last_name">
             <summary>
-            The Payer's last name
+            The last name of the payer. Assigned in response.
             </summary>
             <value>
-            The Payer's last name.
+            The last name of the payer, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.PayerInfo.payer_id">
             <summary>
-            The Payer's Id
+            The PayPal assigned Payer ID. Optional.
             </summary>
             <value>
-            The Payer's Id as string.
+            The PayPal assigned Payer ID, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.PayerInfo.shipping_address">
             <summary>
-            The Payer's shipping address
+            The shipping address of payer PayPal account.
             </summary>
             <value>
-            The Payer's shipping address as <see cref="T:PayPal.Api.Payments.Address"/>.
+            The shipping address of payer PayPal account, as <see cref="T:PayPal.Api.Payments.Address"/>.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.PayerInfo.phone">
             <summary>
-            The Payer's phone
+            The phone number representing the payer. 20 characters max. Optional.
             </summary>
             <value>
-            The Payer's phone.
+            The phone number representing the payer, as string.
             </value>
         </member>
         <member name="T:PayPal.Api.Payments.Item">
@@ -1902,42 +1981,42 @@
         </member>
         <member name="P:PayPal.Api.Payments.Item.name">
             <summary>
-            The name of the item.
+            The item name. 127 characters max. Required.
             </summary>
             <value>
-            The name of the item as string.
+            The item name, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Item.sku">
             <summary>
-            The item's sku code.
+            The stock keeping unit corresponding (SKU) to item. 50 characters max. Optional.
             </summary>
             <value>
-            The item's sku code as string.
+            The stock keeping unit corresponding (SKU) to item, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Item.price">
             <summary>
-            The selling price of the item.
+            The item cost. 10 characters max. Required.
             </summary>
             <value>
-            The selling price of the item as string.
+            The item cost, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Item.currency">
             <summary>
-             A 3-character currency code. (default is USD)
+             A 3-character currency code. Currently only USD (US dollars) is supported. Required.
             </summary>
             <value>
-            The 3-character currency code as string. 
+            The 3-character currency code, as string. 
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Item.quantity">
             <summary>
-            The Item quantity
+            Number of a particular item. 10 characters max. Required.
             </summary>
             <value>
-            The Item quantity as string.
+            Number of a particular item, as string.
             </value>
         </member>
         <member name="T:PayPal.RESTConfiguration">
@@ -1959,7 +2038,7 @@
             <summary>
             Gets the current header tags and adds tags for; Authorization, User-Agent, and PayPal-Request-Id.
             </summary>
-            <returns>The header information as a <see cref="!:Dictionary">Dictionary of string, string</see></returns>
+            <returns>The header information as a Dictionary of string, string</returns>
         </member>
         <member name="M:PayPal.RESTConfiguration.FormUserAgentHeader">
             <summary>
@@ -2013,13 +2092,20 @@
         </member>
         <member name="P:PayPal.Api.Payments.Capture.create_time">
             <summary>
-            create_time
+            The time stamp of when the Capture was created.
+            Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
             </summary>
+            <value>
+            The timestamp of create time as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Capture.update_time">
             <summary>
-            update_time
+            The time stamp of when the resource was last updated.  Assigned in response
             </summary>
+            <value>
+            The time stamp of when the resource was last updated as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Capture.state">
             <summary>
@@ -2058,17 +2144,17 @@
         </member>
         <member name="F:PayPal.OAuthTokenCredential.OAUTHTOKENPATH">
             <summary>
-            oAUTH Token Path
+            oAUTH Token URI Path
             </summary>
         </member>
         <member name="F:PayPal.OAuthTokenCredential.clientID">
             <summary>
-            PayPal Client ID for OAuth
+            PayPal Client ID key for OAuth, issued to you when you created the PayPal developer account
             </summary>
         </member>
         <member name="F:PayPal.OAuthTokenCredential.clientSecret">
             <summary>
-            PayPal Client Secret for OAuth
+            PayPal Client Secret key for OAuth, issued to you when you created the PayPal developer account
             </summary>
         </member>
         <member name="F:PayPal.OAuthTokenCredential.accessToken">
@@ -2126,16 +2212,26 @@
             <exception cref="T:PayPal.Exception.PayPalException">
             </exception>
         </member>
+        <member name="M:PayPal.OAuthTokenCredential.GenerateOAuthToken(System.String)">
+            <summary>
+            Generates the oAuth token.
+            </summary>
+            <param name="base64ClientID">The base64 client ID.</param>
+            <returns>The oAuth token.</returns>
+            <exception cref="T:PayPal.Exception.PayPalException">
+            </exception>
+        </member>
         <member name="T:PayPal.Api.Payments.Refund">
             <summary>
-            A Refund Transaction Object
+            Use this call to refund a completed payment. 
+            Provide the sale_id in the URI and an empty JSON payload for a full refund. For partial refunds, you can include an amount.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.Refund.Get(System.String,System.String)">
             <summary>
             Get call for Refund.
-            GET /v1/payments/refund/:refundId
-             </summary>
+            <code>GET /v1/payments/refund/:refundId</code>
+             </summary>       
             <param name="accessToken">Access Token</param>
             <param name="refundId">RefundId</param>
             <returns>Returns Refund object</returns>
@@ -2156,7 +2252,8 @@
         </member>
         <member name="P:PayPal.Api.Payments.Refund.create_time">
             <summary>
-            The time stamp of when the Refund was created
+            The time stamp of when the Refund was created.
+            Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
             </summary>
             <value>
             The timestamp of create time as string.
@@ -2164,10 +2261,10 @@
         </member>
         <member name="P:PayPal.Api.Payments.Refund.update_time">
             <summary>
-            The time stamp of when the Refund is updated.
+            The time stamp of when the resource was last updated.  Assigned in response
             </summary>
             <value>
-            The time stamp of when the Refund is updated as string.
+            The time stamp of when the resource was last updated as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Refund.state">
@@ -2180,18 +2277,19 @@
         </member>
         <member name="P:PayPal.Api.Payments.Refund.amount">
             <summary>
-             The refund amount.
+             The Refund details including both refunded amount (to Payer) and refunded fee (to Payee). 
+             If amount is not specified, it’s assumed to be full refund. If no amount is provided, you must still provide an empty JSON payload ({}) in the body. Optional
             </summary>
             <value>
-            The refund amount.
+            The Refund details including both refunded amount (to Payer) and refunded fee (to Payee) as <see cref="T:PayPal.Api.Payments.Amount"/>.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Refund.sale_id">
             <summary>
-            The origional sale id, that you are refunding
+            The origional sale ID of the sale transaction being refunded. Assigned in response
             </summary>
             <value>
-            The origional sale id, that you are refunding as string.
+            The origional sale ID of the sale transaction being refunded as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Refund.capture_id">
@@ -2204,15 +2302,15 @@
         </member>
         <member name="P:PayPal.Api.Payments.Refund.parent_payment">
             <summary>
-            parent_payment
+            The ID of the payment resource on which this transaction is based. Assigned in response.
             </summary>
             <value>
-            The parent_payment.
+            The ID of the payment resource on which this transaction is based, as string.
             </value>
         </member>
         <member name="P:PayPal.Api.Payments.Refund.description">
             <summary>
-            The general description for the refund
+            The general description for the refund. Optional
             </summary>
             <value>
             The general description for the refund as string.
@@ -2228,7 +2326,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.RedirectUrls">
             <summary>
-            Information about the redirection Urls
+            Information about the redirection Urls you provide only for PayPal-based payments.
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.RedirectUrls.ConvertToJson">
@@ -2239,7 +2337,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.RedirectUrls.return_url">
             <summary>
-            URL to which the buyer’s browser is returned after choosing to pay with PayPal.
+            The payer is redirected to this URL after approving the payment. Required for PayPal account payments.
             </summary>
             <value>
             The return url as string.
@@ -2247,7 +2345,7 @@
         </member>
         <member name="P:PayPal.Api.Payments.RedirectUrls.cancel_url">
             <summary>
-            URL to which the buyer is returned if the buyer does not approve the use of PayPal to pay you.
+            The payer is redirected to this URL after canceling the payment. Required for PayPal account payments.
             </summary>
             <value>
             The cancel url as string.
@@ -2255,7 +2353,7 @@
         </member>
         <member name="T:PayPal.Api.Payments.Authorization">
             <summary>
-            
+            Authorization object
             </summary>
         </member>
         <member name="M:PayPal.Api.Payments.Authorization.ConvertToJson">
@@ -2266,38 +2364,60 @@
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.id">
             <summary>
-            id
+            The ID of the Authorization transaction.
             </summary>
+            <value>
+            The ID of the Authorization transaction as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.create_time">
             <summary>
-            create_time
+            The time stamp of when the Authorization was created.
+            Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
             </summary>
+            <value>
+            The timestamp of create time as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.update_time">
             <summary>
-            update_time
+            The time stamp of when the resource was last updated.  Assigned in response
             </summary>
+            <value>
+            The time stamp of when the resource was last updated as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.state">
             <summary>
-            state
+            The current state of Authorization.
             </summary>
+            <value>
+            The current state of Authorization, as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.amount">
             <summary>
-            amount
+             Details about the amount.
             </summary>
+            <value>
+            Details about the amount as <see cref="T:PayPal.Api.Payments.Amount"/>.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.parent_payment">
             <summary>
-            parent_payment
+            The ID of the payment resource on which this <see cref="T:PayPal.Api.Payments.Transaction"/> is based. Assigned in response
             </summary>
+            <value>
+            The ID of the payment resource on which this transaction is based as string.
+            </value>
         </member>
         <member name="P:PayPal.Api.Payments.Authorization.links">
             <summary>
-            links
+            A list of <see cref="T:PayPal.Api.Payments.Link">Links</see>
             </summary>
+            <value>
+            The list of <see cref="T:PayPal.Api.Payments.Link"/> objects.
+            </value>
         </member>
     </members>
 </doc>

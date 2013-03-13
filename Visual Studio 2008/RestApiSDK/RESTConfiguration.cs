@@ -51,8 +51,8 @@ namespace PayPal
         /// <summary>
         /// Gets the current header tags and adds tags for; Authorization, User-Agent, and PayPal-Request-Id.
         /// </summary>
-        /// <returns>The header information as a <see cref="Dictionary">Dictionary of string, string</see></returns>
-        public Dictionary<string, string> GetHeaders()
+        /// <returns>The header information as a Dictionary of string, string</returns>
+        public  Dictionary<string, string> GetHeaders()
         {
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", authorizationToken);

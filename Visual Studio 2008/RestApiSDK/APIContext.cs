@@ -45,6 +45,12 @@ namespace PayPal
             this.requestId = requestId;
         }
 
+        /// <summary>
+        /// Gets the access token.
+        /// </summary>
+        /// <value>
+        /// The access token.
+        /// </value>
         public string AccessToken
         {
             get
@@ -53,6 +59,12 @@ namespace PayPal
             }
         }
 
+        /// <summary>
+        /// Gets the request ID.
+        /// </summary>
+        /// <value>
+        /// The request ID.
+        /// </value>
         public string RequestID
         {
             get

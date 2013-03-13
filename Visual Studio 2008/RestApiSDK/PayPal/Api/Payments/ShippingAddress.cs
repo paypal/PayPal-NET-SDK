@@ -7,16 +7,16 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// Shipping Address
+    /// This object is used for the shipping address.
     /// </summary>
 	public class ShippingAddress : Address  
 	{
 
         /// <summary>
-        /// The recipient name, who will receive the shipment
+        /// The name of the recipient at this address. 50 characters max. Required
         /// </summary>
         /// <value>
-        /// The recipient name as string.
+        /// The name of the recipient at this address, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string recipient_name

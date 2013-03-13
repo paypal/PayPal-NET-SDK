@@ -1,0 +1,10 @@
+2013-03-13 10:44:08,661 [6464] DEBUG PayPal.OAuthTokenCredential [(null)] grant_type=client_credentials
+2013-03-13 10:44:10,953 [6464] DEBUG PayPal.OAuthTokenCredential [(null)] Service response
+2013-03-13 10:44:10,953 [6464] DEBUG PayPal.OAuthTokenCredential [(null)] {"scope":"https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/vault/credit-card/.*","access_token":"bEnunsoxXwpBBeQaaJ0JRmFI1L0nKmF05WqRrl4FrZc","token_type":"Bearer","app_id":"APP-2EJ531395M785864S","expires_in":28800}
+2013-03-13 10:44:11,345 [6464] DEBUG PayPal.PayPalResource [(null)] Content-Type:application/json
+2013-03-13 10:44:11,345 [6464] DEBUG PayPal.PayPalResource [(null)] Authorization:Bearer bEnunsoxXwpBBeQaaJ0JRmFI1L0nKmF05WqRrl4FrZc
+2013-03-13 10:44:11,345 [6464] DEBUG PayPal.PayPalResource [(null)] User-Agent:PayPalSDK/ID 1.0 ;lang=.NET;V=2.0.50727.5466;b=64;OS=Windows 7 6.1.7601.65536;
+2013-03-13 10:44:11,345 [6464] DEBUG PayPal.PayPalResource [(null)] PayPal-Request-Id:585250b0-b936-4843-9578-d6de3bcb4c97
+2013-03-13 10:44:11,441 [6464] DEBUG PayPal.Manager.ConnectionManager [(null)] {"type":"visa","number":"4417119669820331","expire_month":"11","expire_year":"2018"}
+2013-03-13 10:44:11,855 [6464] DEBUG PayPal.Manager.ConnectionManager [(null)] Service response
+2013-03-13 10:44:11,855 [6464] DEBUG PayPal.Manager.ConnectionManager [(null)] {"id":"CARD-8HT852220F590863UKFAJBOY","valid_until":"2016-03-12T00:00:00.000Z","state":"ok","type":"visa","number":"xxxxxxxxxxxx0331","expire_month":"11","expire_year":"2018","links":[{"href":"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-8HT852220F590863UKFAJBOY","rel":"self","method":"GET"}]}

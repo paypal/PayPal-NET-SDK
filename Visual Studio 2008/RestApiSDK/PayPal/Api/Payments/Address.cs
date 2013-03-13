@@ -13,10 +13,10 @@ namespace PayPal.Api.Payments
 	{
 
         /// <summary>
-        /// The first line of an address, typically the street information
+        /// The Line 1 of the address (e.g., Number, street, etc). 100 characters max. Required.
         /// </summary>
         /// <value>
-        /// The first line of an address as string
+        /// The first line of an address, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string line1
@@ -27,10 +27,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The second line of an address, typically the Apt or Suite, etc information
+        /// The Line 2 of the address (e.g., Suite, apt #, etc). 100 characters max. Optional
         /// </summary>
         /// <value>
-        /// The second line of an address as string
+        /// The second line of an address, as string
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string line2
@@ -41,10 +41,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The city name
+        /// The city name. 50 characters max. Required.
         /// </summary>
         /// <value>
-        /// The city name as string.
+        /// The city name, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string city
@@ -55,10 +55,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The State or province name
+        /// The 2 letter code for US states, and the equivalent for other countries. 100 characters max. Required.
         /// </summary>
         /// <value>
-        /// The State or province name as string.
+        /// The 2 letter code for US states, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string state
@@ -69,10 +69,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The U.S. ZIP code or other country-specific postal code. 
+        /// The Zip code or equivalent is usually required for countries that have them. 20 characters max. Required in certain countries.
         /// </summary>
         /// <value>
-        /// The U.S. ZIP code or other country-specific postal code as string.
+        /// The Zip code or equivalent, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string postal_code
@@ -83,10 +83,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Country code
+        /// The 2 letter country code. 2 characters max. Required
         /// </summary>
         /// <value>
-        /// The Country code.
+        /// The 2 letter country code, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string country_code
@@ -97,10 +97,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// type
+        /// Address type; allowable values are residential, business, or mailbox. Optional
         /// </summary>
         /// <value>
-        /// The type.
+        /// The Address type, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string type
@@ -111,10 +111,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The Phone number.
+        /// The phone number in e.123 format. Optional.
         /// </summary>
         /// <value>
-        /// The Phone number.
+        /// The phone number, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string phone

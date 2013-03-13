@@ -11,7 +11,8 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// A Refund Transaction Object
+    /// Use this call to refund a completed payment. 
+    /// Provide the sale_id in the URI and an empty JSON payload for a full refund. For partial refunds, you can include an amount.
     /// </summary>
 	public class Refund : Resource  
 	{
@@ -31,7 +32,8 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The time stamp of when the Refund was created
+        /// The time stamp of when the Refund was created.
+        /// Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
         /// </summary>
         /// <value>
         /// The timestamp of create time as string.
@@ -45,10 +47,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The time stamp of when the Refund is updated.
+        /// The time stamp of when the resource was last updated.  Assigned in response
         /// </summary>
         /// <value>
-        /// The time stamp of when the Refund is updated as string.
+        /// The time stamp of when the resource was last updated as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string update_time
@@ -73,10 +75,11 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        ///  The refund amount.
+        ///  The Refund details including both refunded amount (to Payer) and refunded fee (to Payee). 
+        ///  If amount is not specified, it’s assumed to be full refund. If no amount is provided, you must still provide an empty JSON payload ({}) in the body. Optional
         /// </summary>
         /// <value>
-        /// The refund amount.
+        /// The Refund details including both refunded amount (to Payer) and refunded fee (to Payee) as <see cref="Amount"/>.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Amount amount
@@ -87,10 +90,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The origional sale id, that you are refunding
+        /// The origional sale ID of the sale transaction being refunded. Assigned in response
         /// </summary>
         /// <value>
-        /// The origional sale id, that you are refunding as string.
+        /// The origional sale ID of the sale transaction being refunded as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string sale_id
@@ -115,10 +118,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// parent_payment
+        /// The ID of the payment resource on which this transaction is based. Assigned in response.
         /// </summary>
         /// <value>
-        /// The parent_payment.
+        /// The ID of the payment resource on which this transaction is based, as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string parent_payment
@@ -129,7 +132,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The general description for the refund
+        /// The general description for the refund. Optional
         /// </summary>
         /// <value>
         /// The general description for the refund as string.
@@ -158,8 +161,8 @@ namespace PayPal.Api.Payments
 
 		/// <summary>
 		/// Get call for Refund.
-		/// GET /v1/payments/refund/:refundId
-        ///  </summary>
+        /// <code>GET /v1/payments/refund/:refundId</code>
+        ///  </summary>       
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="refundId">RefundId</param>
 		/// <returns>Returns Refund object</returns>
