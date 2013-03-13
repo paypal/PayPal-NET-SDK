@@ -18,13 +18,19 @@ using PayPal.Manager;
 
 namespace PayPal
 {
+    /// <summary>
+    /// PayPal Resources
+    /// </summary>
     public abstract class PayPalResource
     {
         /// <summary>
-        /// Logs output statements, errors, debug info to a text file    
+        /// Logs output statements, errors, debug info to a text file
         /// </summary>
         private static readonly ILog logger = LogManagerWrapper.GetLogger(typeof(PayPalResource));
 
+        /// <summary>
+        /// The list of possible retry codes
+        /// </summary>
         private static ArrayList retryCodes = new ArrayList(new HttpStatusCode[] 
                                                 { HttpStatusCode.GatewayTimeout,
                                                   HttpStatusCode.RequestTimeout,
@@ -32,6 +38,9 @@ namespace PayPal
                                                   HttpStatusCode.ServiceUnavailable,
                                                 });
 
+        /// <summary>
+        /// The SDK ID
+        /// </summary>
         public const string SdkID = "ID";
 
         public const string SdkVersion = "1.0";

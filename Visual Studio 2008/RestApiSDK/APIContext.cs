@@ -2,6 +2,10 @@
 
 namespace PayPal
 {
+    /// <summary>
+    /// The ApiContext used object to authenticate the call and to send a unique request id (that ensures idempotency).
+    /// The SDK generates a request id if you do not pass one explicitly. 
+    /// </summary>
     public class APIContext
     {
         /// <summary>
@@ -41,6 +45,12 @@ namespace PayPal
             this.requestId = requestId;
         }
 
+        /// <summary>
+        /// Gets the access token.
+        /// </summary>
+        /// <value>
+        /// The access token.
+        /// </value>
         public string AccessToken
         {
             get
@@ -49,6 +59,12 @@ namespace PayPal
             }
         }
 
+        /// <summary>
+        /// Gets the request ID.
+        /// </summary>
+        /// <value>
+        /// The request ID.
+        /// </value>
         public string RequestID
         {
             get

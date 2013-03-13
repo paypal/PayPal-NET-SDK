@@ -4,15 +4,33 @@ using System.Text;
 
 namespace PayPal
 {
+    /// <summary>
+    /// REST Configuration
+    /// </summary>
     public class RESTConfiguration
     {
+        /// <summary>
+        /// Gets or sets the authorization token.
+        /// </summary>
+        /// <value>
+        /// The authorization token.
+        /// </value>
         public string authorizationToken
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The request identity
+        /// </summary>
         private string requestIdentity;
+        /// <summary>
+        /// Gets or sets the request id.
+        /// </summary>
+        /// <value>
+        /// The request id.
+        /// </value>
         public string requestId
         {
             private get
@@ -25,9 +43,16 @@ namespace PayPal
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RESTConfiguration"/> class.
+        /// </summary>
         public RESTConfiguration() {}
 
-        public Dictionary<string, string> GetHeaders()
+        /// <summary>
+        /// Gets the current header tags and adds tags for; Authorization, User-Agent, and PayPal-Request-Id.
+        /// </summary>
+        /// <returns>The header information as a Dictionary of string, string</returns>
+        public  Dictionary<string, string> GetHeaders()
         {
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", authorizationToken);
@@ -36,6 +61,10 @@ namespace PayPal
             return headers;
         }
 
+        /// <summary>
+        /// Forms the user agent header.
+        /// </summary>
+        /// <returns>The operating system informational header tag</returns>
         private string FormUserAgentHeader()
         {
             string header = null;
@@ -53,6 +82,10 @@ namespace PayPal
             return header;
         }
 
+        /// <summary>
+        /// Gets the operating system header.
+        /// </summary>
+        /// <returns>The operating system informational header tag</returns>
         private string GetOSHeader()
         {
             string osHeader = string.Empty;
@@ -73,6 +106,10 @@ namespace PayPal
             return osHeader;
         }
 
+        /// <summary>
+        /// Gets the dot net version header tag.
+        /// </summary>
+        /// <returns>The dot net version header tag as string</returns>
         private string GetDotNetVersionHeader()
         {
             string DotNetVersionHeader = "lang=" + ".NET;" + "V=" + Environment.Version.ToString().Trim();

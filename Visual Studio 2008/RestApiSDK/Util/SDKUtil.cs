@@ -6,6 +6,9 @@ using System.Text;
 
 namespace PayPal.Util
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SDKUtil
     {
         public static string FormatURIPath(string pattern, Object[] parameters)

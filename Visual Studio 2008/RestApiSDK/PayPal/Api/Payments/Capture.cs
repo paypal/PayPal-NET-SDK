@@ -23,22 +23,29 @@ namespace PayPal.Api.Payments
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// create_time
-    	/// </summary>
+
+        /// <summary>
+        /// The time stamp of when the Capture was created.
+        /// Payment creation time as defined in <see href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 Section 5.6</see>.  Assigned in response 
+        /// </summary>
+        /// <value>
+        /// The timestamp of create time as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string create_time
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// update_time
-    	/// </summary>
+
+        /// <summary>
+        /// The time stamp of when the resource was last updated.  Assigned in response
+        /// </summary>
+        /// <value>
+        /// The time stamp of when the resource was last updated as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string update_time
 		{
@@ -111,11 +118,12 @@ namespace PayPal.Api.Payments
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns>the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

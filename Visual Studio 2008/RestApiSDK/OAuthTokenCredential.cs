@@ -18,17 +18,23 @@ using Newtonsoft.Json.Linq;
 
 namespace PayPal
 {
+    /// <summary>
+    /// Retrieve the access token from OAuthTokenCredential by passing in ClientID and ClientSecret.
+    /// </summary>
     public class OAuthTokenCredential
     {
 
+        /// <summary>
+        /// oAUTH Token URI Path
+        /// </summary>
         private const string OAUTHTOKENPATH = "/v1/oauth2/token";
         /// <summary>
-        /// Client ID for OAuth
+        /// PayPal Client ID key for OAuth, issued to you when you created the PayPal developer account
         /// </summary>
         private String clientID;
 
         /// <summary>
-        /// Client Secret for OAuth
+        /// PayPal Client Secret key for OAuth, issued to you when you created the PayPal developer account
         /// </summary>
         private string clientSecret;
 
@@ -60,14 +66,18 @@ namespace PayPal
         /// <summary>
         /// Client ID and Secret for the OAuth
         /// </summary>
-        /// <param name="clientID"></param>
-        /// <param name="clientSecret"></param>
+        /// <param name="clientID">The PayPal Client ID for OAuth</param>
+        /// <param name="clientSecret">The PayPal Client Secret string for OAuth</param>
         public OAuthTokenCredential(String clientID, String clientSecret)
         {
             this.clientID = clientID;
             this.clientSecret = clientSecret;
         }
 
+        /// <summary>
+        /// Gets the oAuth access token.
+        /// </summary>
+        /// <returns>The oAuth access token</returns>
         public string GetAccessToken()
         {
             // If Access Token is not Null and time has lapsed
@@ -93,6 +103,10 @@ namespace PayPal
             return accessToken;
         }
 
+        /// <summary>
+        /// Generates the access token.
+        /// </summary>
+        /// <returns>The generated oAuth access token as string</returns>
         private string GenerateAccessToken()
         {
             string generatedToken = null;
@@ -101,6 +115,15 @@ namespace PayPal
             return generatedToken;
         }
 
+        /// <summary>
+        /// Generates the base64 string.
+        /// </summary>
+        /// <param name="clientCredential">The client credential.</param>
+        /// <returns>
+        /// The base64 string
+        /// </returns>
+        /// <exception cref="PayPalException">
+        /// </exception>
         private string GenerateBase64String(string clientCredential)
         {
             try
@@ -127,6 +150,13 @@ namespace PayPal
             }           
         }
 
+        /// <summary>
+        /// Generates the oAuth token.
+        /// </summary>
+        /// <param name="base64ClientID">The base64 client ID.</param>
+        /// <returns>The oAuth token.</returns>
+        /// <exception cref="PayPalException">
+        /// </exception>
         private string GenerateOAuthToken(string base64ClientID)
         { 
             try

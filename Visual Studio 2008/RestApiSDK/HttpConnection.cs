@@ -14,13 +14,19 @@ using PayPal.Manager;
 
 namespace PayPal
 {
+    /// <summary>
+    /// Http Connection Object
+    /// </summary>
     public class HttpConnection
     {
         /// <summary>
-        /// Logger
+        /// PayPal exception Logger
         /// </summary>
         private static ILog logger = LogManagerWrapper.GetLogger(typeof(ConnectionManager));
 
+        /// <summary>
+        /// The List of retry codes
+        /// </summary>
         private static ArrayList retryCodes = new ArrayList(new HttpStatusCode[] 
                                                 { HttpStatusCode.GatewayTimeout,
                                                   HttpStatusCode.RequestTimeout,
@@ -28,6 +34,18 @@ namespace PayPal
                                                   HttpStatusCode.ServiceUnavailable,
                                                 });
 
+        /// <summary>
+        /// Executes the specified pay load.
+        /// </summary>
+        /// <param name="payLoad">The pay load.</param>
+        /// <param name="httpRequest">The HTTP request.</param>
+        /// <returns></returns>
+        /// <exception cref="PayPal.Exception.ConnectionException">Invalid HTTP response  + ex.Message</exception>
+        /// <exception cref="PayPalException">
+        /// Exception in HttpConnection Execute:  + ex.Message
+        /// or
+        /// Exception in HttpConnection Execute
+        /// </exception>
         public string Execute(string payLoad, HttpWebRequest httpRequest)
         {
             try

@@ -5,6 +5,9 @@ using log4net;
 
 namespace PayPal.Exception
 {
+    /// <summary>
+    /// PayPal Exceptions
+    /// </summary>
     public class PayPalException : System.Exception
     {
         /// <summary>

@@ -11,146 +11,185 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-	/// 
+    /// A resource  represents a payer’s funding instrument, such as a credit card or token that represents a credit card.
     /// </summary>
 	public class CreditCard : Resource  
 	{
 
-		/// <summary>
-		/// id
-    	/// </summary>
+        /// <summary>
+        /// The ID of the credit card. This ID is provided in the response when storing credit cards. Required if using a stored credit card.
+        /// </summary>
+        /// <value>
+        /// The ID of the credit card, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string id
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// valid_until
-    	/// </summary>
+
+        /// <summary>
+        /// Funding instrument expiration date. Assigned in response
+        /// </summary>
+        /// <value>
+        /// The funding instrument expiration date, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string valid_until
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// state
-    	/// </summary>
+
+        /// <summary>
+        /// State of the credit card funding instrument: expired or ok. Assigned in response
+        /// </summary>
+        /// <value>
+        /// The state of the credit card funding instrument, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string state
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// payer_id
-    	/// </summary>
+
+        /// <summary>
+        /// The payer id
+        /// </summary>
+        /// <value>
+        /// The payer id as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string payer_id
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// type
-    	/// </summary>
+
+        /// <summary>
+        /// The Credit card type. Valid types are: Visa, MasterCard, Discover, Amex Required.
+        /// </summary>
+        /// <value>
+        /// The Credit card type, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string type
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// number
-    	/// </summary>
+
+        /// <summary>
+        /// The Credit card number. Numeric characters only with no spaces or punctuation. The string must conform with modulo and length required by each credit card type. Redacted in responses. Required.
+        /// </summary>
+        /// <value>
+        /// The Credit card number, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string number
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// expire_month
-    	/// </summary>
+
+        /// <summary>
+        /// The 1-2 digit expiration month. Required.
+        /// </summary>
+        /// <value>
+        /// The 1-2 digit expiration month, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string expire_month
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// expire_year
-    	/// </summary>
+
+        /// <summary>
+        /// The 4-digit expiration year. Required.
+        /// </summary>
+        /// <value>
+        /// The 4-digit expiration year, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string expire_year
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// cvv2
-    	/// </summary>
+
+        /// <summary>
+        /// The 3-4 digit Credit Card Code (CCV) on the back of the card.
+        /// </summary>
+        /// <value>
+        /// The 3-4 digit Credit Card Code, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string cvv2
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// first_name
-    	/// </summary>
+
+        /// <summary>
+        /// The cardholder’s first name. Optional
+        /// </summary>
+        /// <value>
+        /// The cardholder’s first name, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string first_name
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// last_name
-    	/// </summary>
+
+        /// <summary>
+        /// The cardholder’s last name. Optional
+        /// </summary>
+        /// <value>
+        /// The cardholder’s last name, as string.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string last_name
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// billing_address
-    	/// </summary>
+
+        /// <summary>
+        /// The billing address associated with card. Optional
+        /// </summary>
+        /// <value>
+        /// The billing address associated with card, as <see cref="Address"/>.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Address billing_address
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// links
-    	/// </summary>
+
+        /// <summary>
+        /// A list of <see cref="Link">Links</see>.
+        /// </summary>
+        /// <value>
+        /// The list of <see cref="Link"/> objects.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Link> links
 		{
@@ -162,9 +201,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Create call for CreditCard.
 		/// POST /v1/vault/credit-card
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 		/// <returns>Returns CreditCard object</returns>
-		/// </summary>
 		public CreditCard Create(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -174,9 +213,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Create call for CreditCard.
 		/// POST /v1/vault/credit-card
+        /// </summary>
         /// <param name="apiContext">APIContext used for the API call</param>
 		/// <returns>Returns CreditCard object</returns>
-		/// </summary>
 		public CreditCard Create(APIContext apiContext)
 		{
 			string resourcePath = "v1/vault/credit-card";
@@ -187,10 +226,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for CreditCard.
 		/// GET /v1/vault/credit-card/:creditCardId
+        /// </summary>
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="creditCardId">CreditCardId</param>
 		/// <returns>Returns CreditCard object</returns>
-		/// </summary>
 		public static CreditCard Get(string accessToken, string creditCardId)
 		{
 			if (String.IsNullOrEmpty(creditCardId))
@@ -204,9 +243,10 @@ namespace PayPal.Api.Payments
 			return PayPalResource.ConfigureAndExecute<CreditCard>(accessToken, HttpMethod.GET, resourcePath, payLoad);
 		}
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns> the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

@@ -7,7 +7,7 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-	/// 
+    /// SubTransaction
     /// </summary>
 	public class SubTransaction : Resource  
 	{
@@ -21,44 +21,54 @@ namespace PayPal.Api.Payments
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// authorization
-    	/// </summary>
+
+        /// <summary>
+        /// authorization
+        /// </summary>
+        /// <value>
+        /// The authorization.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Authorization authorization
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// refund
-    	/// </summary>
+
+        /// <summary>
+        /// refund
+        /// </summary>
+        /// <value>
+        /// The refund.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Refund refund
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// capture
-    	/// </summary>
+
+        /// <summary>
+        /// capture
+        /// </summary>
+        /// <value>
+        /// The capture.
+        /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Capture capture
 		{
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns> the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

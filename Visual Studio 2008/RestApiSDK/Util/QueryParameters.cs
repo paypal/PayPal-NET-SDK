@@ -25,6 +25,9 @@ namespace PayPal.Util
 
         private Dictionary<String, String> containerMap;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryParameters"/> class.
+        /// </summary>
         public QueryParameters()
         {
             containerMap = new Dictionary<String, String>();
@@ -108,12 +111,10 @@ namespace PayPal.Util
             containerMap.Add(PAYEEID, payeeId);
         }
 
-        /**
-         * Set the sort by field
-         * 
-         * @param sortBy
-         *            Sort based on create_time or update_time.
-         */
+        /// <summary>
+        /// Sets the sort by based on create_time or update_time.
+        /// </summary>
+        /// <param name="sortBy">The sort by.</param>
         public void SetSortBy(String sortBy)
         {
             containerMap.Add(SORTBY, sortBy);
