@@ -11,7 +11,7 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// Payment Information
+    /// Payment Information about the <see cref="Transaction"/>
     /// </summary>
 	public class Payment : Resource  
 	{
@@ -73,10 +73,14 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// intent
+        /// How you want to obtain payment. When implementing parallel payments, this field is required and must be set to Order. When implementing digital goods, this field is required and must be set to Sale. If the transaction does not include a one-time purchase, this field is ignored. 
+        /// It is one of the following values:
+        ///     Sale – This is a final sale for which you are requesting payment.
+        ///     Authorization – This payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+        ///     Order – This payment is an order authorization subject to settlement with PayPal Authorization and Capture.
         /// </summary>
         /// <value>
-        /// The intent.
+        /// The method used to processing this payment as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string intent
@@ -87,7 +91,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The payer information
+        /// The payer information, the person who funds a payment.
         /// </summary>
         /// <value>
         /// The payer information as a <see cref="Payer"/> object.
@@ -102,6 +106,7 @@ namespace PayPal.Api.Payments
 
         /// <summary>
         /// The list of transactions.
+        /// The Payment creation API requires a list of <see cref="Transaction">Transactions</see>.
         /// </summary>
         /// <value>
         /// The list of <see cref="Transaction"/> objects.

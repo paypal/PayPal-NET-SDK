@@ -2,6 +2,10 @@
 
 namespace PayPal
 {
+    /// <summary>
+    /// The ApiContext used object to authenticate the call and to send a unique request id (that ensures idempotency).
+    /// The SDK generates a request id if you do not pass one explicitly. 
+    /// </summary>
     public class APIContext
     {
         /// <summary>

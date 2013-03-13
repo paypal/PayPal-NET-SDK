@@ -9,16 +9,17 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// Transaction Information
+    /// A transaction defines the contract of a payment.
+    /// what is the payment for and who is fulfilling it. Transaction is created with a 'Payee' and 'Amount' types
     /// </summary>
 	public class Transaction : Resource  
 	{
 
         /// <summary>
-        /// The Amount to capture.
+        /// The Amount of funds in this Transaction.
         /// </summary>
         /// <value>
-        /// The Amount to capture as <see cref="Amount"/>.
+        /// The Amount to capture as <see cref="Amount"/> in this Transaction.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public Amount amount
@@ -29,7 +30,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The payee information
+        /// The payee information, the person receiving the funds.
         /// </summary>
         /// <value>
         /// The payee information as <see cref="Payee"/>.
@@ -43,10 +44,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// The description of the transacrion.
+        /// A general description of the transacrion, such as "Artwork Purchase".
         /// </summary>
         /// <value>
-        /// The description of the transacrion as string.
+        /// The general description of the transacrion as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string description

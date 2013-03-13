@@ -7,7 +7,7 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// The Address Object
+    /// The Base Address object used as shipping or billing address in a payment.
     /// </summary>
 	public class Address : Resource  
 	{

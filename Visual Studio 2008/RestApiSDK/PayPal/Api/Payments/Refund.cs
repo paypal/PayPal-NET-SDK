@@ -11,7 +11,7 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// Refund Information Object
+    /// A Refund Transaction Object
     /// </summary>
 	public class Refund : Resource  
 	{
@@ -129,10 +129,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// description
+        /// The general description for the refund
         /// </summary>
         /// <value>
-        /// The description.
+        /// The general description for the refund as string.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string description
@@ -143,7 +143,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// A list of <see cref="Link"/>s
+        /// A list of <see cref="Link">Links</see>
         /// </summary>
         /// <value>
         /// The list of <see cref="Link"/> objects.
@@ -159,10 +159,10 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Get call for Refund.
 		/// GET /v1/payments/refund/:refundId
+        ///  </summary>
         /// <param name="accessToken">Access Token</param>
 	 	/// <param name="refundId">RefundId</param>
 		/// <returns>Returns Refund object</returns>
-		/// </summary>
 		public static Refund Get(string accessToken, string refundId)
 		{
 			if (String.IsNullOrEmpty(refundId))

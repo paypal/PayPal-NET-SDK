@@ -32,11 +32,12 @@ namespace PayPal.Api.Payments
 			get;
 			set;
 		}
-		
 
-		/// <summary>
-		/// Converts the object to JSON string
-		/// </summary>
+
+        /// <summary>
+        /// Converts the object to JSON string
+        /// </summary>
+        /// <returns>the object as a JSON string</returns>
 		public new string ConvertToJson() 
     	{ 
     		return JsonFormatter.ConvertToJson(this);

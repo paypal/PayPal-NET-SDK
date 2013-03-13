@@ -11,7 +11,7 @@ namespace PayPal.Api.Payments
 {
 
 	/// <summary>
-    /// The Credit Card Object
+    /// A resource representing a credit card that can be used to fund a payment.
     /// </summary>
 	public class CreditCard : Resource  
 	{
@@ -70,10 +70,10 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// type
+        /// The type or brand of credit card, such as visa, mastercard, or discover.
         /// </summary>
         /// <value>
-        /// The type.
+        /// The type or brand of credit card.
         /// </value>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string type
@@ -182,7 +182,7 @@ namespace PayPal.Api.Payments
 
 
         /// <summary>
-        /// A list of <see cref="Link"/>s
+        /// A list of <see cref="Link">Links</see>.
         /// </summary>
         /// <value>
         /// The list of <see cref="Link"/> objects.

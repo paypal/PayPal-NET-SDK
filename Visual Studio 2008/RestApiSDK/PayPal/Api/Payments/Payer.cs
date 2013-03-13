@@ -9,13 +9,13 @@ namespace PayPal.Api.Payments
 {
 
     /// <summary>
-    /// The Payer 
+    /// A resource representing a Payer that funds a payment 
     /// </summary>
 	public class Payer : Resource  
 	{
 
         /// <summary>
-        /// The payment method to be used by the payer.
+        /// The payment method to be used by the payer. (Typically set to "paypal")
         /// </summary>
         /// <value>
         /// The payment method to be used by the payer as string.
