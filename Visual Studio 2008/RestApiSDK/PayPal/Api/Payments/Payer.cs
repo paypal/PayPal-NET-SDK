@@ -9,7 +9,7 @@ namespace PayPal.Api.Payments
 {
 
     /// <summary>
-    /// A resource representing a Payer that funds a payment 
+    /// A resource representing a Payer that funds a <see cref="Payment"/>. 
     /// </summary>
 	public class Payer : Resource  
 	{
