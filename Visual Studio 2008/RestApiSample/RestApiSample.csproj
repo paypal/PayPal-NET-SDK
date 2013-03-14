@@ -121,6 +121,13 @@
     <Compile Include="PaymentWithPayPal.aspx.designer.cs">
       <DependentUpon>PaymentWithPayPal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PaymentWithPayPalWithMultipleItems.aspx.cs">
+      <DependentUpon>PaymentWithPayPalWithMultipleItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentWithPayPalWithMultipleItems.aspx.designer.cs">
+      <DependentUpon>PaymentWithPayPalWithMultipleItems.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PaymentWithSavedCard.aspx.cs">
       <DependentUpon>PaymentWithSavedCard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,6 +193,7 @@
     <Content Include="Packages\RestApiSDK\lib\RestApiSDK.dll" />
     <Content Include="PaymentWithCreditCard.aspx" />
     <Content Include="PaymentWithPayPal.aspx" />
+    <Content Include="PaymentWithPayPalWithMultipleItems.aspx" />
     <Content Include="PaymentWithSavedCard.aspx" />
     <Content Include="Response.aspx" />
     <Content Include="SaleRefund.aspx" />

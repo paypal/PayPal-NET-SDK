@@ -41,10 +41,24 @@ namespace PayPal
         /// <summary>
         /// The SDK ID
         /// </summary>
-        public const string SdkID = "ID";
+        public const string SdkID = "rest-sdk-dotnet";
 
-        public const string SdkVersion = "1.0";
+        /// <summary>
+        /// The SDK version
+        /// </summary>
+        public const string SdkVersion = "0.5.0";
 
+        /// <summary>
+        /// Configures and execute  <see cref="accessToken"/>.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="accessToken">The access token.</param>
+        /// <param name="httpMethod">The HTTP method.</param>
+        /// <param name="resource">The resource.</param>
+        /// <param name="payLoad">The pay load.</param>
+        /// <returns></returns>
+        /// <exception cref="PayPalException">
+        /// </exception>
         public static T ConfigureAndExecute<T>(string accessToken, HttpMethod httpMethod, string resource, string payLoad)
         {
             try
@@ -104,6 +118,17 @@ namespace PayPal
             }           
         }
 
+        /// <summary>
+        /// Configures and execute the <see cref="APIContext"/>.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="apiContext">The API context.</param>
+        /// <param name="httpMethod">The HTTP method.</param>
+        /// <param name="resource">The resource.</param>
+        /// <param name="payLoad">The pay load.</param>
+        /// <returns></returns>
+        /// <exception cref="PayPalException">
+        /// </exception>
         public static T ConfigureAndExecute<T>(APIContext apiContext, HttpMethod httpMethod, string resource, string payLoad)
         {
             try
