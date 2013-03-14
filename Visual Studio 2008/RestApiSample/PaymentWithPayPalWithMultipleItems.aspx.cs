@@ -114,7 +114,8 @@ namespace RestApiSample
                 item_list.items = new List<Item>();
 
                 // Now we build the items.  
-                //REMEMBER: The sum total of all of the Items in the ItemList must equal the value entered in AmountDetails.subtotal
+                // REMEMBER: The sum total of all of the Items in the ItemList must equal the value entered in AmountDetails.subtotal
+
                 // Create Item 1
                 Item Item1 = new Item();
                 Item1.currency = "USD";
