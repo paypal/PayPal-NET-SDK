@@ -117,6 +117,7 @@ namespace RestApiSample
                 Transaction tran = new Transaction();
                 tran.description = "Transaction description.";
                 tran.amount = amnt;
+
                 // The Payment creation API requires a list of
                 // Transaction; add the created `Transaction`
                 // to a List
@@ -130,6 +131,8 @@ namespace RestApiSample
                 pymnt.payer = payr;
                 pymnt.transactions = transactionList;
                 pymnt.redirect_urls = redirUrls;
+
+
 
                 try
                 {
@@ -158,6 +161,8 @@ namespace RestApiSample
                     // using a valid AccessToken
                     // The return object contains the status;
                     Payment createdPayment = pymnt.Create(apiContext);
+
+
 
                     CurrContext.Items.Add("ResponseJson", JObject.Parse(createdPayment.ConvertToJson()).ToString(Formatting.Indented));
 
