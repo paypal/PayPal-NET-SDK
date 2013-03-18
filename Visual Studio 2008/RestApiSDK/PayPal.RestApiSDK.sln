@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayPal.RestApiSDK", "PayPal.RestApiSDK.csproj", "{CFCC4700-771A-46BA-A189-137034601158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayPal.RestApiSDKUnitTest", "RestApiSDKUnitTest\PayPal.RestApiSDKUnitTest.csproj", "{0F307BFE-6D0C-4296-9D09-148A4DF275CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{874306AB-298B-4391-ACEF-768F9E52BF7B}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		RestApiSDK.vsmdi = RestApiSDK.vsmdi
+		RestApiSDK1.vsmdi = RestApiSDK1.vsmdi
+		RestApiSDK10.vsmdi = RestApiSDK10.vsmdi
+		RestApiSDK11.vsmdi = RestApiSDK11.vsmdi
+		RestApiSDK12.vsmdi = RestApiSDK12.vsmdi
+		RestApiSDK13.vsmdi = RestApiSDK13.vsmdi
+		RestApiSDK2.vsmdi = RestApiSDK2.vsmdi
+		RestApiSDK3.vsmdi = RestApiSDK3.vsmdi
+		RestApiSDK4.vsmdi = RestApiSDK4.vsmdi
+		RestApiSDK5.vsmdi = RestApiSDK5.vsmdi
+		RestApiSDK6.vsmdi = RestApiSDK6.vsmdi
+		RestApiSDK7.vsmdi = RestApiSDK7.vsmdi
+		RestApiSDK8.vsmdi = RestApiSDK8.vsmdi
+		RestApiSDK9.vsmdi = RestApiSDK9.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = RestApiSDK13.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFCC4700-771A-46BA-A189-137034601158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCC4700-771A-46BA-A189-137034601158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCC4700-771A-46BA-A189-137034601158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCC4700-771A-46BA-A189-137034601158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F307BFE-6D0C-4296-9D09-148A4DF275CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F307BFE-6D0C-4296-9D09-148A4DF275CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F307BFE-6D0C-4296-9D09-148A4DF275CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F307BFE-6D0C-4296-9D09-148A4DF275CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
