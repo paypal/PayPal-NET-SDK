@@ -60,6 +60,22 @@
             </tr>
             <tr>
                 <td>
+                    Payment with a PayPal Account with multiple items
+                </td>
+                <td>
+                </td>
+                <td>
+                    <a href="PaymentWithPayPalWithMultipleItems.aspx" class="execute imagelink">Execute</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <a href="Source/PaymentWithPayPalWithMultipleItems.aspx.html" class="source imagelink">Source</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
                     Get Payment Details
                 </td>
                 <td>

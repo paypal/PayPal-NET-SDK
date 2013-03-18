@@ -203,6 +203,7 @@
     <Content Include="Source\assets\sideNavOut.png" />
     <Content Include="Source\assets\sideNavOver.png" />
     <Content Include="Source\assets\style.css" />
+    <Content Include="Source\PaymentWithPayPalWithMultipleItems.aspx.html" />
     <Content Include="Source\CreateCreditCard.aspx.html" />
     <Content Include="Source\GetCreditCard.aspx.html" />
     <Content Include="Source\GetPayment.aspx.html" />
