@@ -49,7 +49,7 @@ namespace PayPal
         public const string SdkVersion = "0.5.0";
 
         /// <summary>
-        /// Configures and execute  <see cref="accessToken"/>.
+        /// Configures and execute  <see cref="accessToken" />.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="accessToken">The access token.</param>

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PayPal.Util
 {
+    /// <summary>
+    /// Query Parameters
+    /// </summary>
     public class QueryParameters
     {
         private static readonly String COUNT = "count";

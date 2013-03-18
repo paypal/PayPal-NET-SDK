@@ -38,11 +38,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Packages\Newtonsoft.Json\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal.RestApiSDK, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="PayPalCoreSDK, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="RestApiSDK, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\RestApiSDK\bin\Release\RestApiSDK.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -189,8 +186,9 @@
     <Content Include="Packages\Newtonsoft.Json\lib\sl4\Newtonsoft.Json.xml" />
     <Content Include="Packages\Newtonsoft.Json\lib\winrt45\Newtonsoft.Json.dll" />
     <Content Include="Packages\Newtonsoft.Json\lib\winrt45\Newtonsoft.Json.xml" />
+    <Content Include="Packages\PayPal.RestApiSDK\lib\PayPal.RestApiSDK.dll" />
+    <Content Include="Packages\PayPal.RestApiSDK\lib\PayPal.RestApiSDK.xml" />
     <Content Include="Packages\PayPalCoreSDK\lib\PayPalCoreSDK.dll" />
-    <Content Include="Packages\RestApiSDK\lib\RestApiSDK.dll" />
     <Content Include="PaymentWithCreditCard.aspx" />
     <Content Include="PaymentWithPayPal.aspx" />
     <Content Include="PaymentWithPayPalWithMultipleItems.aspx" />

@@ -2,13 +2,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0F307BFE-6D0C-4296-9D09-148A4DF275CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RestApiSDKUnitTest</RootNamespace>
-    <AssemblyName>RestApiSDKUnitTest</AssemblyName>
+    <RootNamespace>PayPal.RestApiSDKUnitTest</RootNamespace>
+    <AssemblyName>PayPal.RestApiSDKUnitTest</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -96,15 +96,15 @@
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Shadow Include="Test References\RestApiSDK.accessor" />
+    <Shadow Include="Test References\PayPal.RestApiSDK.accessor" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RestApiSDK.csproj">
+    <ProjectReference Include="..\PayPal.RestApiSDK.csproj">
       <Project>{CFCC4700-771A-46BA-A189-137034601158}</Project>
-      <Name>RestApiSDK</Name>
+      <Name>PayPal.RestApiSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
