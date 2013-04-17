@@ -11,6 +11,7 @@ using System.Net.Security;
 using log4net;
 using PayPal.Exception;
 using PayPal.Manager;
+using Newtonsoft.Json;
 
 namespace PayPal
 {
@@ -30,6 +31,7 @@ namespace PayPal
 
         public string Execute(string payLoad, HttpWebRequest httpRequest)
         {
+			PayPal.Api.Errors.Error error = null; 
             try
             {
                 switch (httpRequest.Method)
@@ -77,6 +79,14 @@ namespace PayPal
                         {
                             HttpStatusCode statusCode = ((HttpWebResponse)ex.Response).StatusCode;
                             logger.Info("Got " + statusCode.ToString() + " response from server");
+
+							using (StreamReader readerStream = new StreamReader(ex.Response.GetResponseStream()))
+							{
+								string response = readerStream.ReadToEnd().Trim();
+								logger.Debug("Service ERROR response");
+								logger.Debug(response);
+								error = JsonConvert.DeserializeObject<PayPal.Api.Errors.Error>(response);
+							}
                         }
                         if (!RequiresRetry(ex))
                         {
@@ -89,6 +99,9 @@ namespace PayPal
             }
             catch (System.Exception ex)
             {
+				if (error != null)
+					throw new PayPalException("Exception in HttpConnection Execute: " + ex.Message, ex, error);
+
                 throw new PayPalException("Exception in HttpConnection Execute: " + ex.Message, ex);
             }
             throw new PayPalException("Exception in HttpConnection Execute");
