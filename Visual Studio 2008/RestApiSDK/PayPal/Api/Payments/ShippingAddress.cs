@@ -8,7 +8,7 @@ using PayPal.Api.Payments;
 
 namespace PayPal.Api.Payments
 {
-	public class ShippingAddress
+	public class ShippingAddress : Address
 	{
 		/// <summary>
 		/// Name of the recipient at this address.

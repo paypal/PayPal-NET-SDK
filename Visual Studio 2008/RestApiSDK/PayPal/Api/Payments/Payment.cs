@@ -97,13 +97,15 @@ namespace PayPal.Api.Payments
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public List<Links> links
 		{
-            get;
-            set;
+			get;
+			set;
 		}
 	
 		/// <summary>
 		/// Creates (and processes) a new Payment Resource.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <returns>Payment</returns>
 		public Payment Create(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -113,6 +115,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates (and processes) a new Payment Resource.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <returns>Payment</returns>
 		public Payment Create(APIContext apiContext)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -127,6 +131,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Payment resource for the given identifier.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="paymentId">string</param>
+		/// <returns>Payment</returns>
 		public static Payment Get(string accessToken, string paymentId)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -136,6 +143,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Payment resource for the given identifier.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="paymentId">string</param>
+		/// <returns>Payment</returns>
 		public static Payment Get(APIContext apiContext, string paymentId)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -156,6 +166,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Executes the payment (after approved by the Payer) associated with this resource when the payment method is PayPal.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="paymentExecution">PaymentExecution</param>
+		/// <returns>Payment</returns>
 		public Payment Execute(string accessToken, PaymentExecution paymentExecution)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -165,6 +178,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Executes the payment (after approved by the Payer) associated with this resource when the payment method is PayPal.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="paymentExecution">PaymentExecution</param>
+		/// <returns>Payment</returns>
 		public Payment Execute(APIContext apiContext, PaymentExecution paymentExecution)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -189,6 +205,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Retrieves a list of Payment resources.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="containerDictionary">Dictionary<String, String></param>
+		/// <returns>PaymentHistory</returns>
 		public static PaymentHistory List(string accessToken, Dictionary<String, String> containerDictionary)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -198,6 +217,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Retrieves a list of Payment resources.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="containerDictionary">Dictionary<String, String></param>
+		/// <returns>PaymentHistory</returns>
 		public static PaymentHistory List(APIContext apiContext, Dictionary<String, String> containerDictionary)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))

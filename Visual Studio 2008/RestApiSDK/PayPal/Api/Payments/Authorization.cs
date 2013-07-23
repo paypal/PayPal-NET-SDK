@@ -94,6 +94,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Authorization transaction resource for the given identifier.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="authorizationId">string</param>
+		/// <returns>Authorization</returns>
 		public static Authorization Get(string accessToken, string authorizationId)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -103,6 +106,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Authorization transaction resource for the given identifier.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="authorizationId">string</param>
+		/// <returns>Authorization</returns>
 		public static Authorization Get(APIContext apiContext, string authorizationId)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -123,6 +129,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates (and processes) a new Capture Transaction added as a related resource.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="capture">Capture</param>
+		/// <returns>Capture</returns>
 		public Capture Capture(string accessToken, Capture capture)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -132,6 +141,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates (and processes) a new Capture Transaction added as a related resource.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="capture">Capture</param>
+		/// <returns>Capture</returns>
 		public Capture Capture(APIContext apiContext, Capture capture)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -156,6 +168,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Voids (cancels) an Authorization.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <returns>Authorization</returns>
 		public Authorization Void(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -165,6 +179,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Voids (cancels) an Authorization.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <returns>Authorization</returns>
 		public Authorization Void(APIContext apiContext)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))

@@ -144,6 +144,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates a new Credit Card Resource (aka Tokenize).
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <returns>CreditCard</returns>
 		public CreditCard Create(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -153,6 +155,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates a new Credit Card Resource (aka Tokenize).
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <returns>CreditCard</returns>
 		public CreditCard Create(APIContext apiContext)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -167,6 +171,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Credit Card resource for the given identifier.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="creditCardId">string</param>
+		/// <returns>CreditCard</returns>
 		public static CreditCard Get(string accessToken, string creditCardId)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -176,6 +183,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Credit Card resource for the given identifier.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="creditCardId">string</param>
+		/// <returns>CreditCard</returns>
 		public static CreditCard Get(APIContext apiContext, string creditCardId)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -196,6 +206,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Delete the Credit Card resource for the given identifier. Returns 204 No Content when the card is deleted successfully.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <returns></returns>
 		public void Delete(string accessToken)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -206,6 +218,8 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Delete the Credit Card resource for the given identifier. Returns 204 No Content when the card is deleted successfully.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <returns></returns>
 		public void Delete(APIContext apiContext)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -216,7 +230,7 @@ namespace PayPal.Api.Payments
 			{
 				throw new ArgumentNullException("Id cannot be null");
 			}
-            apiContext.MaskRequestId = true;
+			apiContext.MaskRequestId = true;
 			object[] parameters = new object[] {this.id};
 			string pattern = "v1/vault/credit-card/{0}";
 			string resourcePath = SDKUtil.FormatURIPath(pattern, parameters);

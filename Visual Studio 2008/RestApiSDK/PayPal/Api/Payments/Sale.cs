@@ -84,6 +84,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Sale transaction resource for the given identifier.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="saleId">string</param>
+		/// <returns>Sale</returns>
 		public static Sale Get(string accessToken, string saleId)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -93,6 +96,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Obtain the Sale transaction resource for the given identifier.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="saleId">string</param>
+		/// <returns>Sale</returns>
 		public static Sale Get(APIContext apiContext, string saleId)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
@@ -113,6 +119,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates (and processes) a new Refund Transaction added as a related resource.
 		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <param name="refund">Refund</param>
+		/// <returns>Refund</returns>
 		public Refund Refund(string accessToken, Refund refund)
 		{
 			APIContext apiContext = new APIContext(accessToken);
@@ -122,6 +131,9 @@ namespace PayPal.Api.Payments
 		/// <summary>
 		/// Creates (and processes) a new Refund Transaction added as a related resource.
 		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <param name="refund">Refund</param>
+		/// <returns>Refund</returns>
 		public Refund Refund(APIContext apiContext, Refund refund)
 		{
 			if (string.IsNullOrEmpty(apiContext.AccessToken))
