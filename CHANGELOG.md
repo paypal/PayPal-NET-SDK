@@ -1,11 +1,15 @@
 CHANGE LOG
 ==========
-
+V0.7.3 (July 31, 2013)
+-----------------------
+   * Added support for Reauthorization.
+	
+You can see source code of this release in github under https://github.com/paypal/rest-api-sdk-dotnet/tree/v0.7.3.
 V0.7.2 (July 24, 2013)
 -----------------------
    * Fixed bug for extended types in stubs #7.
 	
-You can see source code of this release in github under https://github.com/paypal/rest-api-sdk-dotnet/tree/v0.7.2.0.
+You can see source code of this release in github under https://github.com/paypal/rest-api-sdk-dotnet/tree/v0.7.2.
 
 V0.7.1 (June 2, 2013)
 -----------------------
