@@ -28,6 +28,7 @@
     <br />
     <table cellspacing="5" width="85%">
         <tbody>
+        
             <tr valign="top">
                 <td>
                     Payment with a credit card
@@ -206,6 +207,21 @@
                 </td>
                 <td>
                     <a href="Source/AuthorizationVoid.aspx.html" class="source imagelink">Source</a>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td>
+                    Reauthorization
+                </td>
+                <td>
+                </td>
+                <td width="30%">
+                    <a href="Reauthorization.aspx" class="execute imagelink">Execute</a>
+                </td>
+                <td>
+                </td>
+                <td width="30%">
+                    <a href="Source/Reauthorization.aspx.html" class="source imagelink">Source</a>
                 </td>
             </tr>
             <tr>

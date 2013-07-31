@@ -199,6 +199,39 @@ namespace PayPal.Api.Payments
 		}
 	
 		/// <summary>
+		/// Reauthorizes an expired Authorization.
+		/// </summary>
+		/// <param name="accessToken">Access Token used for the API call.</param>
+		/// <returns>Authorization</returns>
+		public Authorization Reauthorize(string accessToken)
+		{
+			APIContext apiContext = new APIContext(accessToken);
+			return Reauthorize(apiContext);
+		}
+		
+		/// <summary>
+		/// Reauthorizes an expired Authorization.
+		/// </summary>
+		/// <param name="apiContext">APIContext used for the API call.</param>
+		/// <returns>Authorization</returns>
+		public Authorization Reauthorize(APIContext apiContext)
+		{
+			if (string.IsNullOrEmpty(apiContext.AccessToken))
+			{
+				throw new ArgumentNullException("AccessToken cannot be null or empty");
+			}
+			if (this.id == null)
+			{
+				throw new ArgumentNullException("Id cannot be null");
+			}
+			object[] parameters = new object[] {this.id};
+			string pattern = "v1/payments/authorization/{0}/reauthorize";
+			string resourcePath = SDKUtil.FormatURIPath(pattern, parameters);
+			string payLoad = this.ConvertToJson();
+			return PayPalResource.ConfigureAndExecute<Authorization>(apiContext, HttpMethod.POST, resourcePath, payLoad);
+		}
+	
+		/// <summary>
 		/// Converts the object to JSON string
 		/// </summary>
 		public string ConvertToJson() 

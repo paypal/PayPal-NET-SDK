@@ -80,6 +80,7 @@
     <Compile Include="PayPalExceptionTest.cs" />
     <Compile Include="PayPalResourceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReauthorizationTest.cs" />
     <Compile Include="RedirectUrlsTest.cs" />
     <Compile Include="RefundTest.cs" />
     <Compile Include="ResourceTest.cs" />
