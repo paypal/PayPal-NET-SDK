@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>PayPalCoreSDK</id>
+    <version>1.3.4</version>
+    <title>PayPal Core SDK for .NET</title>
+    <authors>PayPal</authors>
+    <owners>PayPal</owners>
+    <licenseUrl>https://github.com/paypal/sdk-core-dotnet/blob/v1.3.4/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/paypal/sdk-core-dotnet/tree/v1.3.4</projectUrl>
+    <iconUrl>https://www.paypal.com/en_GB/Marketing/i/logo/PayPal_logo_80x35.gif</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>The PayPal Core SDK addresses the essential needs of the PayPal API caller:
+Frequent and up-to-date releases: The PayPal Core SDK is available on NuGet, which translates as immediate SDK refreshes upon updates to PayPal APIs.
+Simpler configuration: A single configuration file that lets you manage your API credentials (supports multiple credentials), connectivity details, and service endpoints.
+Error log: The PayPal Core SDK uses the log4net tool to log output statements to a text file to help locate the problem.
+Backward compatibility: The PayPal Core SDK developed in .NET Framework 2.0 should compile on later versions of the .NET Framework.</description>
+    <summary>The PayPal Core SDK calls the PayPal Platform API Web Service for the given payload and PayPal API profile settings.</summary>
+    <releaseNotes>Version1.3.4 (Jul 31, 2013)
+
+   * Updating version for Reauthorization functionality.
+Version 1.3.3 (Jul 24, 2013)
+
+   * Updating version for REST User-Agent header for REST SDK bug fix (https://github.com/paypal/rest-api-sdk-dotnet/issues/7) 
+
+ Version 1.3.2 (Jun 21, 2013)
+
+   * Fixing 500 internal service error with OAuth calls - Adding necessary Content-Type header.
+   * Exposing HTTP response data in ConnectionException for non-200 responses.(#6)
+
+Version 1.3.1 - April 26, 2013 
+- Modified core for new REST methods</releaseNotes>
+    <copyright>Copyright © eBay Inc., 2009-2013</copyright>
+    <language>en-US</language>
+    <tags>PayPal Core SDK .NET C#</tags>
+    <dependencies>
+      <dependency id="log4net" version="1.2.10" />
+    </dependencies>
+  </metadata>
+</package>

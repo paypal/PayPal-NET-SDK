@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>RestApiSDK</id>
+    <version>0.7.3</version>
+    <title>REST API SDK for .NET</title>
+    <authors>PayPal</authors>
+    <owners>PayPal</owners>
+    <licenseUrl>https://github.com/paypal/rest-api-sdk-dotnet/blob/v0.7.3/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/paypal/rest-api-sdk-dotnet/tree/v0.7.3</projectUrl>
+    <iconUrl>https://www.paypal.com/en_GB/Marketing/i/logo/PayPal_logo_80x35.gif</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>The PayPal API uses HTTP verbs and a RESTful endpoint structure. OAuth2.0 is used as the API Authorization framework. Request and response payloads are formatted as JSON.</description>
+    <summary>The PayPal REST SDK calls the PayPal REST API  for the given payload .</summary>
+    <releaseNotes>CHANGE LOG
+==========
+V0.7.3 (July 31, 2013)
+-----------------------
+   * Added support for Reauthorization.
+ 
+You can see source code of this release in github under https://github.com/paypal/rest-api-sdk-dotnet/tree/v0.7.3.
+V0.7.2 (July 24, 2013)
+-----------------------
+   * Fixed bug for extended types in stubs #7.
+ 
+You can see source code of this release in github under https://github.com/paypal/rest-api-sdk-dotnet/tree/v0.7.2.
+
+V0.7.1 (June 2, 2013)
+-----------------------
+
+   * Bug fix release for "internal server error" issues in OAuth calls.
+   
+V0.7.0 (May 30, 2013)
+-----------------------
+   * Added support for Auth and Capture APIs
+   * Types Modified to match the API Spec
+   
+V0.6.0 (April 26, 2013)
+-----------------------
+   * Added support for dynamic configuration of SDK (Upgraded sdk-core-dotnet dependency to V1.3.0)
+   * Deprecated the setCredential method and changed resource class methods to take an ApiContext argument 
+instead of an OauthTokenCredential argument
+
+V0.5.2 (March 07, 2013)
+-----------------------
+
+   * Initial Release</releaseNotes>
+    <copyright>Copyright © eBay Inc., 2009-2013</copyright>
+    <language>en-US</language>
+    <tags>PayPal REST SDK .NET C#</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="4.5.11" />
+      <dependency id="PayPalCoreSDK" version="1.3.4" />
+    </dependencies>
+  </metadata>
+</package>

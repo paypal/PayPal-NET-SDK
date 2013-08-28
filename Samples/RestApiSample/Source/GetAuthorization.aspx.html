@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><title>GetAuthorization.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="GetAuthorization.aspx"><meta name="groc-project-path" content="GetAuthorization.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><body></body></html><a href="../">Back<div id="document"><div class="segment"><a id="segment-0" name="segment-0" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-0" class="pilcrow">¶</a></div><div class="wrapper"><h1 id="getauthorization-sample">GetAuthorization Sample</h1>
+
+<p>This sample code demonstrates how to 
+retrieve an Authorization resource
+API used: GET /v1/payments/authorization/{id}</p></div></div><div class="code"><div class="wrapper"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">PayPal.Api.Payments</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">PayPal</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Newtonsoft.Json</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Newtonsoft.Json.Linq</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">RestApiSample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">GetAuthorization</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Page</span>
+    <span class="p">{</span>
+        <span class="k">protected</span> <span class="k">void</span> <span class="nf">Page_Load</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">HttpContext</span> <span class="n">CurrContext</span> <span class="p">=</span> <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
+            <span class="k">try</span>
+            <span class="p">{</span></div></div></div><div class="segment"><a id="segment-1" name="segment-1" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-1" class="pilcrow">¶</a></div><div class="wrapper"><h3 id="api-context">Api Context</h3>
+
+<p>Pass in a <code>APIContext</code> object to authenticate 
+the call and to send a unique request id 
+(that ensures idempotency). The SDK generates
+a request id if you do not pass one explicitly. 
+See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about APIContext..</p></div></div><div class="code"><div class="wrapper">                <span class="n">APIContext</span> <span class="n">apiContext</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">.</span><span class="n">GetAPIContext</span><span class="p">();</span></div></div></div><div class="segment"><a id="segment-2" name="segment-2" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-2" class="pilcrow">¶</a></div><div class="wrapper"><h3 id="authorization">Authorization</h3>
+
+<p>Retrieve an Authorization Id
+by making a Payment with intent
+as 'authorize' and parsing through
+the Payment object</p></div></div><div class="code"><div class="wrapper">                <span class="kt">string</span> <span class="n">authorizationId</span> <span class="p">=</span> <span class="n">Common</span><span class="p">.</span><span class="n">CreateAuthorization</span><span class="p">(</span><span class="n">apiContext</span><span class="p">).</span><span class="n">id</span><span class="p">;</span></div></div></div><div class="segment"><a id="segment-3" name="segment-3" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-3" class="pilcrow">¶</a></div><div class="wrapper"><p>Get Authorization by sending
+a GET request with authorization Id
+to the
+URI v1/payments/authorization/{id}</p></div></div><div class="code"><div class="wrapper">                <span class="n">Authorization</span> <span class="n">authorization</span> <span class="p">=</span> <span class="n">Authorization</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">apiContext</span><span class="p">,</span> <span class="n">authorizationId</span><span class="p">);</span>
+                <span class="n">CurrContext</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;ResponseJson&quot;</span><span class="p">,</span> <span class="n">JObject</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">authorization</span><span class="p">.</span><span class="n">ConvertToJson</span><span class="p">()).</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">Indented</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">PayPal</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">PayPalException</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">CurrContext</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">Server</span><span class="p">.</span><span class="n">Transfer</span><span class="p">(</span><span class="s">&quot;~/Response.aspx&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span></div></div></div><div class="segment"><div class="comments"><a href="../">Back</a></div></div></div><script type="text/javascript" src="assets/jquery.min.js"></script><script type="text/javascript" src="assets/docs.js"></script></a>

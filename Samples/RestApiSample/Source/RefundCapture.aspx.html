@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><title>RefundCapture.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="RefundCapture.aspx"><meta name="groc-project-path" content="RefundCapture.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><body></body></html><a href="../">Back<div id="document"><div class="segment"><a id="segment-0" name="segment-0" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-0" class="pilcrow">¶</a></div><div class="wrapper"><h1 id="refundcapture-sample">RefundCapture Sample</h1>
+
+<p>This sample code demonstrates how to do a 
+Refund on a Capture resource
+API used: POST /v1/payments/capture/{capture_id}/refund</p></div></div><div class="code"><div class="wrapper"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">PayPal.Api.Payments</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">PayPal</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Newtonsoft.Json.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Newtonsoft.Json</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">RestApiSample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">RefundCapture</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Page</span>
+    <span class="p">{</span>
+        <span class="k">protected</span> <span class="k">void</span> <span class="nf">Page_Load</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">HttpContext</span> <span class="n">CurrContext</span> <span class="p">=</span> <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
+            <span class="n">Refund</span> <span class="n">refund</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+            <span class="k">try</span>
+            <span class="p">{</span></div></div></div><div class="segment"><a id="segment-1" name="segment-1" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-1" class="pilcrow">¶</a></div><div class="wrapper"><h3 id="api-context">Api Context</h3>
+
+<p>Pass in a <code>APIContext</code> object to authenticate 
+the call and to send a unique request id 
+(that ensures idempotency). The SDK generates
+a request id if you do not pass one explicitly. 
+See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about APIContext..</p></div></div><div class="code"><div class="wrapper">                <span class="n">APIContext</span> <span class="n">apiContext</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">.</span><span class="n">GetAPIContext</span><span class="p">();</span></div></div></div><div class="segment"><a id="segment-2" name="segment-2" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-2" class="pilcrow">¶</a></div><div class="wrapper"><h3 id="authorization">Authorization</h3>
+
+<p>Retrieve a Authorization object
+by making a Payment with intent
+as 'authorize'</p></div></div><div class="code"><div class="wrapper">                <span class="n">Authorization</span> <span class="n">authorization</span> <span class="p">=</span> <span class="n">Common</span><span class="p">.</span><span class="n">CreateAuthorization</span><span class="p">(</span><span class="n">apiContext</span><span class="p">);</span>
+
+                <span class="c1">/// ###Capture</span></div></div></div><div class="segment"><a id="segment-3" name="segment-3" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-3" class="pilcrow">¶</a></div><div class="wrapper"><p>Create a Capture object
+by doing a capture on
+Authorization object</p></div></div><div class="code"><div class="wrapper">                <span class="n">Capture</span> <span class="n">capture</span> <span class="p">=</span> <span class="n">Common</span><span class="p">.</span><span class="n">GetCapture</span><span class="p">(</span><span class="n">apiContext</span><span class="p">,</span> <span class="n">authorization</span><span class="p">);</span>
+
+                <span class="c1">/// ###Refund</span>
+                <span class="c1">/// Create a Refund object</span>
+                <span class="n">refund</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Refund</span><span class="p">();</span></div></div></div><div class="segment"><a id="segment-4" name="segment-4" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-4" class="pilcrow">¶</a></div><div class="wrapper"><h3 id="amount">Amount</h3>
+
+<p>Let's you specify a capture amount.</p></div></div><div class="code"><div class="wrapper">                <span class="n">Amount</span> <span class="n">refundAmount</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Amount</span><span class="p">();</span>
+                <span class="n">refundAmount</span><span class="p">.</span><span class="n">currency</span> <span class="p">=</span> <span class="s">&quot;USD&quot;</span><span class="p">;</span>
+                <span class="n">refundAmount</span><span class="p">.</span><span class="n">total</span> <span class="p">=</span> <span class="s">&quot;0.50&quot;</span><span class="p">;</span>
+
+                <span class="n">refund</span><span class="p">.</span><span class="n">amount</span> <span class="p">=</span> <span class="n">refundAmount</span><span class="p">;</span></div></div></div><div class="segment"><a id="segment-5" name="segment-5" class="section_anchor"></a><div class="comments"><div class="pilwrap"><a href="#segment-5" class="pilcrow">¶</a></div><div class="wrapper"><p>Do a Refund by
+POSTing to 
+URI v1/payments/capture/{capture_id}/refund</p></div></div><div class="code"><div class="wrapper">                <span class="n">Refund</span> <span class="n">responseRefund</span> <span class="p">=</span> <span class="n">capture</span><span class="p">.</span><span class="n">Refund</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetAPIContext</span><span class="p">(),</span> <span class="n">refund</span><span class="p">);</span>
+                <span class="n">CurrContext</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;ResponseJson&quot;</span><span class="p">,</span> <span class="n">JObject</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">responseRefund</span><span class="p">.</span><span class="n">ConvertToJson</span><span class="p">()).</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">Indented</span><span class="p">));</span>
+
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">PayPal</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">PayPalException</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">CurrContext</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">CurrContext</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;RequestJson&quot;</span><span class="p">,</span> <span class="n">JObject</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">refund</span><span class="p">.</span><span class="n">ConvertToJson</span><span class="p">()).</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">Indented</span><span class="p">));</span>
+            <span class="n">Server</span><span class="p">.</span><span class="n">Transfer</span><span class="p">(</span><span class="s">&quot;~/Response.aspx&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></div></div></div><div class="segment"><div class="comments"><a href="../">Back</a></div></div></div><script type="text/javascript" src="assets/jquery.min.js"></script><script type="text/javascript" src="assets/docs.js"></script></a>

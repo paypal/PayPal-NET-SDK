@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9271AF4F-C13E-4898-AC2B-C6ADCFD214A6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RestApiSample</RootNamespace>
+    <AssemblyName>RestApiSample</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCoreSDK">
+      <HintPath>..\packages\PayPalCoreSDK.1.3.4\lib\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="RestApiSDK">
+      <HintPath>..\packages\RestApiSDK.0.7.3\lib\RestApiSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DeleteCreditCard.aspx" />
+    <Content Include="GetRefund.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorizationCapture.aspx.cs">
+      <DependentUpon>AuthorizationCapture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuthorizationCapture.aspx.designer.cs">
+      <DependentUpon>AuthorizationCapture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorizationVoid.aspx.cs">
+      <DependentUpon>AuthorizationVoid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuthorizationVoid.aspx.designer.cs">
+      <DependentUpon>AuthorizationVoid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteCreditCard.aspx.cs">
+      <DependentUpon>DeleteCreditCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteCreditCard.aspx.designer.cs">
+      <DependentUpon>DeleteCreditCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetRefund.aspx.cs">
+      <DependentUpon>GetRefund.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetRefund.aspx.designer.cs">
+      <DependentUpon>GetRefund.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reauthorization.aspx.cs">
+      <DependentUpon>Reauthorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reauthorization.aspx.designer.cs">
+      <DependentUpon>Reauthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Common.cs" />
+    <Compile Include="Utilities\Configuration.cs" />
+    <Compile Include="CreateCreditCard.aspx.cs">
+      <DependentUpon>CreateCreditCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateCreditCard.aspx.designer.cs">
+      <DependentUpon>CreateCreditCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetAuthorization.aspx.cs">
+      <DependentUpon>GetAuthorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetAuthorization.aspx.designer.cs">
+      <DependentUpon>GetAuthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetCapture.aspx.cs">
+      <DependentUpon>GetCapture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetCapture.aspx.designer.cs">
+      <DependentUpon>GetCapture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetPayment.aspx.cs">
+      <DependentUpon>GetPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetPayment.aspx.designer.cs">
+      <DependentUpon>GetPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetPaymentHistory.aspx.cs">
+      <DependentUpon>GetPaymentHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetPaymentHistory.aspx.designer.cs">
+      <DependentUpon>GetPaymentHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetSale.aspx.cs">
+      <DependentUpon>GetSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetSale.aspx.designer.cs">
+      <DependentUpon>GetSale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentWithCreditCard.aspx.cs">
+      <DependentUpon>PaymentWithCreditCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentWithCreditCard.aspx.designer.cs">
+      <DependentUpon>PaymentWithCreditCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentWithPayPal.aspx.cs">
+      <DependentUpon>PaymentWithPayPal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentWithPayPal.aspx.designer.cs">
+      <DependentUpon>PaymentWithPayPal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentWithSavedCard.aspx.cs">
+      <DependentUpon>PaymentWithSavedCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentWithSavedCard.aspx.designer.cs">
+      <DependentUpon>PaymentWithSavedCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefundCapture.aspx.cs">
+      <DependentUpon>RefundCapture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RefundCapture.aspx.designer.cs">
+      <DependentUpon>RefundCapture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Response.aspx.cs">
+      <DependentUpon>Response.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Response.aspx.designer.cs">
+      <DependentUpon>Response.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SaleRefund.aspx.cs">
+      <DependentUpon>SaleRefund.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SaleRefund.aspx.designer.cs">
+      <DependentUpon>SaleRefund.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetCreditCard.aspx.cs">
+      <DependentUpon>GetCreditCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetCreditCard.aspx.designer.cs">
+      <DependentUpon>GetCreditCard.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthorizationCapture.aspx" />
+    <Content Include="AuthorizationVoid.aspx" />
+    <Content Include="CreateCreditCard.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="GetAuthorization.aspx" />
+    <Content Include="GetCapture.aspx" />
+    <Content Include="GetPayment.aspx" />
+    <Content Include="GetPaymentHistory.aspx" />
+    <Content Include="GetSale.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\edt-format-source-button.png" />
+    <Content Include="Images\play_button.png" />
+    <Content Include="PaymentWithCreditCard.aspx" />
+    <Content Include="PaymentWithPayPal.aspx" />
+    <Content Include="PaymentWithSavedCard.aspx" />
+    <Content Include="Reauthorization.aspx" />
+    <Content Include="RefundCapture.aspx" />
+    <Content Include="Response.aspx" />
+    <Content Include="SaleRefund.aspx" />
+    <Content Include="GetCreditCard.aspx" />
+    <Content Include="Source\assets\behavior.js" />
+    <Content Include="Source\assets\docs.js" />
+    <Content Include="Source\assets\sideNavOut.png" />
+    <Content Include="Source\assets\sideNavOver.png" />
+    <Content Include="Source\assets\style.css" />
+    <Content Include="Source\AuthorizationCapture.aspx.html" />
+    <Content Include="Source\AuthorizationVoid.aspx.html" />
+    <Content Include="Source\CreateCreditCard.aspx.html" />
+    <Content Include="Source\GetAuthorization.aspx.html" />
+    <Content Include="Source\GetCapture.aspx.html" />
+    <Content Include="Source\GetCreditCard.aspx.html" />
+    <Content Include="Source\GetPayment.aspx.html" />
+    <Content Include="Source\GetPaymentHistory.aspx.html" />
+    <Content Include="Source\GetSale.aspx.html" />
+    <Content Include="Source\PaymentWithCreditCard.aspx.html" />
+    <Content Include="Source\PaymentWithPayPal.aspx.html" />
+    <Content Include="Source\PaymentWithSavedCard.aspx.html" />
+    <Content Include="Source\RefundCapture.aspx.html" />
+    <Content Include="Source\SaleRefund.aspx.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58734</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
