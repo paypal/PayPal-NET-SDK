@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 
 namespace PayPal.Log
 {
@@ -49,7 +48,7 @@ namespace PayPal.Log
         {
             sourceTrace.TraceData(TraceEventType.Verbose, id++, new LogMessage(message));
         }
-        
+
         /// <summary>
         /// Override the wrapper for System.Diagnostics TraceEventType.Verbose
         /// </summary>
@@ -59,7 +58,7 @@ namespace PayPal.Log
         {
             sourceTrace.TraceData(TraceEventType.Verbose, id++, new LogMessage(message), exception);
         }
-        
+
         /// <summary>
         /// Override the wrapper for System.Diagnostics TraceEventType.Verbose overload
         /// </summary>
@@ -78,7 +77,7 @@ namespace PayPal.Log
         {
             sourceTrace.TraceData(TraceEventType.Error, id++, new LogMessage(message));
         }
-        
+
         /// <summary>
         /// Override the wrapper for System.Diagnostics TraceEventType.Error
         /// </summary>
@@ -107,7 +106,7 @@ namespace PayPal.Log
         {
             sourceTrace.TraceData(TraceEventType.Information, id++, new LogMessage(message));
         }
-        
+
         /// <summary>
         /// Override the wrapper for System.Diagnostics TraceEventType.Information
         /// </summary>
@@ -136,7 +135,7 @@ namespace PayPal.Log
         {
             sourceTrace.TraceData(TraceEventType.Warning, id++, new LogMessage(message));
         }
-        
+
         /// <summary>
         /// Override the wrapper for System.Diagnostics TraceEventType.Warning
         /// </summary>
@@ -156,7 +155,7 @@ namespace PayPal.Log
         {
             sourceTrace.TraceData(TraceEventType.Warning, id++, new LogMessage(format, args));
         }
-        
+
         /// <summary>
         /// Override flush
         /// </summary>

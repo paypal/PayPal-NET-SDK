@@ -38,11 +38,6 @@ namespace PayPal.Api
         private SDKVersion SdkVersion;
 
         /// <summary>
-        /// Logs output statements, errors, debug info to a text file    
-        /// </summary>
-        private static Logger logger = Logger.GetLogger(typeof(OAuthTokenCredential));
-
-        /// <summary>
         /// Gets the client ID to be used when creating an OAuth token.
         /// </summary>
         public string ClientId { get; private set; }
@@ -78,7 +73,7 @@ namespace PayPal.Api
         public int AccessTokenExpirationSafetyGapInSeconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="config"></param>
         public OAuthTokenCredential(Dictionary<string, string> config) : this(string.Empty, string.Empty, config)
@@ -215,5 +210,5 @@ namespace PayPal.Api
         }
     }
 
-    
+
 }

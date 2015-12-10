@@ -3,7 +3,6 @@ using System.Text;
 using System.Web;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using PayPal.Util;
 
 namespace PayPal.Api

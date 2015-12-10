@@ -38,5 +38,3 @@ namespace PayPal.Api.OpenIdConnect
         public string country { get; set; }
     }
 }
-
-

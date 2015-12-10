@@ -22,5 +22,5 @@ namespace PayPal.Util
                     parameters + (string.IsNullOrEmpty(item.Value) ? "" : ((string.IsNullOrEmpty(parameters) ? "?" : "&") + string.Format("{0}={1}", item.Key, HttpUtility.UrlEncode(item.Value))))
             );
         }
-    }    
+    }
 }

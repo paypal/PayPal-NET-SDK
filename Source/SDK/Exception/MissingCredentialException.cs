@@ -4,7 +4,7 @@ namespace PayPal
     /// Represents an error that occurred in the PayPal SDK when application credentials are required.
     /// </summary>
     public class MissingCredentialException : PayPalException
-    {        
+    {
 		/// <summary>
 		/// Represents errors where certain credential information is required but missing.
 		/// </summary>

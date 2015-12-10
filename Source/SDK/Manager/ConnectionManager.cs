@@ -56,7 +56,7 @@ namespace PayPal.Api
         /// <returns></returns>
         public HttpWebRequest GetConnection(Dictionary<string, string> config, string url)
         {
-            HttpWebRequest httpRequest = null;                        
+            HttpWebRequest httpRequest = null;
             try
             {
                 httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -72,14 +72,14 @@ namespace PayPal.Api
             if(!config.ContainsKey(BaseConstants.HttpConnectionTimeoutConfig) ||
                 !int.TryParse(config[BaseConstants.HttpConnectionTimeoutConfig], out ConnectionTimeout)) {
                 int.TryParse(ConfigManager.GetDefault(BaseConstants.HttpConnectionTimeoutConfig), out ConnectionTimeout);
-            }            
+            }
             httpRequest.Timeout = ConnectionTimeout;
 
             // Set request proxy for tunnelling http requests via a proxy server
             if(config.ContainsKey(BaseConstants.HttpProxyAddressConfig))
             {
                 WebProxy requestProxy = new WebProxy();
-                requestProxy.Address = new Uri(config[BaseConstants.HttpProxyAddressConfig]);                
+                requestProxy.Address = new Uri(config[BaseConstants.HttpProxyAddressConfig]);
                 if (config.ContainsKey(BaseConstants.HttpProxyCredentialConfig))
                 {
                     string proxyCredentials = config[BaseConstants.HttpProxyCredentialConfig];
@@ -88,7 +88,7 @@ namespace PayPal.Api
                     {
                         requestProxy.Credentials = new NetworkCredential(proxyDetails[0], proxyDetails[1]);
                     }
-                }                
+                }
                 httpRequest.Proxy = requestProxy;
             }
 

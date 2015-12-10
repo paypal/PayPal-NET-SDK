@@ -25,7 +25,7 @@ namespace PayPal.Api
         {
             if (string.IsNullOrEmpty(accessToken))
             {
-                throw new ArgumentNullException("accessToken cannot be null");
+                throw new ArgumentNullException("accessToken", "accessToken cannot be null");
             }
             this.AccessToken = accessToken;
         }
@@ -39,7 +39,7 @@ namespace PayPal.Api
         {
             if (string.IsNullOrEmpty(requestId))
             {
-                throw new ArgumentNullException("requestId cannot be null");
+                throw new ArgumentNullException("requestId", "requestId cannot be null");
             }
             this.RequestId = requestId;
         }
@@ -53,7 +53,7 @@ namespace PayPal.Api
         /// Gets or sets whether or not the PayPal-Request-Id header will be set when making API requests, which is used for ensuring idempotency when making API calls.
         /// </summary>
         public bool MaskRequestId { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the request ID used for ensuring idempotency when making a REST API call.
         /// </summary>
@@ -88,7 +88,7 @@ namespace PayPal.Api
         /// <returns></returns>
         public Dictionary<string, string> GetConfigWithDefaults()
         {
-            return ConfigManager.GetConfigWithDefaults(this.Config == null ? ConfigManager.Instance.GetProperties() : this.Config);
+            return ConfigManager.GetConfigWithDefaults(this.Config ?? ConfigManager.Instance.GetProperties());
         }
     }
 }

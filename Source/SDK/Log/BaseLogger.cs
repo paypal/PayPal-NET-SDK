@@ -11,7 +11,7 @@ namespace PayPal.Log
         /// Gets the given type associated with this logger.
         /// </summary>
         public Type GivenType { get; private set; }
-           
+
         /// <summary>
         /// Get or sets whether this logger is enabled.
         /// </summary>
@@ -25,7 +25,7 @@ namespace PayPal.Log
         {
             this.GivenType = typeGiven;
             this.IsEnabled = true;
-        }              
+        }
 
         /// <summary>
         /// Gets whether or not debug logging is enabled.

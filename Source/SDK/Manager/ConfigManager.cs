@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 
 namespace PayPal.Api
-{    
+{
     /// <summary>
     /// ConfigManager loads the configuration file and hands out appropriate parameters to application
     /// </summary>
@@ -19,7 +19,7 @@ namespace PayPal.Api
         /// <summary>
         /// Explicit static constructor to tell C# compiler not to mark type as beforefieldinit
         /// </summary>
-        static ConfigManager() 
+        static ConfigManager()
         {
             defaultConfig = new Dictionary<string, string>();
             // Default connection timeout in milliseconds
@@ -80,7 +80,7 @@ namespace PayPal.Api
             NameValueConfigurationCollection settings = (NameValueConfigurationCollection)paypalConfigSection.GetType().GetProperty("Settings").GetValue(paypalConfigSection, null);
             this.configValues = new Dictionary<string, string>();
             foreach (NameValueConfigurationElement setting in settings)
-            {                
+            {
                 configValues.Add(setting.Name, setting.Value);
             }
 
@@ -129,7 +129,7 @@ namespace PayPal.Api
             // returns a copy of the configuration properties
             return new Dictionary<string, string>(this.configValues);
         }
-    
+
         /// <summary>
         /// Creates new configuration that combines incoming configuration dictionary
         /// and defaults
@@ -137,7 +137,7 @@ namespace PayPal.Api
         /// <returns>Default configuration dictionary</returns>
         public static Dictionary<string, string> GetConfigWithDefaults(Dictionary<string, string> config)
         {
-            Dictionary<string, string> ret = null;
+            Dictionary<string, string> ret;
             if (config == null)
             {
                 ret = new Dictionary<string, string>();
