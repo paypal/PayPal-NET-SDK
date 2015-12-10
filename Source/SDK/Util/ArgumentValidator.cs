@@ -19,7 +19,7 @@ namespace PayPal.Util
             var s = argument as string;
             if (argument == null || (s != null && string.IsNullOrEmpty(s)))
             {
-                throw new ArgumentNullException("argumentName", argumentName + " cannot be null or empty");
+                throw new ArgumentNullException(argumentName, argumentName + " cannot be null or empty");
             }
         }
 

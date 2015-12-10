@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="@(ExternalCompile)" />
+    <Compile Include="ArgumentValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
