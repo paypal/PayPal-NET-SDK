@@ -35,11 +35,11 @@ namespace PayPal.Api
         private ConnectionManager()
         {
 #if NET_4_5 || NET_4_5_1
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol | SecurityProtocolType.Tls12;
 #else
             if(SDKUtil.IsNet45OrLaterDetected())
             {
-                ServicePointManager.SecurityProtocol = (SecurityProtocolType)0xC00;
+                ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol | (SecurityProtocolType)0xC00;
             }
             else
             {
