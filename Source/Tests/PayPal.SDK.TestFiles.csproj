@@ -11,6 +11,7 @@
     <ExternalCompile Include="BankAccountTest.cs" />
     <ExternalCompile Include="ChargeModelTest.cs" />
 	<ExternalCompile Include="ConfigManagerTest.cs" />
+	<ExternalCompile Include="ConnectionManagerTls12Test.cs" />
     <ExternalCompile Include="CreateProfileResponseTest.cs" />
     <ExternalCompile Include="CurrencyTest.cs" />
     <ExternalCompile Include="DetailsTest.cs" />
