@@ -36,7 +36,7 @@ namespace PayPal.Log
             TraceSource sourceTrace = GetTraceSourceWithListeners(givenType.FullName, sourceLevels);
             return sourceTrace;
         }
-        
+
         /// <summary>
         /// Gets the closest "parent" TraceRoute that has listeners, or null otherwise
         /// </summary>
@@ -92,7 +92,7 @@ namespace PayPal.Log
 
             foreach (string nameSplit in nameSplitList)
             {
-                TraceSource sourceTrace = null;
+                TraceSource sourceTrace;
                 sourceTrace = new TraceSource(nameSplit, sourceLevels);
 
                 if (sourceTrace.Listeners == null || sourceTrace.Listeners.Count == 0)
@@ -111,7 +111,7 @@ namespace PayPal.Log
                 {
                     return sourceTrace;
                 }
-                
+
                 if (!string.Equals(listenerTrace.Name, "Default", StringComparison.Ordinal))
                 {
                     return sourceTrace;

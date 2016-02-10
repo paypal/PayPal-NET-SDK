@@ -35,7 +35,7 @@ namespace PayPal.Log
         /// <param name="format"></param>
         /// <param name="args"></param>
         public LogMessage(string format, params object[] args) : this(CultureInfo.InvariantCulture, format, args) { }
-        
+
         /// <summary>
         /// Constructor that logs the specified formatted message using the defined provider.
         /// </summary>
@@ -64,7 +64,7 @@ namespace PayPal.Log
             else
             {
                 formatted = Format;
-            }            
+            }
 
             return formatted;
         }

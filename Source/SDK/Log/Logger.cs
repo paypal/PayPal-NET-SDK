@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Reflection;
 
 namespace PayPal.Log
@@ -40,7 +39,7 @@ namespace PayPal.Log
                             catch
                             {
                                 throw new ConfigException("Invalid Configuration. Please check 'PayPalLog' value in  <appSettings> section of your configuration file.");
-                            }                            
+                            }
                         }
                     }
                 }
@@ -50,21 +49,21 @@ namespace PayPal.Log
                     ConfigureLoggers();
                 }
             }
-        }       
+        }
 
         private void ConfigureLoggers()
-        { 
+        {
             foreach (BaseLogger loggerBase in baseLoggerList)
             {
-                loggerBase.IsEnabled = true;              
-            }            
+                loggerBase.IsEnabled = true;
+            }
         }
 
         public static Logger GetLogger(Type givenType)
         {
             if (givenType == null)
             {
-                throw new ArgumentNullException("Type cannot be null");
+                throw new ArgumentNullException("givenType", "Type cannot be null");
             }
 
             Logger log;
@@ -93,7 +92,7 @@ namespace PayPal.Log
                 }
             }
         }
-        
+
         /// <summary>
         /// Call loggers' Debug
         /// </summary>
@@ -109,7 +108,7 @@ namespace PayPal.Log
                 }
             }
         }
-       
+
         /// <summary>
         /// Call loggers' DebugFormat
         /// </summary>
@@ -140,7 +139,7 @@ namespace PayPal.Log
                 }
             }
         }
-        
+
         /// <summary>
         /// Call loggers' Error
         /// </summary>
@@ -187,7 +186,7 @@ namespace PayPal.Log
                 }
             }
         }
-        
+
         /// <summary>
         /// Call loggers' Info
         /// </summary>
@@ -234,7 +233,7 @@ namespace PayPal.Log
                 }
             }
         }
-        
+
         /// <summary>
         /// Call loggers' Warn
         /// </summary>

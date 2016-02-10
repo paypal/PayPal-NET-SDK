@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PayPal.Api;
 
 namespace PayPal.Util
@@ -18,16 +16,10 @@ namespace PayPal.Util
         /// <param name="argumentName">The name of the argument. This will be placed in the exception message for easy reference.</param>
         public static void Validate(object argument, string argumentName)
         {
-            if (argument is string)
+            var s = argument as string;
+            if (argument == null || (s != null && string.IsNullOrEmpty(s)))
             {
-                if (string.IsNullOrEmpty(argument as string))
-                {
-                    throw new ArgumentNullException(argumentName + " cannot be null or empty");
-                }
-            }
-            else if (argument == null)
-            {
-                throw new ArgumentNullException(argumentName + " cannot be null");
+                throw new ArgumentNullException(argumentName, argumentName + " cannot be null or empty");
             }
         }
 

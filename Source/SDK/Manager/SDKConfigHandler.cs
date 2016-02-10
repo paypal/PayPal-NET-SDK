@@ -4,9 +4,9 @@ namespace PayPal
 {
     /// <summary>
     /// Custom handler for SDK configuration section as defined in App.Config or Web.Config files
-    /// </summary>    
+    /// </summary>
     public class SDKConfigHandler : ConfigurationSection
-    {  
+    {
         private static readonly ConfigurationProperty accountsElement =
              new ConfigurationProperty("accounts", typeof(AccountCollection), null, ConfigurationPropertyOptions.IsRequired);
 
@@ -43,7 +43,7 @@ namespace PayPal
             NameValueConfigurationElement config = Settings[name];
             return ((config == null) ? null : config.Value);
         }
-    }    
+    }
 
     /// <summary>
     /// Account colleciton details. This is included for compatibility with the older Classic SDKs.
@@ -214,7 +214,7 @@ namespace PayPal
             get { return (string)this[privateKeyPassword]; }
             set { this[privateKeyPassword] = value; }
         }
-      
+
         /// <summary>
         /// Signature Subject
         /// </summary>
@@ -233,6 +233,6 @@ namespace PayPal
         {
             get { return (string)this[certifySubject]; }
             set { this[certifySubject] = value; }
-        } 
-    }   
+        }
+    }
 }

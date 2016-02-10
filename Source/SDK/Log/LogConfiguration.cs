@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Configuration;
 using System.Collections.Generic;
 
@@ -61,7 +59,7 @@ namespace PayPal.Log
             if (splitList == null || splitList.Count == 0)
             {
                 return null;
-            }                        
+            }
 
             foreach(string split in splitList)
             {
@@ -72,32 +70,11 @@ namespace PayPal.Log
             }
 
             return loggerList;
-        }     
+        }
 
         private static string GetConfiguration(string name)
         {
-            NameValueCollection appSetting = ConfigurationManager.AppSettings;
-
-            if (appSetting == null)
-            {
-                return null;
-            }
-
-            string value = appSetting[name];
-            return value;
+            return ConfigurationManager.AppSettings[name];
         }
-
-        private static bool GetConfigBool(string name)
-        {
-            string value = GetConfiguration(name);
-            bool result;
-
-            if (bool.TryParse(value, out result))
-            {
-                return result;
-            }
-
-            return default(bool);
-        }
-    }   
+    }
 }

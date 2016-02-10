@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Net;
 using PayPal.Log;
 using System.Text;
-using Newtonsoft.Json;
 using System.Threading;
 
 namespace PayPal.Api
@@ -15,7 +13,7 @@ namespace PayPal.Api
     public abstract class PayPalResource : PayPalSerializableObject
     {
         /// <summary>
-        /// Logs output statements, errors, debug info to a text file    
+        /// Logs output statements, errors, debug info to a text file
         /// </summary>
         private static Logger logger = Logger.GetLogger(typeof(PayPalResource));
 
@@ -134,7 +132,7 @@ namespace PayPal.Api
                 var baseUri = new Uri(endpoint);
                 if (!Uri.TryCreate(baseUri, resource, out uniformResourceIdentifier))
                 {
-                    throw new PayPalException("Cannot create URL; baseURI=" + baseUri.ToString() + ", resourcePath=" + resource);
+                    throw new PayPalException("Cannot create URL; baseURI=" + baseUri + ", resourcePath=" + resource);
                 }
 
                 // Create the HttpRequest object that will be used to send the HTTP request.
@@ -250,7 +248,7 @@ namespace PayPal.Api
             {
                 headers[BaseConstants.AuthorizationHeader] = apiContext.AccessToken;
             }
-            else 
+            else
             {
                 var config = apiContext.GetConfigWithDefaults();
                 var clientId = config.ContainsKey(BaseConstants.ClientId) ? config[BaseConstants.ClientId] : null;
