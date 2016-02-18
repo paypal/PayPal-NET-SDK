@@ -30,7 +30,7 @@ namespace PayPal
         /// <summary>
         /// Private constructor prevent direct instantiation
         /// </summary>
-        private CertificateManager() 
+        private CertificateManager()
         {
             certificates = new ConcurrentDictionary<string, X509Certificate2Collection>();
         }
@@ -50,9 +50,9 @@ namespace PayPal
         /// </summary>
         public static CertificateManager Instance
         {
-            get 
+            get
             {
-                if (instance == null) 
+                if (instance == null)
                 {
                     lock (syncRoot)
                     {

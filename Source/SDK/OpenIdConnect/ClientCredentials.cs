@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PayPal.Api
 {
@@ -10,7 +7,7 @@ namespace PayPal.Api
     public abstract class ClientCredentials
     {
         /// <summary>
-        /// Client ID 
+        /// Client ID
         /// </summary>
         public string clientId;
 
@@ -54,6 +51,5 @@ namespace PayPal.Api
         {
             return this.clientSecret;
         }
-
     }
 }

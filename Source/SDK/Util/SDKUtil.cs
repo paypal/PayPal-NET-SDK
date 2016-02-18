@@ -25,22 +25,22 @@ namespace PayPal.Util
             string formatString = pattern;
             if (pattern != null && parameters != null)
             {
-                if (parameters != null && parameters.Length == 1 && parameters[0] is CreateFromAuthorizationCodeParameters)
+                if (parameters.Length == 1 && parameters[0] is CreateFromAuthorizationCodeParameters)
                 {
                     //Form a object array using the passed Map
                     parameters = SplitParameters(pattern, ((CreateFromAuthorizationCodeParameters)parameters[0]).ContainerMap);
                 }
-                else if (parameters != null && parameters.Length == 1 && parameters[0] is CreateFromRefreshTokenParameters)
+                else if (parameters.Length == 1 && parameters[0] is CreateFromRefreshTokenParameters)
                 {
                     //Form a object array using the passed Map
                     parameters = SplitParameters(pattern, ((CreateFromRefreshTokenParameters)parameters[0]).ContainerMap);
                 }
-                else if (parameters != null && parameters.Length == 1 && parameters[0] is UserinfoParameters)
+                else if (parameters.Length == 1 && parameters[0] is UserinfoParameters)
                 {
                     //Form a object array using the passed Map
                     parameters = SplitParameters(pattern, ((UserinfoParameters)parameters[0]).ContainerMap);
                 }
-                else if (parameters != null && parameters.Length == 1 && parameters[0] is Dictionary<string, string>)
+                else if (parameters.Length == 1 && parameters[0] is Dictionary<string, string>)
                 {
                     parameters = SplitParameters(pattern, (Dictionary<string, string>)parameters[0]);
                 }
@@ -146,22 +146,10 @@ namespace PayPal.Util
                             string[] valueSplit = query.Split('=');
                             if (valueSplit.Length == 2)
                             {
-                                if (valueSplit[1].Trim().ToLower().Equals("null"))
-                                {
+                                if (valueSplit[1].Trim().ToLower().Equals("null") || valueSplit[1].Trim().Length == 0)
                                     continue;
-                                }
-                                else if (valueSplit[1].Trim().Length == 0)
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    builder.Append(query).Append("&");
-                                }
-                            }
-                            else if (valueSplit.Length < 2)
-                            {
-                                continue;
+
+                                builder.Append(query).Append("&");
                             }
                         }
                         formatString = (!builder.ToString().EndsWith("&")) ? builder.ToString()
@@ -188,7 +176,7 @@ namespace PayPal.Util
         {
             List<Object> objectList = new List<Object>();
             string[] query = pattern.Split('?');
-            if (query != null && query.Length == 2 && query[1].Contains("={"))
+            if (query.Length == 2 && query[1].Contains("={"))
             {
                 NameValueCollection queryParts = HttpUtility.ParseQueryString(query[1]);
 
@@ -313,7 +301,7 @@ namespace PayPal.Util
         public static bool IsNet45OrLaterDetected()
         {
             var highestNetVersion = GetHighestInstalledNetVersion();
-            return highestNetVersion == null ? false : highestNetVersion >= new Version(4, 5, 0, 0);
+            return highestNetVersion != null && highestNetVersion >= new Version(4, 5, 0, 0);
         }
 
         /// <summary>
@@ -329,9 +317,9 @@ namespace PayPal.Util
                 // Opens the registry key for the .NET Framework entry.
                 using (var ndpKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, "").OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\"))
                 {
-                    // As an alternative, if you know the computers you will query are running .NET Framework 4.5 
+                    // As an alternative, if you know the computers you will query are running .NET Framework 4.5
                     // or later, you can use:
-                    // using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, 
+                    // using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine,
                     // RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\"))
                     foreach (string versionKeyName in ndpKey.GetSubKeyNames())
                     {
@@ -349,29 +337,21 @@ namespace PayPal.Util
 
                                     if (!string.IsNullOrEmpty(versionString))
                                     {
-                                        try
+                                        var version = new Version(versionString);
+                                        if (highestNetVersion == null || highestNetVersion < version)
                                         {
-                                            var version = new Version(versionString);
-                                            if (highestNetVersion == null || highestNetVersion < version)
-                                            {
-                                                highestNetVersion = version;
-                                            }
+                                            highestNetVersion = version;
                                         }
-                                        catch (Exception) { }
                                     }
                                 }
                             }
                             else
                             {
-                                try
+                                var version = new Version(versionString);
+                                if (highestNetVersion == null || highestNetVersion < version)
                                 {
-                                    var version = new Version(versionString);
-                                    if (highestNetVersion == null || highestNetVersion < version)
-                                    {
-                                        highestNetVersion = version;
-                                    }
+                                    highestNetVersion = version;
                                 }
-                                catch (Exception) { }
                             }
                         }
                     }

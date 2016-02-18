@@ -74,5 +74,6 @@
 	<ExternalCompile Include="UserInfoTest.cs" />
 	<ExternalCompile Include="ProcessorResponseTest.cs" />
 	<ExternalCompile Include="PotentialPayerInfoTest.cs" />
+	<ExternalCompile Include="ArgumentValidatorTest.cs" />
   </ItemGroup>
 </Project>

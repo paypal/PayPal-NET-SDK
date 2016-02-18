@@ -40,7 +40,7 @@ namespace PayPal.Api
         /// <typeparam name="T">A JSON-serializable object type.</typeparam>
         /// <param name="t">The object to be serialized.</param>
         /// <returns>A JSON string representing the specified object.</returns>
-        public static string ConvertToJson<T>(T t) 
+        public static string ConvertToJson<T>(T t)
         {
             return JsonConvert.SerializeObject(t);
         }
@@ -53,7 +53,7 @@ namespace PayPal.Api
         /// <returns>An object containing the data from the JSON string.</returns>
         public static T ConvertFromJson<T>(string value)
         {
-            return JsonConvert.DeserializeObject<T>(value, new JsonSerializerSettings 
+            return JsonConvert.DeserializeObject<T>(value, new JsonSerializerSettings
             {
                 MissingMemberHandling = MissingMemberHandling.Error,
                 Error = ErrorHandler

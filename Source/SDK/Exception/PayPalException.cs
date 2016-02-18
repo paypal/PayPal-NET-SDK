@@ -8,7 +8,7 @@ namespace PayPal
     public class PayPalException : System.Exception
     {
         /// <summary>
-        /// Logs output statements, errors, debug info to a text file    
+        /// Logs output statements, errors, debug info to a text file
         /// </summary>
         private static Logger logger = Logger.GetLogger(typeof(PayPalException));
 
@@ -16,7 +16,7 @@ namespace PayPal
         /// Initializes a new <seealso cref="PayPalException"/> with no exception details set.
         /// </summary>
         public PayPalException() : this(string.Empty) { }
-        
+
         /// <summary>
         /// Represents errors that occur during application execution
         /// </summary>

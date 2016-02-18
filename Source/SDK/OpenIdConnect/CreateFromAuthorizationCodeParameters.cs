@@ -19,7 +19,7 @@ namespace PayPal.Api
         {
             this.ContainerMap = new Dictionary<string, string>();
             this.SetGrantType("authorization_code");
-        }        
+        }
 
         /// <summary>
         /// Set the code
