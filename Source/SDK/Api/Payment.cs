@@ -227,8 +227,8 @@ namespace PayPal.Api
         /// <param name="count">Number of items to be returned by a GET operation.</param>
         /// <param name="startId">A resource ID that indicates the starting resource in the returned results.</param>
         /// <param name="startIndex">Start index of the resources to be returned. Typically used to jump to a specific position in the resource history based on it's cart.</param>
-        /// <param name="startTime">Resource creation time that indicates the start of a range of results.</param>
-        /// <param name="endTime">Resource creation time that indicates the end of a range of results.</param>
+        /// <param name="startTime">Resource creation time in ISO-8601 format that indicates the start of a range of results. Example: start_time=2016-03-06T11:00:00Z.</param>
+        /// <param name="endTime">Resource creation time in ISO-8601 format that indicates the end of a range of results. Example: end_time=2016-03-20T10:30:00Z.</param>
         /// <param name="startDate">Resource creation date that indicates the start of results.</param>
         /// <param name="endDate">Resource creation date that indicates the end of a range of results.</param>
         /// <param name="payeeEmail">Payee identifier (email) to filter the search results in list operations.</param>
