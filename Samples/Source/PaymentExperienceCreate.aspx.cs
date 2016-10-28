@@ -36,7 +36,9 @@ namespace PayPal.Sample
                 {
                     brand_name = "Sample brand",
                     locale_code = "US",
-                    logo_image = "https://www.paypal.com/"
+                    logo_image = "https://www.paypal.com/",
+                    note_to_seller_label = "Thx",
+                    return_url_label = "Retreat!"
                 },
                 input_fields = new InputFields()
                 {
@@ -47,8 +49,11 @@ namespace PayPal.Sample
                 flow_config = new FlowConfig()
                 {
                     bank_txn_pending_url = "https://www.paypal.com/",
-                    landing_page_type = "billing"
-                }
+                    landing_page_type = "billing",
+                    user_action = "commit",
+                    return_uri_http_method = "GET"
+                },
+                temporary = true
             };
 
             #region Track Workflow

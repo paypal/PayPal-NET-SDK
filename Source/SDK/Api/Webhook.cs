@@ -11,7 +11,7 @@ using PayPal.Util;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A REST API webhook resource object.
+    /// One or more webhook objects.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -19,25 +19,25 @@ namespace PayPal.Api
     public class Webhook : PayPalRelationalObject
     {
         /// <summary>
-        /// Identifier of the webhook resource.
+        /// The ID of the webhook.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public string id { get; set; }
 
         /// <summary>
-        /// Webhook notification endpoint url.
+        /// The URL that is configured to listen on `localhost` for incoming `POST` notification messages that contain event information.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "url")]
         public string url { get; set; }
 
         /// <summary>
-        /// List of Webhooks event-types.
+        /// A list of up to ten events to which to subscribe your webhook. To subscribe to all events including new events as they are added, specify the asterisk (`*`) wildcard. To replace the `event_types` array, specify the `*` wildcard. To see all supported events, [list available events](#available-event-type.list).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "event_types")]
         public List<WebhookEventType> event_types { get; set; }
 
         /// <summary>
-        /// Creates the Webhook for the application associated with the access token.
+        /// Subscribes your webhook listener to events. A successful call returns a [`webhook`](/docs/api/webhooks/#definition-webhook) object, which includes the webhook ID for later use.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <returns>Webhook</returns>
@@ -63,10 +63,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Retrieves the Webhook identified by webhook_id for the application associated with access token.
+        /// Shows details for a webhook, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="webhookId">Identifier of the webhook</param>
+        /// <param name="webhookId">The ID of the webhook for which to show details.</param>
         /// <returns>Webhook</returns>
         public static Webhook Get(APIContext apiContext, string webhookId)
         {
@@ -81,22 +81,31 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Retrieves all Webhooks for the application associated with access token.
+        /// Lists all webhooks for an app.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
+        /// <param name="anchorType">Filters the response by an entity type, `anchor_id`. Value is `APPLICATION` or `ACCOUNT`. Default is `APPLICATION`.</param>
         /// <returns>WebhookList</returns>
-        public static WebhookList GetAll(APIContext apiContext)
+        public static WebhookList GetAll(APIContext apiContext, string anchorType = null)
         {
             // Validate the arguments to be used in the request
             ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
+            var queryParameters = new QueryParameters();
+
+            if (anchorType != null)
+            {
+                ArgumentValidator.Validate(anchorType, "anchorType");
+                queryParameters["anchor_type"] = anchorType;
+            }
+
 
             // Configure and send the request
-            var resourcePath = "v1/notifications/webhooks";
+            var resourcePath = "v1/notifications/webhooks" + queryParameters.ToUrlFormattedString();
             return PayPalResource.ConfigureAndExecute<WebhookList>(apiContext, HttpMethod.GET, resourcePath);
         }
 
         /// <summary>
-        /// Updates the Webhook identified by webhook_id for the application associated with access token.
+        /// Replaces webhook fields with new values. Pass a `json_patch` object with `replace` operation and `path`, which is `/url` for a URL or `/event_types` for events. The `value` is either the URL or a list of events.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="patchRequest">PatchRequest</param>
@@ -127,7 +136,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Deletes the Webhook identified by webhook_id for the application associated with access token.
+        /// Deletes a webhook, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         public void Delete(APIContext apiContext)
@@ -136,10 +145,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Deletes the Webhook identified by webhook_id for the application associated with access token.
+        /// Deletes a webhook, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="webhookId">Identifier of the webhook</param>
+        /// <param name="webhookId">The ID of the webhook to delete.</param>
         public static void Delete(APIContext apiContext, string webhookId)
         {
             // Validate the arguments to be used in the request

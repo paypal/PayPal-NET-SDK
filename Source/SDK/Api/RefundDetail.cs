@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details of a refunded invoice.
+    /// Invoicing refund information.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,21 +17,33 @@ namespace PayPal.Api
     public class RefundDetail : PayPalSerializableObject
     {
         /// <summary>
-        /// PayPal refund type indicating whether refund was done in invoicing flow via PayPal or externally. In the case of the mark-as-refunded API, refund type is EXTERNAL and this is what is now supported. The PAYPAL value is provided for backward compatibility.
+        /// The PayPal refund type. Indicates whether refund was paid through PayPal or externally in invoicing flow. The [record refund](/docs/api/invoicing/#invoices_record-refund) method supports the `EXTERNAL` refund type. The `PAYPAL` refund type is supported for backward compatibility.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "type")]
         public string type { get; set; }
 
         /// <summary>
-        /// Date when the invoice was marked as refunded. If no date is specified, the current date and time is used as the default. In addition, the date must be after the invoice payment date. Date format yyyy-MM-dd z, as defined in [ISO8601](http://tools.ietf.org/html/rfc3339#section-5.6).
+        /// The ID of the PayPal refund transaction. Required with the `PAYPAL` refund type.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "transaction_id")]
+        public string transaction_id { get; set; }
+
+        /// <summary>
+        /// The date when the invoice was refunded. The date format is *yyyy*-*MM*-*dd* *z*, as defined in [Internet Date/Time Format](http://tools.ietf.org/html/rfc3339#section-5.6). For example, `2014-02-27 PST`.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "date")]
         public string date { get; set; }
 
         /// <summary>
-        /// Optional note associated with the refund.
+        /// A note associated with the refund.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "note")]
         public string note { get; set; }
+
+        /// <summary>
+        /// The amount to record as refunded. If you omit the amount, the total invoice paid amount is recorded as refunded.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "amount")]
+        public Currency amount { get; set; }
     }
 }

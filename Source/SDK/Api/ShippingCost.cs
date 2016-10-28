@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Shipping cost for an invoice.
+    /// Shipping cost, as a percent or an amount value.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,13 +17,13 @@ namespace PayPal.Api
     public class ShippingCost : PayPalSerializableObject
     {
         /// <summary>
-        /// Shipping cost in amount. Range of 0 to 999999.99.
+        /// The shipping cost, as an amount value. Valid value is from 0 to 999999.99.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "amount")]
         public Currency amount { get; set; }
 
         /// <summary>
-        /// Tax percentage on shipping amount.
+        /// The tax percentage on the shipping amount.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "tax")]
         public Tax tax { get; set; }

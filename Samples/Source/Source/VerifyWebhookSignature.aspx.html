@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><title>Source/VerifyWebhookSignature.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="Source/VerifyWebhookSignature.aspx"><meta name="groc-project-path" content="Source/VerifyWebhookSignature.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">Source/VerifyWebhookSignature.aspx.cs</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">﻿<span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> System.Linq;
+<span class="hljs-keyword">using</span> System.Web;
+<span class="hljs-keyword">using</span> System.Web.UI;
+<span class="hljs-keyword">using</span> System.Web.UI.WebControls;
+<span class="hljs-keyword">using</span> PayPal.Api;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">PayPal.Sample</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">VerifyWebhookSignature</span> : <span class="hljs-title">BaseSamplePage</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">readonly</span> String requestBody = <span class="hljs-string">"{\"id\":\"WH-9UG43882HX7271132-6E0871324L7949614\",\"event_version\":\"1.0\",\"create_time\":\"2016-09-21T22:00:45Z\",\"resource_type\":\"sale\",\"event_type\":\"PAYMENT.SALE.COMPLETED\",\"summary\":\"Payment completed for $ 21.0 USD\",\"resource\":{\"id\":\"80F85758S3080410K\",\"state\":\"completed\",\"amount\":{\"total\":\"21.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"17.50\",\"tax\":\"1.30\",\"shipping\":\"2.20\"}},\"payment_mode\":\"INSTANT_TRANSFER\",\"protection_eligibility\":\"ELIGIBLE\",\"protection_eligibility_type\":\"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE\",\"transaction_fee\":{\"value\":\"0.91\",\"currency\":\"USD\"},\"invoice_number\":\"57e3028db8d1b\",\"custom\":\"\",\"parent_payment\":\"PAY-7F371669SL612941HK7RQFDQ\",\"create_time\":\"2016-09-21T21:59:02Z\",\"update_time\":\"2016-09-21T22:00:06Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/80F85758S3080410K\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/80F85758S3080410K/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7F371669SL612941HK7RQFDQ\",\"rel\":\"parent_payment\",\"method\":\"GET\"}]},\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/notifications/webhooks-events/WH-9UG43882HX7271132-6E0871324L7949614\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/notifications/webhooks-events/WH-9UG43882HX7271132-6E0871324L7949614/resend\",\"rel\":\"resend\",\"method\":\"POST\"}]}"</span>;
+
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">readonly</span> Dictionary&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">string</span>&gt; headers = <span class="hljs-keyword">new</span> Dictionary&lt;<span class="hljs-keyword">string</span>, <span class="hljs-keyword">string</span>&gt;()
+        {
+            {<span class="hljs-string">"Paypal-Auth-Algo"</span>, <span class="hljs-string">"SHA256withRSA"</span>},
+            {<span class="hljs-string">"Paypal-Transmission-Id"</span>, <span class="hljs-string">"d938e770-8046-11e6-8103-6b62a8a99ac4"</span>},
+            {<span class="hljs-string">"Paypal-Cert-Url"</span>, <span class="hljs-string">"https://api.sandbox.paypal.com/v1/notifications/certs/CERT-360caa42-fca2a594-a5cafa77"</span>},
+            {<span class="hljs-string">"Paypal-Transmission-Sig"</span>, <span class="hljs-string">"eDOnWUj9FXOnr2naQnrdL7bhgejVSTwRbwbJ0kuk5wAtm2ZYkr7w5BSUDO7e5ZOsqLwN3sPn3RV85Jd9pjHuTlpuXDLYk+l5qiViPbaaC0tLV+8C/zbDjg2WCfvtf2NmFT8CHgPPQAByUqiiTY+RJZPPQC5np7j7WuxcegsJLeWStRAofsDLiSKrzYV3CKZYtNoNnRvYmSFMkYp/5vk4xGcQLeYNV1CC2PyqraZj8HGG6Y+KV4trhreV9VZDn+rPtLDZTbzUohie1LpEy31k2dg+1szpWaGYOz+MRb40U04oD7fD69vghCrDTYs5AsuFM2+WZtsMDmYGI0pxLjn2yw=="</span>},
+            {<span class="hljs-string">"Paypal-Transmission-Time"</span>, <span class="hljs-string">"2016-09-21T22:00:46Z"</span>},
+        };
+
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RunSample</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">string</span> accessToken = <span class="hljs-keyword">new</span> OAuthTokenCredential(<span class="hljs-string">"EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM"</span>, <span class="hljs-string">"EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM"</span>, Configuration.GetConfig()).GetAccessToken();</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="api-context">Api Context</h3>
+<p>Pass in a <code>APIContext</code> object to authenticate 
+the call and to send a unique request id 
+(that ensures idempotency). The SDK generates
+a request id if you do not pass one explicitly. 
+See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about APIContext.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> apiContext = <span class="hljs-keyword">new</span> APIContext(accessToken);
+
+            <span class="hljs-keyword">var</span> webhookId = <span class="hljs-string">"9XL90610J3647323C"</span>;</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Verify received webhook event"</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Construct a <code>VerifyWebhookSignature</code> and assign its properties from the headers received in your webhook event.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> signatureVerification = <span class="hljs-keyword">new</span> PayPal.Api.VerifyWebhookSignature
+            {
+                auth_algo = headers[<span class="hljs-string">"Paypal-Auth-Algo"</span>],
+                cert_url = headers[<span class="hljs-string">"Paypal-Cert-Url"</span>],
+                transmission_id = headers[<span class="hljs-string">"Paypal-Transmission-Id"</span>],
+                transmission_sig = headers[<span class="hljs-string">"Paypal-Transmission-Sig"</span>],
+                transmission_time = headers[<span class="hljs-string">"Paypal-Transmission-Time"</span>],
+                webhook_id = webhookId,
+                webhook_event = JsonFormatter.ConvertFromJson&lt;WebhookEvent&gt;(requestBody)
+            };</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Verify the received webhook Event"</span>, signatureVerification);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Call the <code>Post</code> method on your <code>VerifyWebhookSignature</code> object to verify the Webhook event was actually sent by PayPal.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> signatureVerificationResponse = signatureVerification.Post(apiContext);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordResponse(signatureVerificationResponse);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span>
+        }
+    }
+}</div></div></div></div></body></html>

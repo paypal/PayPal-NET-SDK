@@ -4,12 +4,13 @@
 //  More information: https://developer.paypal.com/docs/api/
 //
 //==============================================================================
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details for an invoice notification.
+    /// Email/SMS notification.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,21 +18,27 @@ namespace PayPal.Api
     public class Notification : PayPalSerializableObject
     {
         /// <summary>
-        /// Subject of the notification.
+        /// The subject of the notification.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "subject")]
         public string subject { get; set; }
 
         /// <summary>
-        /// Note to the payer.
+        /// A note to the payer.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "note")]
         public string note { get; set; }
 
         /// <summary>
-        /// A flag indicating whether a copy of the email has to be sent to the merchant.
+        /// Indicates whether to send a copy of the email to the merchant.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "send_to_merchant")]
         public bool? send_to_merchant { get; set; }
+
+        /// <summary>
+        /// An array of one or more Cc: emails. If you omit this parameter from the JSON request body, a notification is sent to all Cc: email addresses that are part of the invoice. Otherwise, specify this parameter to limit the email addresses to which notifications are sent.<blockquote><strong>Note:</strong> Additional email addresses are not supported.</blockquote>
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "cc_emails")]
+        public List<string> cc_emails { get; set; }
     }
 }

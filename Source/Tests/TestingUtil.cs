@@ -12,6 +12,16 @@ namespace PayPal.Testing
             return oauth.GetAccessToken();
         }
 
+        public static String GetCurrentDateISO()
+        {
+            return TestingUtil.GetCurrentDateISO(0);
+        }
+
+        public static String GetCurrentDateISO(int days)
+        {
+            return DateTime.UtcNow.AddDays(days).ToString("yyyy-MM-ddTHH\\:mm\\:ssZ");
+        }
+
         public static APIContext GetApiContext()
         {
             return new APIContext(GetAccessToken())

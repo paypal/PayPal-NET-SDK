@@ -10,7 +10,7 @@ namespace PayPal.Testing
     {
         public static readonly string AuthorizationJson =
             "{\"amount\":" + AmountTest.AmountJson + "," +
-            "\"create_time\":\"2013-01-15T15:10:05.123Z\"," +
+            "\"create_time\":\"" + TestingUtil.GetCurrentDateISO() + "\"," +
             "\"id\":\"007\"," +
             "\"parent_payment\":\"1000\"," +
             "\"state\":\"Authorized\"," +
@@ -26,7 +26,7 @@ namespace PayPal.Testing
         {
             var authorization = GetAuthorization();
             Assert.AreEqual(authorization.id, "007");
-            Assert.AreEqual(authorization.create_time, "2013-01-15T15:10:05.123Z");
+            Assert.IsNotNull(authorization.create_time);
             Assert.AreEqual(authorization.parent_payment, "1000");
             Assert.AreEqual(authorization.state, "Authorized");
             Assert.IsNotNull(authorization.amount);

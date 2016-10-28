@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A list of webhook event resources returned from a search operation.
+    /// List of webhooks events.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -18,13 +18,13 @@ namespace PayPal.Api
     public class WebhookEventList : PayPalRelationalObject
     {
         /// <summary>
-        /// A list of Webhooks event resources
+        /// A list of webhooks events.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "events")]
         public List<WebhookEvent> events { get; set; }
 
         /// <summary>
-        /// Number of items returned in each range of results. Note that the last results range could have fewer items than the requested number of items.
+        /// The number of items in each range of results. Note that the response might have fewer items than the requested `page_size` value.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "count")]
         public int count { get; set; }

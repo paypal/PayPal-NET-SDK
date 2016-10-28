@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><title>Source/InvoiceTemplateRetrieve.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="Source/InvoiceTemplateRetrieve.aspx"><meta name="groc-project-path" content="Source/InvoiceTemplateRetrieve.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">Source/InvoiceTemplateRetrieve.aspx.cs</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="create-an-invoice">Create an invoice</h1>
+<p>Creates an invoice in a draft state. After you create an invoice that includes an <code>items</code> array, you can then send the invoice.</p>
+<blockquote>
+<p>Note: The merchant specified in an invoice must have a PayPal account in good standing.</p>
+</blockquote></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">using</span> PayPal.Api;
+<span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">PayPal.Sample</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">InvoiceTemplateRetrieve</span> : <span class="hljs-title">BaseSamplePage</span>
+    {
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RunSample</span>(<span class="hljs-params"></span>)
+        </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="api-context">Api Context</h3>
+<p>Pass in a <code>APIContext</code> object to authenticate 
+the call and to send a unique request id 
+(that ensures idempotency). The SDK generates
+a request id if you do not pass one explicitly. 
+See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about APIContext.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> apiContext = Configuration.GetAPIContext();
+
+            <span class="hljs-keyword">var</span> invoiceTemplate = <span class="hljs-keyword">new</span> InvoiceTemplate()
+            {
+                name = <span class="hljs-string">"Template "</span> + Guid.NewGuid().ToString().Replace(<span class="hljs-string">"-"</span>, <span class="hljs-keyword">string</span>.Empty).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>),
+                @<span class="hljs-keyword">default</span> = <span class="hljs-keyword">true</span>,
+                unit_of_measure = <span class="hljs-string">"HOURS"</span>,
+                template_data = <span class="hljs-keyword">new</span> InvoiceTemplateData()
+                {
+                    items = <span class="hljs-keyword">new</span> List&lt;InvoiceItem&gt;()
+                    {
+                        <span class="hljs-keyword">new</span> InvoiceItem()
+                        {
+                            name = <span class="hljs-string">"Nutri Bullet"</span>,
+                            quantity = <span class="hljs-number">1.0</span>F,
+                            unit_price = <span class="hljs-keyword">new</span> Currency()
+                            {
+                                currency = <span class="hljs-string">"USD"</span>,
+                                <span class="hljs-keyword">value</span> = <span class="hljs-string">"50.00"</span>
+                            }
+                        }
+                    },
+                    merchant_info = <span class="hljs-keyword">new</span> MerchantInfo()
+                    {
+                        email = <span class="hljs-string">"jziaja.test.merchant-facilitator@gmail.com"</span>
+                    },
+                    tax_calculated_after_discount = <span class="hljs-keyword">false</span>,
+                    tax_inclusive = <span class="hljs-keyword">false</span>,
+                    note = <span class="hljs-string">"Thank you for your business"</span>,
+                    logo_url = <span class="hljs-string">"https://pics.paypal.com/v1/images/redDot.jpeg"</span>,
+                },
+                settings = <span class="hljs-keyword">new</span> List&lt;InvoiceTemplateSettings&gt;()
+                {
+                    <span class="hljs-keyword">new</span> InvoiceTemplateSettings()
+                    {
+                        field_name = <span class="hljs-string">"items.date"</span>,
+                        display_preference = <span class="hljs-keyword">new</span> InvoiceTemplateSettingsMetadata()
+                        {
+                            hidden = <span class="hljs-keyword">true</span>
+                        }
+                    },
+                    <span class="hljs-keyword">new</span> InvoiceTemplateSettings()
+                    {
+                        field_name = <span class="hljs-string">"custom"</span>,
+                        display_preference = <span class="hljs-keyword">new</span> InvoiceTemplateSettingsMetadata()
+                        {
+                            hidden = <span class="hljs-keyword">true</span>
+                        }
+                    }
+                }
+            };</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Create the template."</span>, invoiceTemplate);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Create the invoice template</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> createdTemplate = invoiceTemplate.Create(apiContext);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordResponse(createdTemplate);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Retrieve the template."</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Retrieve the invoice template</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> retrievedTemplate = InvoiceTemplate.Get(apiContext, createdTemplate.template_id);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordResponse(retrievedTemplate);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>For more information, please visit <a href="https://developer.paypal.com/docs/api/">PayPal Developer REST API Reference</a>.</p></div></div><div class="code"><div class="wrapper">        }
+    }
+}</div></div></div></div></body></html>

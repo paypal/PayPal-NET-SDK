@@ -18,7 +18,10 @@ namespace PayPal.Testing
             "\"billing_info\":[{\"email\":\"example@example.com\"}]," +
             "\"items\":[" + InvoiceItemTest.InvoiceItemJson + "]," +
             "\"note\":\"Medical Invoice 16 Jul, 2013 PST\"," +
+            "\"allow_partial_payment\":true," +
             "\"payment_term\":{\"term_type\":\"NET_45\"}," +
+            "\"minimum_amount_due\":" + CurrencyTest.CurrencyJson + "," + 
+            "\"gratuity\":" + CurrencyTest.CurrencyJson + "," + 
             "\"shipping_info\":" + ShippingInfoTest.ShippingInfoJson + "}";
 
         public static Invoice GetInvoice()
@@ -38,6 +41,9 @@ namespace PayPal.Testing
             Assert.IsNotNull(testObject.shipping_info);
             Assert.AreEqual("Medical Invoice 16 Jul, 2013 PST", testObject.note);
             Assert.IsNotNull(testObject.payment_term);
+            Assert.AreEqual(testObject.allow_partial_payment, true);
+            Assert.AreEqual(testObject.minimum_amount_due.value, CurrencyTest.GetCurrency().value);
+            Assert.AreEqual(testObject.gratuity.value, CurrencyTest.GetCurrency().value);
         }
 
         [TestMethod, TestCategory("Unit")]

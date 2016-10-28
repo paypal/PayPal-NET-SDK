@@ -4,6 +4,7 @@
 //  More information: https://developer.paypal.com/docs/api/
 //
 //==============================================================================
+using System;
 using Newtonsoft.Json;
 
 namespace PayPal.Api
@@ -31,6 +32,7 @@ namespace PayPal.Api
         /// <summary>
         /// 
         /// </summary>
+		[Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "targetSchema")]
         public HyperSchema targetSchema { get; set; }
 
@@ -43,12 +45,14 @@ namespace PayPal.Api
         /// <summary>
         /// 
         /// </summary>
+		[Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "enctype")]
         public string enctype { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
+		[Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "schema")]
         public HyperSchema schema { get; set; }
     }

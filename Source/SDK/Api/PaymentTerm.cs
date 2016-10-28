@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Terms of an invoice payment.
+    /// The payment term of the invoice. If you specify `term_type`, you cannot specify `due_date`, and vice versa.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,13 +17,13 @@ namespace PayPal.Api
     public class PaymentTerm : PayPalSerializableObject
     {
         /// <summary>
-        /// Terms by which the invoice payment is due.
+        /// The terms by which the invoice payment is due.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "term_type")]
         public string term_type { get; set; }
 
         /// <summary>
-        /// Date on which invoice payment is due. It must be always a future date. Date format yyyy-MM-dd z, as defined in [ISO8601](http://tools.ietf.org/html/rfc3339#section-5.6).
+        /// The date when the invoice payment is due. This date must be a future date. Date format is *yyyy*-*MM*-*dd* *z*, as defined in [Internet Date/Time Format](http://tools.ietf.org/html/rfc3339#section-5.6).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "due_date")]
         public string due_date { get; set; }

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Description of an item listed in an invoice.
+    /// Line item information.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,45 +17,51 @@ namespace PayPal.Api
     public class InvoiceItem : PayPalSerializableObject
     {
         /// <summary>
-        /// Name of the item. 60 characters max.
+        /// The item name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "name")]
         public string name { get; set; }
 
         /// <summary>
-        /// Description of the item. 1000 characters max.
+        /// The item description.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "description")]
         public string description { get; set; }
 
         /// <summary>
-        /// Quantity of the item. Range of 0 to 9999.999.
+        /// The item quantity. Valid value is from -10000 to 10000.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "quantity")]
         public float quantity { get; set; }
 
         /// <summary>
-        /// Unit price of the item. Range of -999999.99 to 999999.99.
+        /// The item unit price. Valid value is from -1,000,000 to 1,000,000.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "unit_price")]
         public Currency unit_price { get; set; }
 
         /// <summary>
-        /// Tax associated with the item.
+        /// The tax associated with the item.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "tax")]
         public Tax tax { get; set; }
 
         /// <summary>
-        /// Date on which the item or service was provided. Date format yyyy-MM-dd z, as defined in [ISO8601](http://tools.ietf.org/html/rfc3339#section-5.6).
+        /// The date when the item or service was provided. The date format is *yyyy*-*MM*-*dd* *z*, as defined in [Internet Date/Time Format](http://tools.ietf.org/html/rfc3339#section-5.6).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "date")]
         public string date { get; set; }
 
         /// <summary>
-        /// Item discount in percent or amount.
+        /// The item discount, as a percent or an amount value.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "discount")]
         public Cost discount { get; set; }
+
+        /// <summary>
+        /// The unit of measure for the invoiced item. Value is quantity, hours, or amount.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "unit_of_measure")]
+        public string unit_of_measure { get; set; }
     }
 }

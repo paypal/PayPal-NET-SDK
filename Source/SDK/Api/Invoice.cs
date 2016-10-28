@@ -4,137 +4,161 @@
 //  More information: https://developer.paypal.com/docs/api/
 //
 //==============================================================================
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using PayPal.Util;
-using System;
 
 namespace PayPal.Api
 {
     /// <summary>
-    /// A REST API invoice resource.
+    /// Detailed invoice information.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
     /// </summary>
-    public class Invoice : PayPalRelationalObject
+    public class Invoice : PayPalResource
     {
         /// <summary>
-        /// Unique invoice resource identifier.
+        /// The ID of the invoice.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public string id { get; set; }
 
         /// <summary>
-        /// Unique number that appears on the invoice. If left blank will be auto-incremented from the last number. 25 characters max.
+        /// The unique invoice number. If you omit this number, it is auto-incremented from the previous invoice number.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "number")]
         public string number { get; set; }
 
         /// <summary>
-        /// URI of the invoice resource.
+        /// The ID of the template from which to create the invoice. Useful for copy functionality.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "template_id")]
+        public string template_id { get; set; }
+
+        /// <summary>
+        /// The URI of the invoice.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "uri")]
         public string uri { get; set; }
 
         /// <summary>
-        /// Status of the invoice.
+        /// The invoice status.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "status")]
         public string status { get; set; }
 
         /// <summary>
-        /// Information about the merchant who is sending the invoice.
+        /// Additional information about the merchant who sends the invoice.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "merchant_info")]
         public MerchantInfo merchant_info { get; set; }
 
         /// <summary>
-        /// Email address of invoice recipient (required) and optional billing information. (Note: We currently only allow one recipient).
+        /// The required invoice recipient email address and any optional billing information. Supports only one recipient.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "billing_info")]
         public List<BillingInfo> billing_info { get; set; }
 
         /// <summary>
-        /// Shipping information for entities to whom items are being shipped.
+        /// For invoices sent by email, one or more email addresses to which to send a Cc: copy of the notification. Supports only email addresses under participant.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "cc_info")]
+        public List<Participant> cc_info { get; set; }
+
+        /// <summary>
+        /// The shipping information for entities to whom items are being shipped.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "shipping_info")]
         public ShippingInfo shipping_info { get; set; }
 
         /// <summary>
-        /// List of items included in the invoice. 100 items max per invoice.
+        /// The items to include in the invoice. An invoice can contain a maximum of 100 items.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "items")]
         public List<InvoiceItem> items { get; set; }
 
         /// <summary>
-        /// Date on which the invoice was enabled. Date format yyyy-MM-dd z, as defined in [ISO8601](http://tools.ietf.org/html/rfc3339#section-5.6).
+        /// The date when the invoice was enabled. The date format is *yyyy*-*MM*-*dd* *z*, as defined in [Internet Date/Time Format](http://tools.ietf.org/html/rfc3339#section-5.6).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "invoice_date")]
         public string invoice_date { get; set; }
 
         /// <summary>
-        /// Optional field to pass payment deadline for the invoice. Either term_type or due_date can be passed, but not both.
+        /// Optional. The payment deadline for the invoice. Value is either `term_type` or `due_date` but not both.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "payment_term")]
         public PaymentTerm payment_term { get; set; }
 
         /// <summary>
-        /// Reference data, such as PO number, to add to the invoice. Maximum length is 60 characters.
+        /// Reference data, such as PO number, to add to the invoice.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "reference")]
         public string reference { get; set; }
 
         /// <summary>
-        /// Invoice level discount in percent or amount.
+        /// The invoice level discount, as a percent or an amount value.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "discount")]
         public Cost discount { get; set; }
 
         /// <summary>
-        /// Shipping cost in percent or amount.
+        /// The shipping cost, as a percent or an amount value.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "shipping_cost")]
         public ShippingCost shipping_cost { get; set; }
 
         /// <summary>
-        /// Custom amount applied on an invoice. If a label is included then the amount cannot be empty.
+        /// The custom amount to apply to an invoice. If you include a label, you must include a custom amount.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "custom")]
         public CustomAmount custom { get; set; }
 
         /// <summary>
-        /// Indicates whether tax is calculated before or after a discount. If false (the default), the tax is calculated before a discount. If true, the tax is calculated after a discount.
+        /// Indicates whether the invoice allows a partial payment. If `false`, invoice must be paid in full. If `true`, the invoice allows partial payments. Default is `false`.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "allow_partial_payment")]
+        public bool? allow_partial_payment { get; set; }
+
+        /// <summary>
+        /// The minimum amount allowed for a partial payment. Required if `allow_partial_payment` is `true`.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "minimum_amount_due")]
+        public Currency minimum_amount_due { get; set; }
+
+        /// <summary>
+        /// Indicates whether the tax is calculated before or after a discount. If `false`, the tax is calculated before a discount. If `true`, the tax is calculated after a discount. Default is `false`.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "tax_calculated_after_discount")]
         public bool? tax_calculated_after_discount { get; set; }
 
         /// <summary>
-        /// A flag indicating whether the unit price includes tax. Default is false
+        /// Indicates whether the unit price includes tax. Default is `false`.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "tax_inclusive")]
         public bool? tax_inclusive { get; set; }
 
         /// <summary>
-        /// General terms of the invoice. 4000 characters max.
+        /// The general terms of the invoice.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "terms")]
         public string terms { get; set; }
 
         /// <summary>
-        /// Note to the payer. 4000 characters max.
+        /// A note to the payer.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "note")]
         public string note { get; set; }
 
         /// <summary>
-        /// Bookkeeping memo that is private to the merchant. 150 characters max.
+        /// A private bookkeeping memo for the merchant.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "merchant_memo")]
         public string merchant_memo { get; set; }
 
         /// <summary>
-        /// Full URL of an external image to use as the logo. 4000 characters max.
+        /// The full URL to an external logo image.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "logo_url")]
         public string logo_url { get; set; }
@@ -164,36 +188,49 @@ namespace PayPal.Api
         public Metadata metadata { get; set; }
 
         /// <summary>
-        /// Any miscellaneous invoice data. 4000 characters max.
+        /// Any miscellaneous invoice data.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "additional_data")]
         public string additional_data { get; set; }
 
         /// <summary>
-        /// The template ID used for the invoice. Useful for copy functionality.
+        /// Gratuity to include with the invoice.
         /// </summary>
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "template_id")]
-        public string template_id { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "gratuity")]
+        public Currency gratuity { get; set; }
 
-        #region Obsolete Properties
         /// <summary>
-        /// List of payment details for the invoice.
+        /// Payment summary of the invoice including amount paid through PayPal and other sources.
         /// </summary>
         [JsonIgnore]
         [Obsolete("This property is obsolete. Use payments instead.", false)]
         public List<PaymentDetail> payment_details { get { return this.payments; } set { this.payments = value; } }
 
         /// <summary>
-        /// List of refund details for the invoice.
+        /// Payment summary of the invoice including amount paid through PayPal and other sources.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "paid_amount")]
+        public PaymentSummary paid_amount { get; set; }
+
+        /// <summary>
+        /// Payment summary of the invoice, including amount refunded through PayPal and other sources.
         /// </summary>
         [JsonIgnore]
         [Obsolete("This property is obsolete. Use refunds instead.", false)]
         public List<RefundDetail> refund_details { get { return this.refunds; } set { this.refunds = value; } }
-        #endregion
 
         /// <summary>
-        /// Creates a new invoice Resource.
+        /// Payment summary of the invoice, including amount refunded through PayPal and other sources.
         /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "refunded_amount")]
+        public PaymentSummary refunded_amount { get; set; }
+
+        /// <summary>
+        /// List of files that are attached to the invoice.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "attachments")]
+        public List<FileAttachment> attachments { get; set; }
+
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <returns>Invoice</returns>
         public Invoice Create(APIContext apiContext)
@@ -202,7 +239,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Creates a new invoice Resource.
+        /// Creates a draft invoice. You can optionally create an invoice [template](/docs/api/invoicing/#templates). Then, when you create an invoice from a template, the invoice is populated with the predefined data that the source template contains. To move the invoice from a draft to payable state, you must [send the invoice](/docs/api/invoicing/#invoices_send). In the JSON request body, include invoice details including merchant information. The `invoice` object must include an `items` array.<blockquote><strong>Note:</strong> The merchant specified in an invoice must have a PayPal account in good standing.</blockquote>
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="invoice">Invoice object to be used for creating the PayPal resource.</param>
@@ -218,7 +255,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Search for invoice resources.
+        /// Lists invoices that match search criteria. In the JSON request body, include a `search` object that specifies the search criteria.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="search">Search</param>
@@ -235,10 +272,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Sends a legitimate invoice to the payer.
+        /// Sends an invoice, by ID, to a customer.<blockquote><strong>Note:</strong> After you send an invoice, you cannot resend it.</blockquote><br/>Optionally, set the `notify_merchant` query parameter to also send the merchant an invoice update notification. Default is `true`.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="notifyMerchant">Specifies if the invoice send notification is needed for merchant</param>
+        /// <param name="notifyMerchant">Indicates whether to send the invoice update notification to the merchant. Default is `true`.</param>
         public void Send(APIContext apiContext, bool notifyMerchant = true)
         {
             Invoice.Send(apiContext, this.id, notifyMerchant);
@@ -266,7 +303,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Reminds the payer to pay the invoice.
+        /// Sends a reminder about an invoice, by ID, to a customer. In the JSON request body, include a `notification` object that defines the subject of the reminder and other details.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="notification">Notification</param>
@@ -295,7 +332,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Cancels an invoice.
+        /// Cancels a sent invoice, by ID, and, optionally, sends a notification about the cancellation to the payer, merchant, and Cc: emails.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="cancelNotification">CancelNotification</param>
@@ -324,7 +361,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Mark the status of the invoice as paid.
+        /// Marks the status of a specified invoice, by ID, as paid. Include a payment detail object that defines the payment method and other details in the JSON request body.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="paymentDetail">PaymentDetail</param>
@@ -353,7 +390,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Mark the status of the invoice as refunded.
+        /// Marks the status of an invoice, by ID, as refunded. In the JSON request body, include a payment detail object that defines the payment method and other details.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="refundDetail">RefundDetail</param>
@@ -382,10 +419,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Get the invoice resource for the given identifier.
+        /// Shows details for a specified invoice, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="invoiceId">Identifier of the invoice resource to obtain the data for.</param>
+        /// <param name="invoiceId">The ID of the invoice for which to show details.</param>
         /// <returns>Invoice</returns>
         public static Invoice Get(APIContext apiContext, string invoiceId)
         {
@@ -400,12 +437,12 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Get all invoices of a merchant.
+        /// Lists merchant invoices. Optionally, you can specify one or more query parameters to filter the response.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="page">Start index.</param>
-        /// <param name="pageSize">Number of invoices to be returned by the GET API.</param>
-        /// <param name="totalCountRequired">A flag to depict that total_count should be returned in the response.</param>
+        /// <param name="page">A *zero-relative* index of the list of merchant invoices.</param>
+        /// <param name="pageSize">The number of invoices to list beginning with the specified `page`.</param>
+        /// <param name="totalCountRequired">Indicates whether the total count appears in the response. Default is `false`.</param>
         /// <returns>InvoiceSearchResponse</returns>
         public static InvoiceSearchResponse GetAll(APIContext apiContext, int page = 1, int pageSize = 20, bool totalCountRequired = false)
         {
@@ -423,10 +460,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Full update of the invoice resource for the given identifier.
+        /// Fully updates an invoice, by ID. In the JSON request body, include a complete `invoice` object. This call does not support partial updates.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="notifyMerchant">Specifies if the invoice update notification is needed for merchant</param>
+        /// <param name="notifyMerchant">Indicates whether to send the invoice update notification to the merchant. Default is `true`.</param>
         /// <returns>Invoice</returns>
         public Invoice Update(APIContext apiContext, bool notifyMerchant = true)
         {
@@ -456,7 +493,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Delete invoice resource for the given identifier.
+        /// Deletes a draft invoice, by ID. Note that this call works for invoices in the draft state only. For invoices that have already been sent, you can [cancel the invoice](/docs/api/invoicing/#invoices_cancel). After you delete a draft invoice, you can no longer use it or show its details. However, you can reuse its invoice number.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         public void Delete(APIContext apiContext)
@@ -465,10 +502,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Delete invoice resource for the given identifier.
+        /// Deletes a draft invoice, by ID. Note that this call works for invoices in the draft state only. For invoices that have already been sent, you can [cancel the invoice](/docs/api/invoicing/#invoices_cancel). After you delete a draft invoice, you can no longer use it or show its details. However, you can reuse its invoice number.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="invoiceId">ID of the invoice to delete.</param>
+        /// <param name="invoiceId">The ID of the invoice to delete.</param>
         public static void Delete(APIContext apiContext, string invoiceId)
         {
             // Validate the arguments to be used in the request
@@ -483,13 +520,53 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Generates QR code for the Invoice URL identified by invoice_id.
+        /// Deletes an external payment, by invoice ID and transaction ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="invoiceId">Identifier of the invoice resource for which QR code has to be generated.</param>
-        /// <param name="width">Indicates the width of the QR code image in pixels. Range : 150-500. Default 500.</param>
-        /// <param name="height">Indicates the height of the QR code image in pixels. Range : 150-500. Default 500.</param>
-        /// <param name="action">Specifies the type of URL for which the QR code has the be generated.</param>
+        /// <param name="invoiceId">The ID of the invoice from which to delete a payment transaction.</param>
+        /// <param name="transactionId">The ID of the payment transaction to delete.</param>
+        public static void DeleteExternalPayment(APIContext apiContext, string invoiceId, string transactionId)
+        {
+            // Validate the arguments to be used in the request
+            ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
+            ArgumentValidator.Validate(invoiceId, "invoiceId");
+            ArgumentValidator.Validate(transactionId, "transactionId");
+
+            // Configure and send the request
+            apiContext.MaskRequestId = true;
+            var pattern = "v1/invoicing/invoices/{0}/payment-records/{1}";
+            var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { invoiceId, transactionId });
+            PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);
+        }
+
+        /// <summary>
+        /// Deletes an external refund, by invoice ID and transaction ID.
+        /// </summary>
+        /// <param name="apiContext">APIContext used for the API call.</param>
+        /// <param name="invoiceId">The ID of the invoice from which to delete the refund transaction.</param>
+        /// <param name="transactionId">The ID of the refund transaction to delete.</param>
+        public static void DeleteExternalRefund(APIContext apiContext, string invoiceId, string transactionId)
+        {
+            // Validate the arguments to be used in the request
+            ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
+            ArgumentValidator.Validate(invoiceId, "invoiceId");
+            ArgumentValidator.Validate(transactionId, "transactionId");
+
+            // Configure and send the request
+            apiContext.MaskRequestId = true;
+            var pattern = "v1/invoicing/invoices/{0}/refund-records/{1}";
+            var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { invoiceId, transactionId });
+            PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);
+        }
+
+        /// <summary>
+        /// Generates a QR code for an invoice, by ID.<br/><br/>The QR code is a PNG image in [Base64-encoded](https://www.base64encode.org/) format that corresponds to the invoice ID. You can generate a QR code for an invoice and add it to a paper or PDF invoice. When a customer uses their mobile device to scan the QR code, he or she is redirected to the PayPal mobile payment flow where he or she can pay online with PayPal or a credit card.<br/><br/>Before you get a QR code, you must:<ol><li><p>[Create an invoice](#invoices_create). Specify `qrinvoice@paypal.com` as the recipient email address in the `billing_info` object. Use a customer email address only if you want to email the invoice.</p></li><li><p>[Send an invoice](#invoices_send) to move the invoice from a draft to payable state. If you specify `qrinvoice@paypal.com` as the recipient email address, the invoice is not emailed.</p></li></ol>
+        /// </summary>
+        /// <param name="apiContext">APIContext used for the API call.</param>
+        /// <param name="invoiceId">The ID of the invoice for which to generate a QR code.</param>
+        /// <param name="width">The width, in pixels, of the QR code image. Valid value is from 150 to 500. Default is 500.</param>
+        /// <param name="height">The height, in pixels, of the QR code image. Valid value is from 150 to 500. Default is 500.</param>
+        /// <param name="action">The type of URL for which to generate a QR code. Default is `pay` and is the only supported value.</param>
         /// <returns>Image</returns>
         public static Image QrCode(APIContext apiContext, string invoiceId, int width = 500, int height = 500, string action = "pay")
         {
@@ -506,6 +583,21 @@ namespace PayPal.Api
             var pattern = "v1/invoicing/invoices/{0}/qr-code";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { invoiceId }) + queryParameters.ToUrlFormattedString();
             return PayPalResource.ConfigureAndExecute<Image>(apiContext, HttpMethod.GET, resourcePath);
+        }
+
+        /// <summary>
+        /// Generates the next invoice number that is available to the user.
+        /// </summary>
+        /// <param name="apiContext">APIContext used for the API call.</param>
+        /// <returns>InvoiceNumber</returns>
+        public InvoiceNumber GenerateNumber(APIContext apiContext)
+        {
+            // Validate the arguments to be used in the request
+            ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
+
+            // Configure and send the request
+            var resourcePath = "v1/invoicing/invoices/next-invoice-number";
+            return PayPalResource.ConfigureAndExecute<InvoiceNumber>(apiContext, HttpMethod.POST, resourcePath);
         }
     }
 }

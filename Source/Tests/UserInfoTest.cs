@@ -9,7 +9,7 @@ namespace PayPal.Testing
     [TestClass]
     public class UserInfoTest : BaseTest
     {
-        [TestMethod, TestCategory("Functional")]
+        [TestMethod, TestCategory("Functional"), Ignore]
         public void UserInfoGetUserInfoWithRefreshTokenTest()
         {
             try

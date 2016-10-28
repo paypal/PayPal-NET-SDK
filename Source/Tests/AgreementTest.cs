@@ -13,7 +13,7 @@ namespace PayPal.Testing
         public static readonly string AgreementJson =
             "{\"name\":\"T-Shirt of the Month Club Agreement\"," + 
             "\"description\":\"Agreement for T-Shirt of the Month Club Plan\"," +
-            "\"start_date\":\"2016-02-19T00:37:04Z\"," +
+            "\"start_date\":\"" + TestingUtil.GetCurrentDateISO(1) + "\"," +
             "\"plan\":" + PlanTest.PlanJson + "," +
             "\"payer\":{\"payment_method\":\"paypal\"}," +
             "\"shipping_address\":" + ShippingAddressTest.ShippingAddressJson + "}";
@@ -29,7 +29,7 @@ namespace PayPal.Testing
             var testObject = GetAgreement();
             Assert.AreEqual("T-Shirt of the Month Club Agreement", testObject.name);
             Assert.AreEqual("Agreement for T-Shirt of the Month Club Plan", testObject.description);
-            Assert.AreEqual("2016-02-19T00:37:04Z", testObject.start_date);
+            Assert.IsNotNull(testObject.start_date);
             Assert.IsNotNull(testObject.plan);
             Assert.IsNotNull(testObject.payer);
             Assert.IsNotNull(testObject.shipping_address);

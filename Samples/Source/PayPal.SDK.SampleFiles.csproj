@@ -27,12 +27,19 @@
     <ExternalContent Include="InvoiceGet.aspx" />
     <ExternalContent Include="InvoiceGetList.aspx" />
     <ExternalContent Include="InvoiceGetQrCode.aspx" />
+    <ExternalContent Include="InvoiceDeletePayment.aspx" />
     <ExternalContent Include="InvoiceRecordPayment.aspx" />
+    <ExternalContent Include="InvoiceDeleteRefund.aspx" />
     <ExternalContent Include="InvoiceRecordRefund.aspx" />
     <ExternalContent Include="InvoiceSearch.aspx" />
     <ExternalContent Include="InvoiceSend.aspx" />
     <ExternalContent Include="InvoiceSendReminder.aspx" />
     <ExternalContent Include="InvoiceUpdate.aspx" />
+    <ExternalContent Include="InvoiceTemplateCreate.aspx" />
+    <ExternalContent Include="InvoiceTemplateDelete.aspx" />
+    <ExternalContent Include="InvoiceTemplateRetrieve.aspx" />
+    <ExternalContent Include="InvoiceTemplateRetrieveList.aspx" />
+    <ExternalContent Include="InvoiceTemplateUpdate.aspx" />
     <ExternalContent Include="OrderSample.aspx" />
     <ExternalContent Include="PaymentExperienceCreate.aspx" />
     <ExternalContent Include="PaymentExperienceDelete.aspx" />
@@ -46,6 +53,7 @@
     <ExternalContent Include="Content\bootstrap-theme.css.map" />
     <ExternalContent Include="Content\bootstrap.css.map" />
     <ExternalContent Include="Main.Master" />
+    <ExternalContent Include="VerifyWebhookSignature.aspx" />
     <ExternalContent Include="WebhookCreate.aspx" />
     <ExternalContent Include="WebhookDelete.aspx" />
     <ExternalContent Include="WebhookEventList.aspx" />
@@ -229,6 +237,13 @@
     <ExternalCompile Include="InvoiceGetQrCode.aspx.designer.cs">
       <DependentUpon>InvoiceGetQrCode.aspx</DependentUpon>
     </ExternalCompile>
+    <ExternalCompile Include="InvoiceDeletePayment.aspx.cs">
+      <DependentUpon>InvoiceDeletePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceDeletePayment.aspx.designer.cs">
+      <DependentUpon>InvoiceDeletePayment.aspx</DependentUpon>
+    </ExternalCompile>
     <ExternalCompile Include="InvoiceRecordPayment.aspx.cs">
       <DependentUpon>InvoiceRecordPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,8 +251,15 @@
     <ExternalCompile Include="InvoiceRecordPayment.aspx.designer.cs">
       <DependentUpon>InvoiceRecordPayment.aspx</DependentUpon>
     </ExternalCompile>
+    <ExternalCompile Include="InvoiceDeleteRefund.aspx.cs">
+      <DependentUpon>InvoiceDeleteRefund.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceDeleteRefund.aspx.designer.cs">
+      <DependentUpon>InvoiceDeleteRefund.aspx</DependentUpon>
+    </ExternalCompile>
     <ExternalCompile Include="InvoiceRecordRefund.aspx.cs">
-      <DependentUpon>InvoiceRecordRefund.aspx</DependentUpon>
+
       <SubType>ASPXCodeBehind</SubType>
     </ExternalCompile>
     <ExternalCompile Include="InvoiceRecordRefund.aspx.designer.cs">
@@ -271,6 +293,47 @@
     <ExternalCompile Include="InvoiceUpdate.aspx.designer.cs">
       <DependentUpon>InvoiceUpdate.aspx</DependentUpon>
     </ExternalCompile>
+
+    <ExternalCompile Include="InvoiceTemplateCreate.aspx.cs">
+      <DependentUpon>InvoiceTemplateCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceTemplateCreate.aspx.designer.cs">
+      <DependentUpon>InvoiceTemplateCreate.aspx</DependentUpon>
+    </ExternalCompile>
+
+    <ExternalCompile Include="InvoiceTemplateDelete.aspx.cs">
+      <DependentUpon>InvoiceTemplateDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceTemplateDelete.aspx.designer.cs">
+      <DependentUpon>InvoiceTemplateDelete.aspx</DependentUpon>
+    </ExternalCompile>
+
+    <ExternalCompile Include="InvoiceTemplateRetrieve.aspx.cs">
+      <DependentUpon>InvoiceTemplateRetrieve.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceTemplateRetrieve.aspx.designer.cs">
+      <DependentUpon>InvoiceTemplateRetrieve.aspx</DependentUpon>
+    </ExternalCompile>
+
+    <ExternalCompile Include="InvoiceTemplateRetrieveList.aspx.cs">
+      <DependentUpon>InvoiceTemplateRetrieveList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceTemplateRetrieveList.aspx.designer.cs">
+      <DependentUpon>InvoiceTemplateRetrieveList.aspx</DependentUpon>
+    </ExternalCompile>
+
+    <ExternalCompile Include="InvoiceTemplateUpdate.aspx.cs">
+      <DependentUpon>InvoiceTemplateUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="InvoiceTemplateUpdate.aspx.designer.cs">
+      <DependentUpon>InvoiceTemplateUpdate.aspx</DependentUpon>
+    </ExternalCompile>
+
     <ExternalCompile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -449,6 +512,15 @@
     <ExternalCompile Include="Utilities\RequestFlow.cs" />
     <ExternalCompile Include="Utilities\SampleCategory.cs" />
     <ExternalCompile Include="Utilities\SampleItem.cs" />
+
+    <ExternalCompile Include="VerifyWebhookSignature.aspx.cs">
+      <DependentUpon>VerifyWebhookSignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </ExternalCompile>
+    <ExternalCompile Include="VerifyWebhookSignature.aspx.designer.cs">
+      <DependentUpon>VerifyWebhookSignature.aspx</DependentUpon>
+    </ExternalCompile>
+
     <ExternalCompile Include="WebhookCreate.aspx.cs">
       <DependentUpon>WebhookCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

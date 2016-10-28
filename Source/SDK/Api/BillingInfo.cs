@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Invoice billing information.
+    /// Billing information for the invoice recipient.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,55 +17,55 @@ namespace PayPal.Api
     public class BillingInfo : PayPalSerializableObject
     {
         /// <summary>
-        /// Email address of the invoice recipient. 260 characters max.
+        /// The invoice recipient email address.<blockquote><strong>Note:</strong>Before you get a QR code, you must create an invoice that specifies `qrinvoice@paypal.com `as the recipient email address in the `billing_info` object. Use a customer email address only if you want to email the invoice.</blockquote>
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "email")]
         public string email { get; set; }
 
         /// <summary>
-        /// First name of the invoice recipient. 30 characters max.
+        /// The invoice recipient first name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "first_name")]
         public string first_name { get; set; }
 
         /// <summary>
-        /// Last name of the invoice recipient. 30 characters max.
+        /// The invoice recipient last name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_name")]
         public string last_name { get; set; }
 
         /// <summary>
-        /// Company business name of the invoice recipient. 100 characters max.
+        /// The invoice recipient company business name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "business_name")]
         public string business_name { get; set; }
 
         /// <summary>
-        /// Address of the invoice recipient.
+        /// The invoice recipient address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "address")]
         public InvoiceAddress address { get; set; }
 
         /// <summary>
-        /// Language of the email sent to the payer. Will only be used if payer doesn't have a PayPal account.
+        /// The language in which to send the email to the recipient. Used only when the recipient lacks a PayPal account.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "language")]
         public string language { get; set; }
 
         /// <summary>
-        /// Option to display additional information such as business hours. 40 characters max.
+        /// Additional information, such as business hours.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "additional_info")]
         public string additional_info { get; set; }
 
         /// <summary>
-        /// Preferred notification channel of the payer. Email by default.
+        /// The preferred notification channel for the recipient. Value is `SMS` or `EMAIL`. Default is `EMAIL`. If `SMS` is specified, a `phone` value is required.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "notification_channel")]
         public string notification_channel { get; set; }
 
         /// <summary>
-        /// Mobile Phone number of the recipient to which SMS will be sent if notification_channel is SMS.
+        /// The mobile phone number to which to send SMS notification if `notification_channel` is `SMS`.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "phone")]
         public Phone phone { get; set; }

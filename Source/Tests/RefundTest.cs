@@ -15,9 +15,9 @@ namespace PayPal.Testing
             refund.id = "102";
             refund.parent_payment = "103";
             refund.sale_id = "104";
-            refund.state = "Approved";
+            refund.state = "COMPLETED";
             refund.amount = AmountTest.GetAmount();
-            refund.create_time = "2013-01-17T18:12:02.347Z";
+            refund.create_time = TestingUtil.GetCurrentDateISO(-1);
             refund.links = LinksTest.GetLinksList();
             return refund;
         }
@@ -30,8 +30,8 @@ namespace PayPal.Testing
             Assert.AreEqual("102", refund.id);
             Assert.AreEqual("103", refund.parent_payment);
             Assert.AreEqual("104", refund.sale_id);
-            Assert.AreEqual("Approved", refund.state);
-            Assert.AreEqual("2013-01-17T18:12:02.347Z", refund.create_time);
+            Assert.AreEqual("COMPLETED", refund.state);
+            Assert.IsNotNull(refund.create_time);
             Assert.IsNotNull(refund.amount);
             Assert.IsNotNull(refund.links);
         }

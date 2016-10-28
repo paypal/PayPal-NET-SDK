@@ -5,11 +5,12 @@
 //
 //==============================================================================
 using Newtonsoft.Json;
+using System;
 
 namespace PayPal.Api
 {
     /// <summary>
-    /// Additional details related to an <seealso cref="Error"/> resource.
+    /// Details about a specific error.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,7 +18,7 @@ namespace PayPal.Api
     public class ErrorDetails : PayPalSerializableObject
     {
         /// <summary>
-        /// Name of the field that caused the error.
+        /// Name of the field that caused the error. Required for client side errors.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "field")]
         public string field { get; set; }
@@ -31,12 +32,14 @@ namespace PayPal.Api
         /// <summary>
         /// Reference ID of the purchase_unit associated with this error
         /// </summary>
+        [Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "purchase_unit_reference_id")]
         public string purchase_unit_reference_id { get; set; }
 
         /// <summary>
         /// PayPal internal error code.
         /// </summary>
+        [Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "code")]
         public string code { get; set; }
     }

@@ -5,16 +5,17 @@
 //
 //==============================================================================
 using System;
-using Newtonsoft.Json;
-using PayPal.Util;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
+using PayPal.Util;
 
 namespace PayPal.Api
 {
     /// <summary>
-    /// A REST API webhook event resource object.
+    /// A webhook event notification.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -22,46 +23,64 @@ namespace PayPal.Api
     public class WebhookEvent : PayPalRelationalObject
     {
         /// <summary>
-        /// Identifier of the Webhooks event resource.
+        /// The ID of the webhook event notification.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public string id { get; set; }
 
         /// <summary>
-        /// Time the resource was created.
+        /// The date and time when the webhook event notification was created.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "create_time")]
         public string create_time { get; set; }
 
         /// <summary>
-        /// Name of the resource contained in resource element.
+        /// The name of the resource related to the webhook notification event.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "resource_type")]
         public string resource_type { get; set; }
 
         /// <summary>
-        /// Name of the event type that occurred on resource, identified by data_resource element, to trigger the Webhooks event.
+        /// The version of the event.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "event_version")]
+        public string event_version { get; set; }
+
+        /// <summary>
+        /// The event that triggered the webhook event notification.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "event_type")]
         public string event_type { get; set; }
 
         /// <summary>
-        /// A summary description of the event. E.g. A successful payment authorization was created for $$
+        /// A summary description for the event notification. For example, `A payment authorization was created.`
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "summary")]
         public string summary { get; set; }
 
         /// <summary>
-        /// This contains the resource that is identified by resource_type element.
+        /// The resource that triggered the webhook event notification.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "resource")]
         public object resource { get; set; }
 
         /// <summary>
-        /// Retrieves the Webhooks event resource identified by event_id. Can be used to retrieve the payload for an event.
+        /// The event transmission status. Displayed only for internal API calls through the PayPal Developer portal.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "status")]
+        public string status { get; set; }
+
+        /// <summary>
+        /// The list of transmissions for an event. Displayed only for internal API calls through the PayPal Developer portal.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "transmissions")]
+        public List<object> transmissions { get; set; }
+
+        /// <summary>
+        /// Shows details for a webhook event notification, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="eventId">Identifier of the Webhooks event resource.</param>
+        /// <param name="eventId">The ID of the webhook event notification for which to show details.</param>
         /// <returns>WebhookEvent</returns>
         public static WebhookEvent Get(APIContext apiContext, string eventId)
         {

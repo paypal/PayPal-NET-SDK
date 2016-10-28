@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details of a phone number.
+    /// The phone number.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,13 +17,13 @@ namespace PayPal.Api
     public class Phone : PayPalSerializableObject
     {
         /// <summary>
-        /// Country code (from in E.164 format)
+        /// The country calling code (CC), as defined by E.164. The maximum combined length of CC+national is 15 digits.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "country_code")]
         public string country_code { get; set; }
 
         /// <summary>
-        /// In-country phone number (from in E.164 format)
+        /// The national number, as defined by E.164. A national number consists of national destination code (NDC) and subscriber number (SN). The maximum combined length of CC+national is 15 digits.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "national_number")]
         public string national_number { get; set; }

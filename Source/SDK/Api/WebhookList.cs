@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A list of webhook resource objects returned from a search operation.
+    /// List of webhooks.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -18,7 +18,7 @@ namespace PayPal.Api
     public class WebhookList : PayPalSerializableObject
     {
         /// <summary>
-        /// A list of Webhooks
+        /// A list of webhooks.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "webhooks")]
         public List<Webhook> webhooks { get; set; }

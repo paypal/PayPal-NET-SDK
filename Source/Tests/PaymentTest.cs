@@ -258,7 +258,7 @@ namespace PayPal.Testing
                 Assert.IsNotNull(createdPayment.GetHateoasLink(BaseConstants.HateoasLinkRelations.ApprovalUrl));
                 Assert.IsNotNull(createdPayment.GetHateoasLink(BaseConstants.HateoasLinkRelations.Execute));
             }
-            catch (ConnectionException)
+            catch (ConnectionException ex)
             {
                 this.RecordConnectionDetails(false);
                 throw;

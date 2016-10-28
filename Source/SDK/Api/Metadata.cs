@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details about the state of an invoice.
+    /// Audit information for the resource.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,55 +17,55 @@ namespace PayPal.Api
     public class Metadata : PayPalSerializableObject
     {
         /// <summary>
-        /// Date when the resource was created.
+        /// The date and time when the resource was created.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "created_date")]
         public string created_date { get; set; }
 
         /// <summary>
-        /// Email address of the account that created the resource.
+        /// The email address of the account that created the resource.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "created_by")]
         public string created_by { get; set; }
 
         /// <summary>
-        /// Date when the resource was cancelled.
+        /// The date and time when the resource was canceled.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "cancelled_date")]
         public string cancelled_date { get; set; }
 
         /// <summary>
-        /// Actor who cancelled the resource.
+        /// The actor who canceled the resource.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "cancelled_by")]
         public string cancelled_by { get; set; }
 
         /// <summary>
-        /// Date when the resource was last edited.
+        /// The date and time when the resource was last edited.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_updated_date")]
         public string last_updated_date { get; set; }
 
         /// <summary>
-        /// Email address of the account that last edited the resource.
+        /// The email address of the account that last edited the resource.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_updated_by")]
         public string last_updated_by { get; set; }
 
         /// <summary>
-        /// Date when the resource was first sent.
+        /// The date and time when the resource was first sent.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "first_sent_date")]
         public string first_sent_date { get; set; }
 
         /// <summary>
-        /// Date when the resource was last sent.
+        /// The date and time when the resource was last sent.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_sent_date")]
         public string last_sent_date { get; set; }
 
         /// <summary>
-        /// Email address of the account that last sent the resource.
+        /// The email address of the account that last sent the resource.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_sent_by")]
         public string last_sent_by { get; set; }

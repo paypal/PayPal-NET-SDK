@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A flow configuration to be used in context of a web experience profile.
+    /// Parameters for flow configuration.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,15 +17,27 @@ namespace PayPal.Api
     public class FlowConfig : PayPalSerializableObject
     {
         /// <summary>
-        /// Type of PayPal page to be displayed when a user lands on the PayPal site for checkout. Allowed values: `Billing` or `Login`. When set to `Billing`, the Non-PayPal account landing page is used. When set to `Login`, the PayPal account login landing page is used.
+        /// The type of landing page to display on the PayPal site for user checkout. Set to `Billing` to use the non-PayPal account landing page. Set to `Login` to use the PayPal account login landing page.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "landing_page_type")]
         public string landing_page_type { get; set; }
 
         /// <summary>
-        /// The URL on the merchant site for transferring to after a bank transfer payment. Use this field only if you are using giropay or bank transfer payment methods in Germany.
+        /// The merchant site URL to display after a bank transfer payment. Valid for only the Giropay or bank transfer payment method in Germany.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "bank_txn_pending_url")]
         public string bank_txn_pending_url { get; set; }
+
+        /// <summary>
+        /// Defines whether buyers can complete purchases on the PayPal or merchant website.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "user_action")]
+        public string user_action { get; set; }
+
+        /// <summary>
+        /// The HTTP method to use to redirect the user to a return URL. Valid value is `GET` or `POST`.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "return_uri_http_method")]
+        public string return_uri_http_method { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using PayPal.Util;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A REST API web experience profile resource object.
+    /// Payment web experience profile.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -18,16 +18,22 @@ namespace PayPal.Api
     public class WebProfile : PayPalResource
     {
         /// <summary>
-        /// Unique ID of the web experience profile.
+        /// The ID of the web experience profile.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public string id { get; set; }
 
         /// <summary>
-        /// Name of the web experience profile. Unique only among the profiles for a given merchant.
+        /// The web experience profile name. Unique for a specified merchant's profiles.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "name")]
         public string name { get; set; }
+
+        /// <summary>
+        /// Indicates whether the profile persists for three hours or permanently. Set to `false` to persist the profile permanently. Set to `true` to persist the profile for three hours.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "temporary")]
+        public bool? temporary { get; set; }
 
         /// <summary>
         /// Parameters for flow configuration.
@@ -48,7 +54,7 @@ namespace PayPal.Api
         public Presentation presentation { get; set; }
 
         /// <summary>
-        /// Create a web experience profile by passing the name of the profile and other profile details in the request JSON to the request URI.
+        /// Creates a web experience profile. Pass the profile name and details in the JSON request body.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <returns>CreateProfileResponse</returns>
@@ -74,7 +80,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Update a web experience profile by passing the ID of the profile to the request URI. In addition, pass the profile details in the request JSON. If your request does not include values for all profile detail fields, the previously set values for the omitted fields are removed by this operation.
+        /// Updates a web experience profile. Pass the ID of the profile to the request URI and pass the profile details in the JSON request body. If your request omits any profile detail fields, the operation removes the previously set values for those fields.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         public void Update(APIContext apiContext)
@@ -100,7 +106,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Partially update an existing web experience profile by passing the ID of the profile to the request URI. In addition, pass a patch object in the request JSON that specifies the operation to perform, path of the profile location to update, and a new value if needed to complete the operation.
+        /// Partially-updates a web experience profile. Pass the profile ID to the request URI. Pass a patch object with the operation, path of the profile location to update, and, if needed, a new value to complete the operation in the JSON request body.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <param name="patchRequest">PatchRequest</param>
@@ -129,10 +135,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Retrieve the details of a particular web experience profile by passing the ID of the profile to the request URI.
+        /// Shows details for a web experience profile, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="profileId">ID of the profile to retrieve.</param>
+        /// <param name="profileId">The ID of the profile for which to show details.</param>
         /// <returns>WebProfile</returns>
         public static WebProfile Get(APIContext apiContext, string profileId)
         {
@@ -147,7 +153,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Lists all web experience profiles that exist for a merchant (or subject).
+        /// Lists all web experience profiles for a merchant or subject.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         /// <returns>WebProfileList</returns>
@@ -162,7 +168,7 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Delete an existing web experience profile by passing the profile ID to the request URI.
+        /// Deletes a web experience profile, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
         public void Delete(APIContext apiContext)
@@ -171,10 +177,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Delete an existing web experience profile by passing the profile ID to the request URI.
+        /// Deletes a web experience profile, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="profileId">ID of the profile to delete.</param>
+        /// <param name="profileId">The ID of the profile to delete.</param>
         public static void Delete(APIContext apiContext, string profileId)
         {
             // Validate the arguments to be used in the request

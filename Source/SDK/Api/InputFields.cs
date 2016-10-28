@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Input field settings for a web experience profile.
+    /// Parameters for input fields customization.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,19 +17,19 @@ namespace PayPal.Api
     public class InputFields : PayPalSerializableObject
     {
         /// <summary>
-        /// Enables the buyer to enter a note to the merchant on the PayPal page during checkout.
+        /// Indicates whether the buyer can enter a note to the merchant on the PayPal page during checkout.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "allow_note")]
         public bool? allow_note { get; set; }
 
         /// <summary>
-        /// Determines whether or not PayPal displays shipping address fields on the experience pages. Allowed values: `0`, `1`, or `2`. When set to `0`, PayPal displays the shipping address on the PayPal pages. When set to `1`, PayPal does not display shipping address fields whatsoever. When set to `2`, if you do not pass the shipping address, PayPal obtains it from the buyer's account profile. For digital goods, this field is required, and you must set it to `1`. 
+        /// Indicates whether PayPal displays shipping address fields on the experience pages. For digital goods, this field is required and must be <code>1</code>. Value is:<ul><li><code>0</code>. Displays the shipping address on the PayPal pages.</li><li><code>1</code>. Redacts shipping address fields from the PayPal pages.</li><li><code>2</code>. Gets the shipping address from the buyer's account profile.</li></ul>
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "no_shipping")]
         public int no_shipping { get; set; }
 
         /// <summary>
-        /// Determines if the PayPal pages should display the shipping address supplied in this call, rather than the shipping address on file with PayPal for this buyer. Displaying the address on file does not allow the buyer to edit the address. Allowed values: `0` or `1`. When set to `0`, the PayPal pages should display the address on file. When set to `1`, the PayPal pages should display the addresses supplied in this call instead of the address from the buyer's PayPal account.
+        /// Indicates whether to display the shipping address that is passed to this call rather than the one on file with PayPal for this buyer on the PayPal experience pages. Value is:<ul><li><code>0</code>. Displays the shipping address on file.</li><li><code>1</code>. Displays the shipping address supplied to this call. The buyer cannot edit this shipping address.</li></ul>
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "address_override")]
         public int address_override { get; set; }

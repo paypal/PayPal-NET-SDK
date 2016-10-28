@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Shipping information for an invoice.
+    /// Shipping information for the invoice recipient.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,25 +17,25 @@ namespace PayPal.Api
     public class ShippingInfo : PayPalSerializableObject
     {
         /// <summary>
-        /// First name of the invoice recipient. 30 characters max.
+        /// The invoice recipient first name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "first_name")]
         public string first_name { get; set; }
 
         /// <summary>
-        /// Last name of the invoice recipient. 30 characters max.
+        /// The invoice recipient last name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_name")]
         public string last_name { get; set; }
 
         /// <summary>
-        /// Company business name of the invoice recipient. 100 characters max.
+        /// The invoice recipient company business name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "business_name")]
         public string business_name { get; set; }
 
         /// <summary>
-        /// Address of the invoice recipient.
+        /// The invoice recipient address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "address")]
         public InvoiceAddress address { get; set; }

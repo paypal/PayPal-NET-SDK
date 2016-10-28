@@ -13,7 +13,7 @@ namespace PayPal.Testing
             "{\"amount\":" + AmountTest.AmountJson + "," +
             "\"parent_payment\":\"103\"," +
             "\"state\":\"completed\"," +
-            "\"create_time\":\"2013-01-17T18:12:02.347Z\"," +
+            "\"create_time\":\"" + TestingUtil.GetCurrentDateISO() + "\"," +
             "\"links\":[" + LinksTest.LinksJson + "]}";
 
         public static Sale GetSale()
@@ -27,7 +27,7 @@ namespace PayPal.Testing
             var sale = GetSale();
             Assert.AreEqual("103", sale.parent_payment);
             Assert.AreEqual("completed", sale.state);
-            Assert.AreEqual("2013-01-17T18:12:02.347Z", sale.create_time);
+            Assert.IsNotNull(sale.create_time);
             Assert.IsNotNull(sale.amount);
             Assert.IsNotNull(sale.links);
         }

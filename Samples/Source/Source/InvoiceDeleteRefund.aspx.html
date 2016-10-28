@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><title>Source/InvoiceDeleteRefund.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="Source/InvoiceDeleteRefund.aspx"><meta name="groc-project-path" content="Source/InvoiceDeleteRefund.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">Source/InvoiceDeleteRefund.aspx.cs</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">﻿<span class="hljs-keyword">using</span> PayPal.Api;
+<span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> System.Linq;
+<span class="hljs-keyword">using</span> System.Web;
+<span class="hljs-keyword">using</span> System.Web.UI;
+<span class="hljs-keyword">using</span> System.Web.UI.WebControls;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">PayPal.Sample</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">InvoiceDeleteRefund</span> : <span class="hljs-title">BaseSamplePage</span>
+    {
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RunSample</span>(<span class="hljs-params"></span>)
+        </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="api-context">Api Context</h3>
+<p>Pass in a <code>APIContext</code> object to authenticate 
+the call and to send a unique request id 
+(that ensures idempotency). The SDK generates
+a request id if you do not pass one explicitly. 
+See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about APIContext.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> apiContext = Configuration.GetAPIContext();</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="create-an-invoice">Create an invoice</h3>
+<p>For demonstration purposes, we will create a new invoice for this sample.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> invoice = <span class="hljs-keyword">new</span> Invoice()
+            {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h4 id="merchant-information">Merchant Information</h4>
+<p>Information about the merchant who is sending the invoice.</p></div></div><div class="code"><div class="wrapper">                merchant_info = <span class="hljs-keyword">new</span> MerchantInfo()
+                {
+                    email = <span class="hljs-string">"jziaja.test.merchant-facilitator@gmail.com"</span>,
+                    first_name = <span class="hljs-string">"Dennis"</span>,
+                    last_name = <span class="hljs-string">"Doctor"</span>,
+                    business_name = <span class="hljs-string">"Medical Professionals, LLC"</span>,
+                    phone = <span class="hljs-keyword">new</span> Phone()
+                    {
+                        country_code = <span class="hljs-string">"001"</span>,
+                        national_number = <span class="hljs-string">"4083741550"</span>
+                    },
+                    address = <span class="hljs-keyword">new</span> InvoiceAddress()
+                    {
+                        line1 = <span class="hljs-string">"1234 Main St."</span>,
+                        city = <span class="hljs-string">"Portland"</span>,
+                        state = <span class="hljs-string">"OR"</span>,
+                        postal_code = <span class="hljs-string">"97217"</span>,
+                        country_code = <span class="hljs-string">"US"</span>
+                    }
+                },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h4 id="billing-information">Billing Information</h4>
+<p>Email address of invoice recipient and optional billing information.</p>
+<blockquote>
+<p>Note: PayPal currently only allows one recipient.</p>
+</blockquote></div></div><div class="code"><div class="wrapper">                billing_info = <span class="hljs-keyword">new</span> List&lt;BillingInfo&gt;()
+                {
+                    <span class="hljs-keyword">new</span> BillingInfo()
+                    {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><strong>(Required)</strong> Email address of the invoice recipient.</p></div></div><div class="code"><div class="wrapper">                        email = <span class="hljs-string">"example@example.com"</span>
+                    }
+                },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h4 id="invoice-items">Invoice Items</h4>
+<p>List of items to be included in the invoice.</p>
+<blockquote>
+<p>Note: 100 max per invoice.</p>
+</blockquote></div></div><div class="code"><div class="wrapper">                items = <span class="hljs-keyword">new</span> List&lt;InvoiceItem&gt;()
+                {
+                    <span class="hljs-keyword">new</span> InvoiceItem()
+                    {
+                        name = <span class="hljs-string">"Sutures"</span>,
+                        quantity = <span class="hljs-number">100</span>,
+                        unit_price = <span class="hljs-keyword">new</span> Currency()
+                        {
+                            currency = <span class="hljs-string">"USD"</span>,
+                            <span class="hljs-keyword">value</span> = <span class="hljs-string">"5"</span>
+                        }
+                    }
+                },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h4 id="invoice-note">Invoice Note</h4>
+<p>Note to the payer. Maximum length is 4000 characters.</p></div></div><div class="code"><div class="wrapper">                note = <span class="hljs-string">"Medical Invoice 16 Jul, 2013 PST"</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h4 id="payment-term">Payment Term</h4>
+<p><strong>(Optional)</strong> Specifies the payment deadline for the invoice.</p>
+<blockquote>
+<p>Note: Either <code>term_type</code> or <code>due_date</code> can be sent, <strong>but not both.</strong></p>
+</blockquote></div></div><div class="code"><div class="wrapper">                payment_term = <span class="hljs-keyword">new</span> PaymentTerm()
+                {
+                    term_type = <span class="hljs-string">"NET_30"</span>
+                },</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h4 id="shipping-information">Shipping Information</h4>
+<p>Shipping information for entities to whom items are being shipped.</p></div></div><div class="code"><div class="wrapper">                shipping_info = <span class="hljs-keyword">new</span> ShippingInfo()
+                {
+                    first_name = <span class="hljs-string">"Sally"</span>,
+                    last_name = <span class="hljs-string">"Patient"</span>,
+                    business_name = <span class="hljs-string">"Not applicable"</span>,
+                    address = <span class="hljs-keyword">new</span> InvoiceAddress()
+                    {
+                        line1 = <span class="hljs-string">"1234 Broad St."</span>,
+                        city = <span class="hljs-string">"Portland"</span>,
+                        state = <span class="hljs-string">"OR"</span>,
+                        postal_code = <span class="hljs-string">"97216"</span>,
+                        country_code = <span class="hljs-string">"US"</span>
+                    }
+                }
+            };</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Create the invoice"</span>, invoice);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Create the invoice</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> createdInvoice = invoice.Create(apiContext);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordResponse(createdInvoice);
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Send the invoice"</span>, createdInvoice);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Send the created invoice</p></div></div><div class="code"><div class="wrapper">            createdInvoice.Send(apiContext);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordActionSuccess(<span class="hljs-string">"Invoice sent successfully."</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Use the <code>PaymentDetail</code> object to specify the details of the payment.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> paymentDetail = <span class="hljs-keyword">new</span> PaymentDetail
+            {
+                method = <span class="hljs-string">"CASH"</span>,
+                date = <span class="hljs-string">"2014-07-06 03:30:00 PST"</span>,
+                note = <span class="hljs-string">"Cash received."</span>
+            };</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Mark the invoice as paid"</span>, paymentDetail);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Mark the invoice as paid.</p></div></div><div class="code"><div class="wrapper">            createdInvoice.RecordPayment(apiContext, paymentDetail);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordActionSuccess(<span class="hljs-string">"Invoice successfully updated."</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Use the <code>PaymentDetail</code> object to specify the details of the payment.</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> refundDetail = <span class="hljs-keyword">new</span> RefundDetail
+            {
+                date = <span class="hljs-string">"2014-07-06 03:30:00 PST"</span>,
+                note = <span class="hljs-string">"Refund provided by cash."</span>
+            };</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Mark the invoice as refunded"</span>, refundDetail);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span>
+
+            createdInvoice.RecordRefund(apiContext, refundDetail);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordActionSuccess(<span class="hljs-string">"Invoice successfully updated."</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Fetch details about the invoice"</span>, refundDetail);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>The external payment will now be attached to the details of your invoice</p></div></div><div class="code"><div class="wrapper">            <span class="hljs-keyword">var</span> invoiceDetails = Invoice.Get(apiContext, createdInvoice.id);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+			<span class="hljs-keyword">this</span>.flow.RecordResponse(invoiceDetails);
+            <span class="hljs-keyword">this</span>.flow.RecordActionSuccess(<span class="hljs-string">"Invoice details fetched."</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.AddNewRequest(<span class="hljs-string">"Delete the external refund"</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Delete external refund</p></div></div><div class="code"><div class="wrapper">            Invoice.DeleteExternalRefund(apiContext, invoiceDetails.id, invoiceDetails.refunds[<span class="hljs-number">0</span>].transaction_id);</div></div></div><div class="segment"><div class="code folded"><div class="wrapper marker"><span class="c1">            // Ignore workflow code segment</span></div><div class="wrapper">            <span class="hljs-comment">// Ignore workflow code segment</span>
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>
+            <span class="hljs-keyword">this</span>.flow.RecordActionSuccess(<span class="hljs-string">"External Refund deleted successfully"</span>);
+            <span class="hljs-preprocessor">#<span class="hljs-keyword">endregion</span></span>
+        }
+    }
+}</div></div></div></div></body></html>

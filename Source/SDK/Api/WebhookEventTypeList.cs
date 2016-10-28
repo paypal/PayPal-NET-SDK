@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A list of webhook event types returned from a search operation.
+    /// List of webhook events.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -18,7 +18,7 @@ namespace PayPal.Api
     public class WebhookEventTypeList : PayPalSerializableObject
     {
         /// <summary>
-        /// A list of Webhooks event-types
+        /// A list of webhook events.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "event_types")]
         public List<WebhookEventType> event_types { get; set; }

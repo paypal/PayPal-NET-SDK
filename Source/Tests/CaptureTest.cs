@@ -10,10 +10,10 @@ namespace PayPal.Testing
     {
         public static readonly string CaptureJson =
             "{\"amount\":" + AmountTest.AmountJson + "," +
-            "\"create_time\":\"2013-01-15T15:10:05.123Z\"," +
+            "\"create_time\":\"" + TestingUtil.GetCurrentDateISO() + "\"," +
             "\"id\":\"001\"," +
             "\"parent_payment\":\"1000\"," +
-            "\"state\":\"Authorized\"," +
+            "\"state\":\"COMPLETED\"," +
             "\"links\":[" + LinksTest.LinksJson + "]}";
 
         public static Capture GetCapture()
@@ -33,10 +33,10 @@ namespace PayPal.Testing
             Assert.AreEqual(expected.details.subtotal, actual.details.subtotal);
             Assert.AreEqual(expected.details.tax, actual.details.tax);
             Assert.AreEqual(expected.total, actual.total);
-            Assert.AreEqual(cap.create_time, "2013-01-15T15:10:05.123Z");
+            Assert.IsNotNull(cap.create_time);
             Assert.AreEqual("001", cap.id);
             Assert.AreEqual("1000", cap.parent_payment);
-            Assert.AreEqual("Authorized", cap.state);
+            Assert.AreEqual("COMPLETED", cap.state);
         }
 
         [TestMethod, TestCategory("Unit")]

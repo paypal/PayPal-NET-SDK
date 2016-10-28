@@ -6,16 +6,17 @@
 //==============================================================================
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details of an error that occurred when making a call to the REST API.
+    /// Details of an Error
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
     /// </summary>
-    public class Error : PayPalRelationalObject
+    public class Error : PayPalSerializableObject
     {
         /// <summary>
         /// Human readable, unique name of the error.
@@ -26,6 +27,7 @@ namespace PayPal.Api
         /// <summary>
         /// Reference ID of the purchase_unit associated with this error
         /// </summary>
+        [Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "purchase_unit_reference_id")]
         public string purchase_unit_reference_id { get; set; }
 
@@ -44,6 +46,7 @@ namespace PayPal.Api
         /// <summary>
         /// PayPal internal error code.
         /// </summary>
+        [Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "code")]
         public string code { get; set; }
 

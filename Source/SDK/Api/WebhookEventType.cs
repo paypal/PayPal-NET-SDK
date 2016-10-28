@@ -10,7 +10,7 @@ using PayPal.Util;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details about a specific webhook event type that a <seealso cref="Webhook"/> can be setup to listen to.
+    /// A list of events.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -18,23 +18,29 @@ namespace PayPal.Api
     public class WebhookEventType : PayPalResource
     {
         /// <summary>
-        /// Unique event-type name.
+        /// The unique event name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "name")]
         public string name { get; set; }
 
         /// <summary>
-        /// Human readable description of the event-type
+        /// A human-readable description of the event.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "description")]
         public string description { get; set; }
 
         /// <summary>
-        /// Retrieves the list of events-types subscribed by the given Webhook.
+        /// The status of a webhook event.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "status")]
+        public string status { get; set; }
+
+        /// <summary>
+        /// Lists event subscriptions for a webhook, by ID.
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <param name="webhookId">Identifier of the webhook</param>
-        /// <returns>EventTypeList</returns>
+        /// <param name="webhookId">The ID of the webhook for which to list subscriptions.</param>
+        /// <returns>WebhookEventTypeList</returns>
         public static WebhookEventTypeList SubscribedEventTypes(APIContext apiContext, string webhookId)
         {
             // Validate the arguments to be used in the request
@@ -48,10 +54,10 @@ namespace PayPal.Api
         }
 
         /// <summary>
-        /// Retrieves the master list of available Webhooks events-types resources for any webhook to subscribe to.
+        /// Lists available events to which any webhook can subscribe. For a list of supported events, see [Webhook events](/docs/integration/direct/rest/webhooks/webhook-events/).
         /// </summary>
         /// <param name="apiContext">APIContext used for the API call.</param>
-        /// <returns>EventTypeList</returns>
+        /// <returns>WebhookEventTypeList</returns>
         public static WebhookEventTypeList AvailableEventTypes(APIContext apiContext)
         {
             // Validate the arguments to be used in the request

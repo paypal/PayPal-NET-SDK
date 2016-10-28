@@ -42,6 +42,18 @@ namespace PayPal.Api
         public string payment_mode { get; set; }
 
         /// <summary>
+        /// your own invoice number or tracking IDs, Maximum length: 127.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "invoice_number")]
+        public string invoice_number { get; set; }
+
+        /// <summary>
+        /// free-form field for the use of clients, Maximum length: 127.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "custom")]
+        public string custom { get; set; }
+        
+        /// <summary>
         /// State of the sale transaction.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "state")]

@@ -36,7 +36,6 @@ namespace PayPal.Api
         /// <para>NOTE: This property is currently not supported as a funding instrument option with the PayPal REST API.</para>
         /// </summary>
         [JsonIgnore]
-        [Obsolete("This field is not availalbe publicly in the PayPal REST API. It will be removed in a future release.", false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Browsable(false)]
         public PaymentCard payment_card { get; set; }

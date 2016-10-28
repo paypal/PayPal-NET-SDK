@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Details of a payment made for an invoice.
+    /// Invoicing payment information.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,39 +17,45 @@ namespace PayPal.Api
     public class PaymentDetail : PayPalSerializableObject
     {
         /// <summary>
-        /// PayPal payment detail indicating whether payment was made in an invoicing flow via PayPal or externally. In the case of the mark-as-paid API, payment type is EXTERNAL and this is what is now supported. The PAYPAL value is provided for backward compatibility.
+        /// The payment type in an invoicing flow. Value is `PAYPAL` or `EXTERNAL`. The [record refund](/docs/api/invoicing/#invoices_record-refund) method supports the `EXTERNAL` refund type. The `PAYPAL` refund type is supported for backward compatibility.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "type")]
         public string type { get; set; }
 
         /// <summary>
-        /// PayPal payment transaction id. Mandatory field in case the type value is PAYPAL.
+        /// The ID for a PayPal payment transaction. Required with the `PAYPAL` payment type.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "transaction_id")]
         public string transaction_id { get; set; }
 
         /// <summary>
-        /// Type of the transaction.
+        /// The transaction type. Value is `SALE`, `AUTHORIZATION`, or `CAPTURE`.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "transaction_type")]
         public string transaction_type { get; set; }
 
         /// <summary>
-        /// Date when the invoice was paid. Date format yyyy-MM-dd z, as defined in [ISO8601](http://tools.ietf.org/html/rfc3339#section-5.6).
+        /// The date when the invoice was paid. The date format is *yyyy*-*MM*-*dd* *z*, as defined in [Internet Date/Time Format](http://tools.ietf.org/html/rfc3339#section-5.6).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "date")]
         public string date { get; set; }
 
         /// <summary>
-        /// Payment mode or method. This field is mandatory if the value of the type field is EXTERNAL.
+        /// The payment mode or method. Required with the `EXTERNAL` payment type. Value is bank transfer, cash, check, credit card, debit card, PayPal, wire transfer, or other.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "method")]
         public string method { get; set; }
 
         /// <summary>
-        /// Optional note associated with the payment.
+        /// Optional. A note associated with the payment.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "note")]
         public string note { get; set; }
+
+        /// <summary>
+        /// The payment amount to record against the invoice. If you omit this parameter, records the total invoice amount as paid.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "amount")]
+        public Currency amount { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Cost details for an invoice.
+    /// The cost as a percent or an amount value. For example, to specify 10%, enter `10`. Alternatively, to specify an amount of 5, enter `5`.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,13 +17,13 @@ namespace PayPal.Api
     public class Cost : PayPalSerializableObject
     {
         /// <summary>
-        /// Cost in percent. Range of 0 to 100.
+        /// The cost, as a percent value. Valid value is from 0 to 100.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "percent")]
         public float percent { get; set; }
 
         /// <summary>
-        /// Cost in amount. Range of 0 to 999999.99.
+        /// The cost, as an amount value. Valid value is from 0 to 1,000,000.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "amount")]
         public Currency amount { get; set; }

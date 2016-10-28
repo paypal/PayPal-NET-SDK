@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>PaymentExperienceCreate.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="PaymentExperienceCreate.aspx"><meta name="groc-project-path" content="PaymentExperienceCreate.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">PaymentExperienceCreate.aspx.cs</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">﻿<span class="hljs-keyword">using</span> System;
+<!DOCTYPE html><html lang="en"><head><title>Source/PaymentExperienceCreate.aspx</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="Source/PaymentExperienceCreate.aspx"><meta name="groc-project-path" content="Source/PaymentExperienceCreate.aspx.cs"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">Source/PaymentExperienceCreate.aspx.cs</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">﻿<span class="hljs-keyword">using</span> System;
 <span class="hljs-keyword">using</span> System.Collections;
 <span class="hljs-keyword">using</span> System.Configuration;
 <span class="hljs-keyword">using</span> System.Data;
@@ -14,12 +14,12 @@
 <span class="hljs-keyword">using</span> Newtonsoft.Json.Linq;
 <span class="hljs-keyword">using</span> Newtonsoft.Json;
 
-namespace PayPal.Sample
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">PayPal.Sample</span>
 {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> PaymentExperienceCreate : BaseSamplePage
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PaymentExperienceCreate</span> : <span class="hljs-title">BaseSamplePage</span>
     {
-        <span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RunSample</span>()
-        {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="api-context">Api Context</h3>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RunSample</span>(<span class="hljs-params"></span>)
+        </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="api-context">Api Context</h3>
 <p>Pass in a <code>APIContext</code> object to authenticate 
 the call and to send a unique request id 
 (that ensures idempotency). The SDK generates
@@ -31,7 +31,9 @@ See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about
                 {
                     brand_name = <span class="hljs-string">"Sample brand"</span>,
                     locale_code = <span class="hljs-string">"US"</span>,
-                    logo_image = <span class="hljs-string">"https://www.paypal.com/"</span>
+                    logo_image = <span class="hljs-string">"https://www.paypal.com/"</span>,
+                    note_to_seller_label = <span class="hljs-string">"Thx"</span>,
+                    return_url_label = <span class="hljs-string">"Retreat!"</span>
                 },
                 input_fields = <span class="hljs-keyword">new</span> InputFields()
                 {
@@ -42,8 +44,11 @@ See <a href="/Source/Configuration.html">Configuration.cs</a> to know more about
                 flow_config = <span class="hljs-keyword">new</span> FlowConfig()
                 {
                     bank_txn_pending_url = <span class="hljs-string">"https://www.paypal.com/"</span>,
-                    landing_page_type = <span class="hljs-string">"billing"</span>
-                }
+                    landing_page_type = <span class="hljs-string">"billing"</span>,
+                    user_action = <span class="hljs-string">"commit"</span>,
+                    return_uri_http_method = <span class="hljs-string">"GET"</span>
+                },
+                temporary = <span class="hljs-keyword">true</span>
             };
 
             <span class="hljs-preprocessor">#<span class="hljs-keyword">region</span> Track Workflow</span>

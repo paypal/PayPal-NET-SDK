@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// Merchant information for an invoice.
+    /// Merchant business information that appears on the invoice.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,61 +17,67 @@ namespace PayPal.Api
     public class MerchantInfo : PayPalSerializableObject
     {
         /// <summary>
-        /// Email address of the merchant. 260 characters max.
+        /// The merchant email address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "email")]
         public string email { get; set; }
 
         /// <summary>
-        /// First name of the merchant. 30 characters max.
+        /// The merchant first name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "first_name")]
         public string first_name { get; set; }
 
         /// <summary>
-        /// Last name of the merchant. 30 characters max.
+        /// The merchant last name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "last_name")]
         public string last_name { get; set; }
 
         /// <summary>
-        /// Address of the merchant.
+        /// The merchant address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "address")]
         public InvoiceAddress address { get; set; }
 
         /// <summary>
-        /// Company business name of the merchant. 100 characters max.
+        /// The merchant company business name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "business_name")]
         public string business_name { get; set; }
 
         /// <summary>
-        /// Phone number of the merchant.
+        /// The merchant phone number.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "phone")]
         public Phone phone { get; set; }
 
         /// <summary>
-        /// Fax number of the merchant.
+        /// The merchant fax number.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "fax")]
         public Phone fax { get; set; }
 
         /// <summary>
-        /// Website of the merchant. 2048 characters max.
+        /// The merchant website.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "website")]
         public string website { get; set; }
 
         /// <summary>
-        /// Tax ID of the merchant. 100 characters max.
+        /// The merchant tax ID.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "tax_id")]
         public string tax_id { get; set; }
 
         /// <summary>
-        /// Option to display additional information such as business hours. 40 characters max.
+        /// A label for the `additional_info` field.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "additional_info_label")]
+        public string additional_info_label { get; set; }
+
+        /// <summary>
+        /// Additional information, such as business hours.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "additional_info")]
         public string additional_info { get; set; }

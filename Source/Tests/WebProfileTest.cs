@@ -11,7 +11,8 @@ namespace PayPal.Testing
             "{\"name\": \"Test profile\"," +
             "\"presentation\": " + PresentationTest.PresentationJson + "," +
             "\"input_fields\": " + InputFieldsTest.InputFieldsJson + "," +
-            "\"flow_config\":" + FlowConfigTest.FlowConfigJson + "}";
+            "\"flow_config\":" + FlowConfigTest.FlowConfigJson + "," +
+            "\"temporary\":true}";
 
         public static WebProfile GetWebProfile()
         {
@@ -26,6 +27,7 @@ namespace PayPal.Testing
             Assert.IsNotNull(webProfile.presentation);
             Assert.IsNotNull(webProfile.input_fields);
             Assert.IsNotNull(webProfile.flow_config);
+            Assert.AreEqual(true, webProfile.temporary);
         }
 
         [TestMethod, TestCategory("Unit")]

@@ -10,8 +10,8 @@
     <ExternalCompile Include="BaseTest.cs" />
     <ExternalCompile Include="BankAccountTest.cs" />
     <ExternalCompile Include="ChargeModelTest.cs" />
-	<ExternalCompile Include="ConfigManagerTest.cs" />
-	<ExternalCompile Include="ConnectionManagerTls12Test.cs" />
+	  <ExternalCompile Include="ConfigManagerTest.cs" />
+	  <ExternalCompile Include="ConnectionManagerTls12Test.cs" />
     <ExternalCompile Include="CreateProfileResponseTest.cs" />
     <ExternalCompile Include="CurrencyTest.cs" />
     <ExternalCompile Include="DetailsTest.cs" />
@@ -59,9 +59,12 @@
     <ExternalCompile Include="ShippingAddressTest.cs" />
     <ExternalCompile Include="ShippingInfoTest.cs" />
     <ExternalCompile Include="TermsTest.cs" />
+    <ExternalCompile Include="TemplateTest.cs" />
     <ExternalCompile Include="TransactionTest.cs" />
     <ExternalCompile Include="InvoiceAddressTest.cs" />
     <ExternalCompile Include="TestingUtil.cs" />
+    <ExternalCompile Include="VerifyWebhookSignatureTest.cs" />
+    <ExternalCompile Include="VerifyWebhookSignatureResponseTest.cs" />
     <ExternalCompile Include="WebhookEventListTest.cs" />
     <ExternalCompile Include="WebhookEventTest.cs" />
     <ExternalCompile Include="WebhookEventTypeListTest.cs" />
@@ -72,9 +75,9 @@
     <ExternalCompile Include="FmfDetailsTest.cs" />
     <ExternalCompile Include="MeasurementTest.cs" />
     <ExternalCompile Include="PayPalResourceTest.cs" />
-	<ExternalCompile Include="UserInfoTest.cs" />
-	<ExternalCompile Include="ProcessorResponseTest.cs" />
-	<ExternalCompile Include="PotentialPayerInfoTest.cs" />
-	<ExternalCompile Include="ArgumentValidatorTest.cs" />
+	  <ExternalCompile Include="UserInfoTest.cs" />
+	  <ExternalCompile Include="ProcessorResponseTest.cs" />
+	  <ExternalCompile Include="PotentialPayerInfoTest.cs" />
+	  <ExternalCompile Include="ArgumentValidatorTest.cs" />
   </ItemGroup>
 </Project>

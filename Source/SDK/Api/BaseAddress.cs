@@ -5,11 +5,12 @@
 //
 //==============================================================================
 using Newtonsoft.Json;
+using System;
 
 namespace PayPal.Api
 {
     /// <summary>
-    /// Common address information used in context of various REST APIs.
+    /// Base Address object used as billing address in a payment or extended for Shipping Address.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -55,12 +56,14 @@ namespace PayPal.Api
         /// <summary>
         /// Address normalization status
         /// </summary>
+        [Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "normalization_status")]
         public string normalization_status { get; set; }
 
         /// <summary>
         /// Address status
         /// </summary>
+        [Obsolete]
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "status")]
         public string status { get; set; }
     }

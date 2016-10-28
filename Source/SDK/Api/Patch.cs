@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PayPal.Api
 {
     /// <summary>
-    /// A resource patch object used to update a REST API resource object.
+    /// A JSON patch object that you can use to apply partial updates to resources.
     /// <para>
     /// See <a href="https://developer.paypal.com/docs/api/">PayPal Developer documentation</a> for more information.
     /// </para>
@@ -17,25 +17,25 @@ namespace PayPal.Api
     public class Patch : PayPalSerializableObject
     {
         /// <summary>
-        /// Patch operation to perform. Value required for add &amp; remove operation can be any JSON value.
+        /// The operation to perform.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "op")]
         public string op { get; set; }
 
         /// <summary>
-        /// string containing a JSON-Pointer value that references a location within the target document (the target location) where the operation is performed.
+        /// A JSON pointer that references a location in the target document where the operation is performed.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "path")]
         public string path { get; set; }
 
         /// <summary>
-        /// New value to apply based on the operation.
+        /// The value to apply based on the operation. The `remove` operation does not require a `value`.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "value")]
         public object value { get; set; }
 
         /// <summary>
-        /// A string containing a JSON Pointer value that references the location in the target document to move the value from.
+        /// A JSON pointer that references the location in the target document from which to move the value. A `string` value. Required for the `move` operation.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "from")]
         public string from { get; set; }

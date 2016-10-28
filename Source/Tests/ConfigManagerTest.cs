@@ -26,8 +26,8 @@ namespace PayPal.Testing
             Assert.AreEqual("sandbox", config[BaseConstants.ApplicationModeConfig]);
             Assert.AreEqual("360000", config[BaseConstants.HttpConnectionTimeoutConfig]);
             Assert.AreEqual("3", config[BaseConstants.HttpConnectionRetryConfig]);
-            Assert.AreEqual("AarFsYjuR5hDa6U0IvtdYDDFmZbFMcrWPBDsTkFHYxb-cICFJ7RqdNKC0eU0rG15QubJcsbRZgcSkFoH", config[BaseConstants.ClientId]);
-            Assert.AreEqual("ECO-GClNT6agxySL3hj7kteYEUVtR6Pc3nQXV90GUw3sNI5jR0_3DXVeKE4wkUlhuSMPapED5xscCHwH", config[BaseConstants.ClientSecret]);
+            Assert.IsNotNull(config[BaseConstants.ClientId]);
+            Assert.IsNotNull(config[BaseConstants.ClientSecret]);
         }
 
         [TestMethod, TestCategory("Unit")]

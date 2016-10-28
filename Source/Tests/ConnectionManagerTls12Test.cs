@@ -26,14 +26,18 @@ namespace PayPal.Testing
 
         private static SecurityProtocolType Tls => SecurityProtocolType.Tls;
 
+#if NET_4_5 || NET_4_5_1
+        private static SecurityProtocolType Tls11 => SecurityProtocolType.Tls11
+        private static SecurityProtocolType Tls12 => SecurityProtocolType.Tls12
+#else
         private static SecurityProtocolType Tls11 => (SecurityProtocolType)0x300;
-
         private static SecurityProtocolType Tls12 => (SecurityProtocolType)0xC00;
+#endif
 
         [TestMethod, TestCategory("Unit")]
         public void Tls12SupportShouldBeAddedWithoutAffectingExistingProtocols()
         {
-            ServicePointManager.SecurityProtocol = Ssl3 | Tls | Tls11;
+            ServicePointManager.SecurityProtocol = Ssl3 | Tls | Tls11 | Tls12;
 
             var connectionManager = ConnectionManager.Instance;
 
