@@ -34,6 +34,9 @@ General documentation regarding the PayPal REST API and related payment flows ca
 
 ## License
 
-* PayPal, Inc. SDK License - [LICENSE.txt](https://github.com/paypal/PayPal-NET-SDK/blob/master/LICENSE.txt)
+*	PayPal, Inc. [SDK LICENSE](LICENSE)  
+
+## Contributions 
+ Pull requests and new issues are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details. 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paypal/PayPal-NET-SDK/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
