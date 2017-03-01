@@ -156,7 +156,7 @@ namespace PayPal.Api
 
             // Set the authentication header
             byte[] bytes = Encoding.UTF8.GetBytes(string.Format("{0}:{1}", apiContext.Config[BaseConstants.ClientId], apiContext.Config[BaseConstants.ClientSecret]));
-            apiContext.AccessToken = Convert.ToBase64String(bytes);
+            apiContext.AccessToken = "Basic " + Convert.ToBase64String(bytes);
 
             return PayPalResource.ConfigureAndExecute<Tokeninfo>(apiContext, HttpMethod.POST, resourcePath, payLoad);
         }
