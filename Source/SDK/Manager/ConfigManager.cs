@@ -194,7 +194,7 @@ namespace PayPal.Api
         {
             return config != null &&
                 config.ContainsKey(BaseConstants.ApplicationModeConfig) &&
-                config[BaseConstants.ApplicationModeConfig] == BaseConstants.LiveMode;
+                (config[BaseConstants.ApplicationModeConfig] == BaseConstants.LiveMode || config[BaseConstants.ApplicationModeConfig] == BaseConstants.ProductionMode);
         }
     }
 }
