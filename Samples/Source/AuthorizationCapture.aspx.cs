@@ -20,7 +20,7 @@ namespace PayPal.Sample
             // a request id if you do not pass one explicitly. 
             // See [Configuration.cs](/Source/Configuration.html) to know more about APIContext.
             var apiContext = Configuration.GetAPIContext();
-            var authorizationId = "2BR94342X1608434M";
+            var authorizationId = "<your authorization id here>";
   
             // ###Authorization
             // Once the payment with intent set to `authorize` has been created, retrieve its authorization object.

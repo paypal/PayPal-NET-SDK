@@ -18,7 +18,7 @@ namespace PayPal.Sample
             // a request id if you do not pass one explicitly. 
             // See [Configuration.cs](/Source/Configuration.html) to know more about APIContext.
             var apiContext = Configuration.GetAPIContext();
-            var captureId = "705996655R462942D";
+            var captureId = "<your capture id here>";
 
  
             // Capture by POSTing to
