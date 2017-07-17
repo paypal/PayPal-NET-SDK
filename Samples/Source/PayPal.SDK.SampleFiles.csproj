@@ -5,7 +5,6 @@
     <ExternalContent Include="BillingAgreementListTransactions.aspx" />
     <ExternalContent Include="BillingAgreementCreateAndExecute.aspx" />
     <ExternalContent Include="BillingAgreementGet.aspx" />
-    <ExternalContent Include="BillingAgreementWithCreditCard.aspx" />
     <ExternalContent Include="BillingPlanCreate.aspx" />
     <ExternalContent Include="BillingPlanDelete.aspx" />
     <ExternalContent Include="BillingPlanGet.aspx" />
@@ -15,9 +14,6 @@
     <ExternalContent Include="Content\bootstrap-theme.min.css" />
     <ExternalContent Include="Content\bootstrap.css" />
     <ExternalContent Include="Content\bootstrap.min.css" />
-    <ExternalContent Include="CreditCardList.aspx" />
-    <ExternalContent Include="CreditCardUpdate.aspx" />
-    <ExternalContent Include="DeleteCreditCard.aspx" />
     <ExternalContent Include="fonts\glyphicons-halflings-regular.svg" />
     <ExternalContent Include="GetRefund.aspx" />
     <ExternalContent Include="assets\logo_paypal_106x29.png" />
@@ -125,13 +121,6 @@
     <ExternalCompile Include="BillingAgreementGet.aspx.designer.cs">
       <DependentUpon>BillingAgreementGet.aspx</DependentUpon>
     </ExternalCompile>
-    <ExternalCompile Include="BillingAgreementWithCreditCard.aspx.cs">
-      <DependentUpon>BillingAgreementWithCreditCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="BillingAgreementWithCreditCard.aspx.designer.cs">
-      <DependentUpon>BillingAgreementWithCreditCard.aspx</DependentUpon>
-    </ExternalCompile>
     <ExternalCompile Include="BillingPlanCreate.aspx.cs">
       <DependentUpon>BillingPlanCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -166,27 +155,6 @@
     </ExternalCompile>
     <ExternalCompile Include="BillingPlanUpdate.aspx.designer.cs">
       <DependentUpon>BillingPlanUpdate.aspx</DependentUpon>
-    </ExternalCompile>
-    <ExternalCompile Include="CreditCardList.aspx.cs">
-      <DependentUpon>CreditCardList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="CreditCardList.aspx.designer.cs">
-      <DependentUpon>CreditCardList.aspx</DependentUpon>
-    </ExternalCompile>
-    <ExternalCompile Include="CreditCardUpdate.aspx.cs">
-      <DependentUpon>CreditCardUpdate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="CreditCardUpdate.aspx.designer.cs">
-      <DependentUpon>CreditCardUpdate.aspx</DependentUpon>
-    </ExternalCompile>
-    <ExternalCompile Include="DeleteCreditCard.aspx.cs">
-      <DependentUpon>DeleteCreditCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="DeleteCreditCard.aspx.designer.cs">
-      <DependentUpon>DeleteCreditCard.aspx</DependentUpon>
     </ExternalCompile>
     <ExternalCompile Include="GetRefund.aspx.cs">
       <DependentUpon>GetRefund.aspx</DependentUpon>
@@ -406,13 +374,6 @@
     </ExternalCompile>
     <ExternalCompile Include="Utilities\Common.cs" />
     <ExternalCompile Include="Utilities\Configuration.cs" />
-    <ExternalCompile Include="CreateCreditCard.aspx.cs">
-      <DependentUpon>CreateCreditCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="CreateCreditCard.aspx.designer.cs">
-      <DependentUpon>CreateCreditCard.aspx</DependentUpon>
-    </ExternalCompile>
     <ExternalCompile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -458,13 +419,6 @@
     <ExternalCompile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </ExternalCompile>
-    <ExternalCompile Include="PaymentWithCreditCard.aspx.cs">
-      <DependentUpon>PaymentWithCreditCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="PaymentWithCreditCard.aspx.designer.cs">
-      <DependentUpon>PaymentWithCreditCard.aspx</DependentUpon>
-    </ExternalCompile>
     <ExternalCompile Include="PaymentWithPayPal.aspx.cs">
       <DependentUpon>PaymentWithPayPal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -478,13 +432,6 @@
     </ExternalCompile>
     <ExternalCompile Include="ThirdPartyPaymentWithPayPal.aspx.designer.cs">
       <DependentUpon>ThirdPartyPaymentWithPayPal.aspx</DependentUpon>
-    </ExternalCompile>
-    <ExternalCompile Include="PaymentWithSavedCard.aspx.cs">
-      <DependentUpon>PaymentWithSavedCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="PaymentWithSavedCard.aspx.designer.cs">
-      <DependentUpon>PaymentWithSavedCard.aspx</DependentUpon>
     </ExternalCompile>
     <ExternalCompile Include="Properties\AssemblyInfo.cs" />
     <ExternalCompile Include="RefundCapture.aspx.cs">
@@ -507,13 +454,6 @@
     </ExternalCompile>
     <ExternalCompile Include="SaleRefund.aspx.designer.cs">
       <DependentUpon>SaleRefund.aspx</DependentUpon>
-    </ExternalCompile>
-    <ExternalCompile Include="GetCreditCard.aspx.cs">
-      <DependentUpon>GetCreditCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </ExternalCompile>
-    <ExternalCompile Include="GetCreditCard.aspx.designer.cs">
-      <DependentUpon>GetCreditCard.aspx</DependentUpon>
     </ExternalCompile>
     <ExternalCompile Include="Utilities\RequestFlowItem.cs" />
     <ExternalCompile Include="Utilities\RequestFlow.cs" />
@@ -588,7 +528,6 @@
   <ItemGroup>
     <ExternalContent Include="AuthorizationCapture.aspx" />
     <ExternalContent Include="AuthorizationVoid.aspx" />
-    <ExternalContent Include="CreateCreditCard.aspx" />
     <ExternalContent Include="Default.aspx" />
     <ExternalContent Include="GetAuthorization.aspx" />
     <ExternalContent Include="GetCapture.aspx" />
@@ -598,15 +537,12 @@
     <ExternalContent Include="Global.asax" />
     <ExternalContent Include="assets\edt-format-source-button.png" />
     <ExternalContent Include="assets\play_button.png" />
-    <ExternalContent Include="PaymentWithCreditCard.aspx" />
     <ExternalContent Include="PaymentWithPayPal.aspx" />
     <ExternalContent Include="ThirdPartyPaymentWithPayPal.aspx" />
-    <ExternalContent Include="PaymentWithSavedCard.aspx" />
     <ExternalContent Include="Reauthorization.aspx" />
     <ExternalContent Include="RefundCapture.aspx" />
     <ExternalContent Include="Response.aspx" />
     <ExternalContent Include="SaleRefund.aspx" />
-    <ExternalContent Include="GetCreditCard.aspx" />
     <ExternalContent Include="assets\behavior.js" />
     <ExternalContent Include="assets\docs.js" />
     <ExternalContent Include="assets\sideNavOut.png" />

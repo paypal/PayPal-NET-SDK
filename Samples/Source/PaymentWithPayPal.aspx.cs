@@ -98,7 +98,7 @@ namespace PayPal.Sample
                 // the above types and intent as `sale` or `authorize`
                 var payment = new Payment()
                 {
-                    intent = "sale",
+                    intent = "authorize",
                     payer = payer,
                     transactions = transactionList,
                     redirect_urls = redirUrls

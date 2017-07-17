@@ -24,9 +24,7 @@ namespace PayPal.Sample
                         {
                             new SampleItem { Title = "Make a payment with a PayPal account", ExecutePage = "PaymentWithPayPal.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Make a payment to a third party with a PayPal account", ExecutePage = "ThirdPartyPaymentWithPayPal.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Make a payment with a PayPal account and include a discount", ExecutePage = "PaymentWithPayPalWithDiscount.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Make a payment with a credit card", ExecutePage = "PaymentWithCreditCard.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Make a payment with a stored credit card", ExecutePage = "PaymentWithSavedCard.aspx", HasSourcePage = true },
+                            new SampleItem { Title = "Make a payment with a PayPal account and include a discount", ExecutePage = "PaymentWithPayPalWithDiscount.aspx", HasSourcePage = true }, 
                             new SampleItem { Title = "Retrieve the details of a payment", ExecutePage = "GetPayment.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Retrieve a history of payments", ExecutePage = "GetPaymentHistory.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Retrieve the details of a sale transaction (completed payment)", ExecutePage = "GetSale.aspx", HasSourcePage = true },
@@ -39,19 +37,6 @@ namespace PayPal.Sample
                             new SampleItem { Title = "Reauthorize a payment", ExecutePage = "Reauthorization.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Retrieve the details of a captured payment", ExecutePage = "GetCapture.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Refund a captured payment", ExecutePage = "RefundCapture.aspx", HasSourcePage = true }
-                        }
-                    },
-                    new SampleCategory
-                    {
-                        Title = "Vault",
-                        Id = "vault",
-                        Items = new List<SampleItem>
-                        {
-                            new SampleItem { Title = "Create and store a credit card", ExecutePage = "CreateCreditCard.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Retrieve the details of a credit card", ExecutePage = "GetCreditCard.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Retrieve a list of credit cards", ExecutePage = "CreditCardList.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Delete a credit card", ExecutePage = "DeleteCreditCard.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Update a credit card", ExecutePage = "CreditCardUpdate.aspx", HasSourcePage = true }
                         }
                     },
                     new SampleCategory
@@ -81,7 +66,6 @@ namespace PayPal.Sample
                             new SampleItem { Title = "Retrieve the details of a billing plan", ExecutePage = "BillingPlanGet.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Retrieve a list of billing plans", ExecutePage = "BillingPlanGetList.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Setup a billing agreement using a PayPal account", ExecutePage = "BillingAgreementCreateAndExecute.aspx", HasSourcePage = true },
-                            new SampleItem { Title = "Setup a billing agreement using a credit card", ExecutePage = "BillingAgreementWithCreditCard.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Retrieve the details of a billing agreement", ExecutePage = "BillingAgreementGet.aspx", HasSourcePage = true },
                             new SampleItem { Title = "Retrieve a list of transactions for a billing agreement", ExecutePage = "BillingAgreementListTransactions.aspx", HasSourcePage = true }
                         }
