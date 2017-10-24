@@ -2,7 +2,7 @@
 
 ![Home Image](https://raw.githubusercontent.com/wiki/paypal/PayPal-NET-SDK/images/homepage.jpg)
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/paypal/paypal-net-sdk?svg=true)](https://ci.appveyor.com/project/paypal/paypal-net-sdk) [![NuGet](https://img.shields.io/nuget/v/PayPal.svg)](https://www.nuget.org/packages/PayPal)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/paypal/paypal-net-sdk?svg=true)](https://ci.appveyor.com/project/paypal/paypal-net-sdk) [![NuGet](https://img.shields.io/nuget/v/PayPal.svg)](https://www.nuget.org/packages/PayPal) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/paypal/PayPal-NET-SDK)
 
 The PayPal .NET SDK makes it easy to add PayPal support to your .NET web application and is built on [PayPal's REST APIs](https://developer.paypal.com/docs/api/).
 
