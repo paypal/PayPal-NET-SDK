@@ -72,6 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="@(ExternalCompile)" />
+    <Compile Include="Api\FlightDetails.cs" />
+    <Compile Include="Api\AirlineItineraries.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\DigiCertSHA2ExtendedValidationServerCA.crt" />
