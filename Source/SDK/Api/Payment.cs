@@ -235,6 +235,42 @@ namespace PayPal.Api
         /// <param name="startIndex">The start index of the resources to return. Typically used to jump to a specific position in the resource history based on its cart. Example for starting at the second item in a list of results: `?start_index=2`</param>
         /// <param name="startTime">The date and time when the resource was created. Indicates the start of a range of results. Example: `start_time=2013-03-06T11:00:00Z`</param>
         /// <param name="endTime">The date and time when the resource was created. Indicates the end of a range of results.</param>
+        /// <param name="payeeEmail">Payee identifier (email) to filter the search results in list operations.</param>
+        /// <param name="payeeId">Payee identifier (merchant id) assigned by PayPal to filter the search results in list operations.</param>
+        /// <param name="sortBy">Field name that determines sort order of results.</param>
+        /// <param name="sortOrder">Specifies if order of results is ascending or descending.</param>
+        /// <returns>PaymentHistory</returns>
+        public static PaymentHistory List(APIContext apiContext, int? count = null, string startId = "", int? startIndex = null, string startTime = "", string endTime = "", string payeeEmail = "", string payeeId = "", string sortBy = "", string sortOrder = "")
+        {
+            // Validate the arguments to be used in the request
+            ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
+
+            var queryParameters = new QueryParameters();
+            queryParameters["count"] = count.ToString();
+            queryParameters["start_id"] = startId;
+            queryParameters["start_index"] = startIndex.ToString();
+            queryParameters["start_time"] = startTime;
+            queryParameters["end_time"] = endTime;
+            queryParameters["payee_email"] = payeeEmail;
+            queryParameters["payee_id"] = payeeId;
+            queryParameters["sort_by"] = sortBy;
+            queryParameters["sort_order"] = sortOrder;
+
+            // Configure and send the request
+            var resourcePath = "v1/payments/payment" + queryParameters.ToUrlFormattedString();
+            return PayPalResource.ConfigureAndExecute<PaymentHistory>(apiContext, HttpMethod.GET, resourcePath);
+        }
+
+        #region Obsolete Properties
+        /// <summary>
+        /// List payments that were made to the merchant who issues the request. Payments can be in any state.
+        /// </summary>
+        /// <param name="apiContext">APIContext used for the API call.</param>
+        /// <param name="count">The number of items to list in the response.</param>
+        /// <param name="startId">The ID of the starting resource in the response. When results are paged, you can use the `next_id` value as the `start_id` to continue with the next set of results.</param>
+        /// <param name="startIndex">The start index of the resources to return. Typically used to jump to a specific position in the resource history based on its cart. Example for starting at the second item in a list of results: `?start_index=2`</param>
+        /// <param name="startTime">The date and time when the resource was created. Indicates the start of a range of results. Example: `start_time=2013-03-06T11:00:00Z`</param>
+        /// <param name="endTime">The date and time when the resource was created. Indicates the end of a range of results.</param>
         /// <param name="startDate">Resource creation date that indicates the start of results.</param>
         /// <param name="endDate">Resource creation date that indicates the end of a range of results.</param>
         /// <param name="payeeEmail">Payee identifier (email) to filter the search results in list operations.</param>
@@ -242,6 +278,7 @@ namespace PayPal.Api
         /// <param name="sortBy">Field name that determines sort order of results.</param>
         /// <param name="sortOrder">Specifies if order of results is ascending or descending.</param>
         /// <returns>PaymentHistory</returns>
+        [Obsolete("This method is obsolete as `startDate` and `endDate` are not valid values. Please use the other `List` method instead", false)]
         public static PaymentHistory List(APIContext apiContext, int? count = null, string startId = "", int? startIndex = null, string startTime = "", string endTime = "", string startDate = "", string endDate = "", string payeeEmail = "", string payeeId = "", string sortBy = "", string sortOrder = "")
         {
             // Validate the arguments to be used in the request
@@ -264,5 +301,6 @@ namespace PayPal.Api
             var resourcePath = "v1/payments/payment" + queryParameters.ToUrlFormattedString();
             return PayPalResource.ConfigureAndExecute<PaymentHistory>(apiContext, HttpMethod.GET, resourcePath);
         }
+        #endregion
     }
 }
