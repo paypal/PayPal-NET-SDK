@@ -246,15 +246,15 @@ namespace PayPal.Api
             ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
 
             var queryParameters = new QueryParameters();
-            queryParameters["count"] = count.ToString();
             queryParameters["start_id"] = startId;
-            queryParameters["start_index"] = startIndex.ToString();
             queryParameters["start_time"] = startTime;
             queryParameters["end_time"] = endTime;
             queryParameters["payee_email"] = payeeEmail;
             queryParameters["payee_id"] = payeeId;
             queryParameters["sort_by"] = sortBy;
             queryParameters["sort_order"] = sortOrder;
+            if (count != null) queryParameters["count"] = count.ToString();
+            if (startIndex != null) queryParameters["start_index"] = startIndex.ToString();
 
             // Configure and send the request
             var resourcePath = "v1/payments/payment" + queryParameters.ToUrlFormattedString();
