@@ -15,7 +15,11 @@ using BraintreeHttp;
 namespace PayPal.v1.Payments
 {
     /// <summary>
-    /// Creates a sale, an authorized payment to be captured later, or an order. To create a sale, authorization, or order, include the payment details in the JSON request body. Set the `intent` to `sale`, `authorize`, or `order`. Include payer, transaction details, and, for PayPal payments only, redirect URLs. The combination of the `payment_method` and `funding_instrument` determines the type of payment that is created. For more information, see [Payments REST API](/docs/integration/direct/payments/).<blockquote><strong>Note:</strong> Authorizations are guaranteed for up to three days, though you can attempt to capture an authorization for up to 29 days. After the three-day honor period authorization expires, you can [reauthorize](#authorization_reauthorize) the payment.</blockquote>
+    /// Creates a Sale, an authorized Payment to be captured later, or an Order. To create a Sale, Authorization, or Order, include the payment details in the JSON request body. 
+    /// Set the `Intent` to `Sale`, `Authorize`, or `Order`. Include Payer, transaction details, and, for PayPal payments only, redirect URLs. 
+    /// The combination of the `PaymentMethod` and `FundingInstrument` determines the type of payment that is created. 
+    /// For more information, see [Payments REST API](/docs/integration/direct/payments/).<blockquote><strong>Note:</strong> Authorizations are guaranteed for up to three days, though 
+    /// you can attempt to capture an authorization for up to 29 days. After the three-day honor period authorization expires, you can [reauthorize](#authorization_reauthorize) the payment.</blockquote>
     /// </summary>
     public class PaymentCreateRequest : HttpRequest
     {
