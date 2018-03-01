@@ -13,7 +13,6 @@ namespace PayPal.Api
         /// </summary>
         public APIContext()
         {
-            this.ResetRequestId();
             this.SdkVersion = new SDKVersion();
         }
 

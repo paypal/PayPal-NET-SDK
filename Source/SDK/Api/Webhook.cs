@@ -156,7 +156,6 @@ namespace PayPal.Api
             ArgumentValidator.Validate(webhookId, "webhookId");
 
             // Configure and send the request
-            apiContext.MaskRequestId = true;
             var pattern = "v1/notifications/webhooks/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { webhookId });
             PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);

@@ -10,7 +10,7 @@ namespace PayPal.Testing
         public void APIContextValidConstructorTest()
         {
             var apiContext = new APIContext();
-            Assert.IsFalse(string.IsNullOrEmpty(apiContext.RequestId));
+            Assert.IsTrue(string.IsNullOrEmpty(apiContext.RequestId));
             Assert.IsFalse(apiContext.MaskRequestId);
             Assert.IsTrue(string.IsNullOrEmpty(apiContext.AccessToken));
             Assert.IsNull(apiContext.Config);
@@ -22,7 +22,7 @@ namespace PayPal.Testing
         public void APIContextValidConstructorWithAccessTokenTest()
         {
             var apiContext = new APIContext("abc");
-            Assert.IsFalse(string.IsNullOrEmpty(apiContext.RequestId));
+            Assert.IsTrue(string.IsNullOrEmpty(apiContext.RequestId));
             Assert.IsFalse(apiContext.MaskRequestId);
             Assert.AreEqual("abc", apiContext.AccessToken);
             Assert.IsNull(apiContext.Config);

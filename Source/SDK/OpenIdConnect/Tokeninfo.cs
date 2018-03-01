@@ -111,7 +111,6 @@ namespace PayPal.Api
                 apiContext = new APIContext();
             }
             apiContext.HTTPHeaders = headersMap;
-            apiContext.MaskRequestId = true;
             return PayPalResource.ConfigureAndExecute<Tokeninfo>(apiContext, HttpMethod.POST, resourcePath, payLoad);
         }
 
@@ -152,7 +151,6 @@ namespace PayPal.Api
                 apiContext = new APIContext();
             }
             apiContext.HTTPHeaders = headersMap;
-            apiContext.MaskRequestId = true;
 
             // Set the authentication header
             byte[] bytes = Encoding.UTF8.GetBytes(string.Format("{0}:{1}", apiContext.Config[BaseConstants.ClientId], apiContext.Config[BaseConstants.ClientSecret]));

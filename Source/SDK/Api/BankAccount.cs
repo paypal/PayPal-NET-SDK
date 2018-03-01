@@ -226,7 +226,6 @@ namespace PayPal.Api
             ArgumentValidator.Validate(bankAccountId, "bankAccountId");
 
             // Configure and send the request
-            apiContext.MaskRequestId = true;
             var pattern = "v1/vault/bank-accounts/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { bankAccountId });
             PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);

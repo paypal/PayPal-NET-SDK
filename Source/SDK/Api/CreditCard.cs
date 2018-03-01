@@ -184,7 +184,6 @@ namespace PayPal.Api
             ArgumentValidator.Validate(creditCardId, "creditCardId");
 
             // Configure and send the request
-            apiContext.MaskRequestId = true;
             var pattern = "v1/vault/credit-cards/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { creditCardId });
             PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);

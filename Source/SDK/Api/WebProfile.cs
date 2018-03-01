@@ -188,7 +188,6 @@ namespace PayPal.Api
             ArgumentValidator.Validate(profileId, "profileId");
 
             // Configure and send the request
-            apiContext.MaskRequestId = true;
             var pattern = "v1/payment-experience/web-profiles/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { profileId });
             PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);

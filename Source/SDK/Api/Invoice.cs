@@ -513,7 +513,6 @@ namespace PayPal.Api
             ArgumentValidator.Validate(invoiceId, "invoiceId");
 
             // Configure and send the request
-            apiContext.MaskRequestId = true;
             var pattern = "v1/invoicing/invoices/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { invoiceId });
             PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.DELETE, resourcePath);
