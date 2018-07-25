@@ -46,7 +46,7 @@ request.RequestBody(payment);
 
 try 
 {
-  HttpResponse response = await client().Execute(request);
+  HttpResponse response = await client.Execute(request);
   var statusCode = response.StatusCode;
   Payment result = response.Result<Payment>();
 } 
