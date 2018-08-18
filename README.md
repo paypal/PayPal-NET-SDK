@@ -34,7 +34,7 @@ var payment = new Payment()
                 {
                     CancelUrl = "https://example.com/cancel",
                     ReturnUrl = "https://example.com/return"
-                }
+                },
                 Payer = new Payer() 
                 {
                     PaymentMethod = "paypal"
