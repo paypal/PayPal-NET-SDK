@@ -118,7 +118,7 @@ request.RequestBody(profile);
 
 try 
 {
-  HttpResponse response = await client().Execute(request);
+  HttpResponse response = await client.Execute(request);
   var statusCode = response.StatusCode;
   WebProfile result = response.Result<WebProfile>();
 } 
