@@ -42,8 +42,8 @@ namespace PayPal.v1.Payments
         /// <summary>
         /// Specify Shipping Preferences:<ul><li><code>NO_SHIPPING</code>  Redacts shipping address fields from the PayPal pages. Recommended value to use for digital goods.</li><li><code>GET_FROM_FILE</code> (default) Get the shipping address selected by the buyer on PayPal pages.</li><li><code>SET_PROVIDED_ADDRESS</code>  Use the address provided by the merchant. Buyer is not able to change the address on the PayPal pages. If merchant doesn't pass an address buyer has the option to choose the address on PayPal pages.</li></ul>.
         /// </summary>
-        [DataMember(Name="shipping_preferences", EmitDefaultValue = false)]
-        public string ShippingPreferences;
+        [DataMember(Name="shipping_preference", EmitDefaultValue = false)]
+        public string ShippingPreference;
 
         /// <summary>
         /// Defines whether to present the buyer with a  Continue  or  Pay Now  checkout flow.For <strong>Pay Now</strong> checkout flow, set  user_action=commit .Once buyer is redirected to the PayPal payment page, a <strong>Pay Now</strong> button is shown. Use this option when final amount is known when checkout is initiated and you want to process payment immediately upon buyer clicking Pay Now. For <strong>Continue</strong> checkout flow, set user_action=continue (default).Once buyer is redirected to the PayPal payment page, a <Strong>Continue</Strong> button is shown. Use this option when final amount is not known when you initiate the checkout flow and you want to redirect the buyer to the merchant page without processing the payment.
