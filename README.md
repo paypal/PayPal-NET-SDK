@@ -34,7 +34,7 @@ var payment = new Payment()
                 {
                     CancelUrl = "https://example.com/cancel",
                     ReturnUrl = "https://example.com/return"
-                }
+                },
                 Payer = new Payer() 
                 {
                     PaymentMethod = "paypal"
@@ -46,7 +46,7 @@ request.RequestBody(payment);
 
 try 
 {
-  HttpResponse response = await client().Execute(request);
+  HttpResponse response = await client.Execute(request);
   var statusCode = response.StatusCode;
   Payment result = response.Result<Payment>();
 } 
