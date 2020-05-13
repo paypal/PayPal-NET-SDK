@@ -137,7 +137,7 @@ namespace PayPal.Sample
                 #endregion
 
                 // A refund transaction. Use the amount to create a refund object
-                var refund = new Refund()
+                var refundRequest = new RefundRequest()
                 {
                     amount = new Amount()
                     {
@@ -151,13 +151,13 @@ namespace PayPal.Sample
 
                 // ^ Ignore workflow code segment
                 #region Track Workflow
-                this.flow.AddNewRequest("Refund sale", refund, string.Format("URI: /v1/payments/sale/{0}/refund", sale.id));
+                this.flow.AddNewRequest("Refund sale", refundRequest, string.Format("URI: /v1/payments/sale/{0}/refund", sale.id));
                 #endregion
             
                 // Refund by posting Refund object using a valid APIContext
                 //change API Context
                 apiContext = Configuration.GetAPIContext();
-                var response = sale.Refund(apiContext, refund);
+                var response = Sale.Refund(apiContext, sale.id, refundRequest);
 
                 // ^ Ignore workflow code segment
                 #region Track Workflow
