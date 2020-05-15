@@ -88,5 +88,11 @@ namespace PayPal.Api
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "order_url")]
         public string order_url { get; set; }
+
+        /// <summary>
+        /// Airline Itinerary details
+        /// </summary>        
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "airline_itineraries")]
+        public List<AirlineItineraries> airline_itineraries { get; set; }
     }
 }
