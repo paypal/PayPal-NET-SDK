@@ -332,6 +332,7 @@ namespace PayPal.Api
                 switch (config[BaseConstants.ApplicationModeConfig])
                 {
                     case BaseConstants.LiveMode:
+                    case BaseConstants.ProductionMode:  //production is alias for live
                         endpoint = BaseConstants.RESTLiveEndpoint;
                         break;
                     case BaseConstants.SandboxMode:
@@ -340,6 +341,8 @@ namespace PayPal.Api
                     case BaseConstants.SecurityTestSandboxMode:
                         endpoint = BaseConstants.RESTSecurityTestSandoxEndpoint;
                         break;
+                    default:
+                        throw new PayPalException(String.Format("'{0}' is not a valid config value for {1}",config[BaseConstants.ApplicationModeConfig], BaseConstants.ApplicationModeConfig));
                 }
             }
 

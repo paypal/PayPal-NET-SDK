@@ -39,6 +39,11 @@ namespace PayPal.Api
         public const string LiveMode = "live";
 
         /// <summary>
+        /// Allowed application mode - production   //same as live. added to match value used in other places (e.g. checkout.js)
+        /// </summary>
+        public const string ProductionMode = "production";
+
+        /// <summary>
         /// Allowed application mode - sandbox
         /// </summary>
         public const string SandboxMode = "sandbox";
